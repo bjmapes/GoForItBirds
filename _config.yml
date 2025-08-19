@@ -1,1 +1,4 @@
-title: Eagles 4th Down Decisions
+title: Go (for it) Birds!
+theme: minima
+plugins:
+  - jekyll-feed
