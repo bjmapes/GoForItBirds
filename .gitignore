@@ -1,0 +1,9 @@
+_site/
+*.log
+*.swp
+.DS_Store
+.bundle/
+vendor/
+.jekyll-cache/
+.venv/
+.vscode/
