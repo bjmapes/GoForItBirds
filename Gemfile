@@ -5,3 +5,5 @@ source "https://rubygems.org"
 # gem "rails"
 gem "jekyll"
 gem "logger"
+
+gem "minima", "~> 2.5"

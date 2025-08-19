@@ -5,7 +5,7 @@ import shutil
 from pathlib import Path
 
 # Paths
-CSV_PATH = Path("../data/eagles_4th_downs_all_years.csv").resolve()
+CSV_PATH = Path("_data/eagles_4th_downs_1999-2024.csv").resolve()
 SEASONS_DIR = Path("seasons")
 GAMES_DIR = Path("games")
 

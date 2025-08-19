@@ -8,10 +8,10 @@ layout: default
   {% for gid in games %}
     {% assign game_plays = season_games | where: "game_id", gid %}
     {% assign play = game_plays[0] %}
-    <li>
-      <a href="/games/{{ gid | downcase }}.html">
-        Week {{ play.week }} {{ play.away_team }} at {{ play.home_team }}
-      </a>
-    </li>
+  <li>
+    <a href="/games/{{ game.season }}-{{ game.week }}-{{ game.away | downcase }}-{{ game.home | downcase }}.html">
+      Week {{ game.week }}: {{ game.away }} at {{ game.home }}
+    </a>
+  </li>
   {% endfor %}
 </ul>
