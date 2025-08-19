@@ -8,7 +8,7 @@ title: All Eagles 4th Down Seasons
 <ul>
   {% for page in site.pages %}
     {% if page.layout == "season" %}
-      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      <li><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
     {% endif %}
   {% endfor %}
 </ul>
