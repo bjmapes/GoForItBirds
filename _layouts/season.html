@@ -3,6 +3,7 @@ layout: default
 ---
 
 <h1>{{ page.title }}</h1>
+<pre>{{ site.data.eagles_4th_downs_all_time | map: "season" | uniq | sort }}</pre>
 
 {% assign plays = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
 <ul>
