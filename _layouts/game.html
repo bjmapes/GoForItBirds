@@ -4,7 +4,7 @@ layout: default
 
 <h1>{{ page.title }}</h1>
 
-{% assign plays = site.data.eagles | where: "game_id", page.game_id %}
+{% assign plays = site.data.eagles_4th_downs_all_time | where: "game_id", page.game_id %}
 {% if plays.size == 0 %}
   <p>No plays found for this game.</p>
 {% else %}
@@ -31,8 +31,3 @@ layout: default
     {% endfor %}
   </div>
 {% endif %}
-
-<div class="navigation">
-  <p><a href="{{ site.baseurl }}/seasons/{{ page.season }}.html">Back to Season</a></p>
-  <p><a href="{{ site.baseurl }}/index.html">All Seasons</a></p>
-</div>

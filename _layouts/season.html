@@ -4,14 +4,9 @@ layout: default
 <h1>{{ page.title }}</h1>
 <ul>
   {% assign season_games = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
-  {% assign games = season_games | map: "game_id" | uniq %}
-  {% for gid in games %}
-    {% assign game_plays = season_games | where: "game_id", gid %}
-    {% assign play = game_plays[0] %}
-  <li>
-    <a href="{{ site.baseurl }}/games/{{ game.season }}-{{ game.week }}-{{ game.away | downcase }}-{{ game.home | downcase }}.html">
-      Week {{ game.week }}: {{ game.away }} at {{ game.home }}
-    </a>
-  </li>
+  {% for game in season_games %}
+    <li>
+      <a href="{{ game.url }}">{{ game.title }}</a>
+    </li>
   {% endfor %}
 </ul>
