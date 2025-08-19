@@ -10,10 +10,18 @@ layout: default
 page.season: {{ page.season }}
 data length: {{ site.data.eagles_4th_downs_all_time | size }}
 plays matched: {{ season_games | size }}
+unique game_ids: {{ season_games | map: "game_id" | uniq | size }}
+first play: {{ season_games | first | inspect }}
 </pre>
 
 <ul>
-  {% for game in season_games %}
-    <li><a href="/games/{{ game.game_id | downcase | replace: '_', '-' }}.html">Week {{ game.week }} — {{ game.away_team }} at {{ game.home_team }}</a></li>
-  {% endfor %}
+{% assign games = season_games | group_by: "game_id" %}
+{% for game in games %}
+  {% assign first_play = game.items[0] %}
+  <li>
+    <a href="/games/{{ first_play.game_id | downcase | replace: '_', '-' }}.html">
+      Week {{ first_play.week }} — {{ first_play.away_team }} at {{ first_play.home_team }}
+    </a>
+  </li>
+{% endfor %}
 </ul>
