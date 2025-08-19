@@ -3,15 +3,17 @@ layout: default
 ---
 
 <h1>{{ page.title }}</h1>
-<pre>{{ site.data.eagles_4th_downs_all_time | map: "season" | uniq | sort }}</pre>
 
-{% assign plays = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
+{% assign season_games = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
+
+<pre>
+page.season: {{ page.season }}
+data length: {{ site.data.eagles_4th_downs_all_time | size }}
+plays matched: {{ season_games | size }}
+</pre>
+
 <ul>
-  {% for play in plays %}
-    <li>
-      <a href="/games/{{ play.game_id | downcase | replace: '_', '-' }}.html">
-        Week {{ play.week }} — {{ play.away_team }} at {{ play.home_team }}
-      </a>
-    </li>
+  {% for game in season_games %}
+    <li><a href="/games/{{ game.game_id | downcase | replace: '_', '-' }}.html">Week {{ game.week }} — {{ game.away_team }} at {{ game.home_team }}</a></li>
   {% endfor %}
 </ul>

@@ -2,32 +2,34 @@
 layout: default
 ---
 
-<h1>{{ page.title }}</h1>
-
 {% assign plays = site.data.eagles_4th_downs_all_time | where: "game_id", page.game_id %}
-{% if plays.size == 0 %}
-  <p>No plays found for this game.</p>
-{% else %}
-  <div class="plays">
-    {% for play in plays %}
-      <div class="play">
-        <div><span class="label">Quarter:</span> <span class="value">Q{{ play.qtr }}</span></div>
-        <div><span class="label">Down & Distance:</span> <span class="value">4th & {{ play.ydstogo }}</span></div>
-        <div><span class="label">Field Position:</span> <span class="value">{{ play.yardline_100 }}</span></div>
-        <div><span class="label">Time Remaining (Quarter):</span> <span class="value">{{ play.quarter_seconds_remaining }}s</span></div>
-        <div><span class="label">Description:</span> <span class="value"><code>{{ play.desc }}</code></span></div>
-        <div><span class="label">Actual Decision:</span> <span class="value">{{ play.actual_decision }}</span></div>
-        <div><span class="label">Model Recommendation:</span> <span class="value">{{ play.model_recommendation }}</span></div>
-        <div><span class="label">Go WP:</span> <span class="value">{{ play.go_wp }}</span></div>
-        <div><span class="label">Punt WP:</span> <span class="value">{{ play.punt_wp }}</span></div>
-        <div><span class="label">FG WP:</span> <span class="value">{{ play.fg_wp }}</span></div>
-        <div><span class="label">First Down %:</span> <span class="value">{{ play.first_down_prob }}</span></div>
-        <div><span class="label">FG Make %:</span> <span class="value">{{ play.fg_make_prob }}</span></div>
-        <div><span class="label">WP If Succeed:</span> <span class="value">{{ play.wp_succeed }}</span></div>
-        <div><span class="label">WP If Fail:</span> <span class="value">{{ play.wp_fail }}</span></div>
-        <div><span class="label">Go Boost:</span> <span class="value">{{ play.go_boost }}</span></div>
-      </div>
-      <hr/>
-    {% endfor %}
-  </div>
-{% endif %}
+
+<h1>Week {{ plays[0].week }} — {{ plays[0].away_team }} at {{ plays[0].home_team }}</h1>
+
+<pre>
+game_id: {{ page.game_id }}
+data length: {{ site.data.eagles_4th_downs_all_time | size }}
+</pre>
+
+<div class="plays">
+  {% for play in plays %}
+    <div class="play">
+      <div><span class="label">Quarter:</span> <span class="value">Q{{ play.qtr }}</span></div>
+      <div><span class="label">Down & Distance:</span> <span class="value">4th & {{ play.ydstogo }}</span></div>
+      <div><span class="label">Field Position:</span> <span class="value">{{ play.yardline_100 }}</span></div>
+      <div><span class="label">Time Remaining (Quarter):</span> <span class="value">{{ play.quarter_seconds_remaining }}s</span></div>
+      <div><span class="label">Description:</span> <span class="value"><code>{{ play.desc }}</code></span></div>
+      <div><span class="label">Actual Decision:</span> <span class="value">{{ play.actual_decision }}</span></div>
+      <div><span class="label">Model Recommendation:</span> <span class="value">{{ play.model_recommendation }}</span></div>
+      <div><span class="label">Go WP:</span> <span class="value">{{ play.go_wp }}</span></div>
+      <div><span class="label">Punt WP:</span> <span class="value">{{ play.punt_wp }}</span></div>
+      <div><span class="label">FG WP:</span> <span class="value">{{ play.fg_wp }}</span></div>
+      <div><span class="label">First Down %:</span> <span class="value">{{ play.first_down_prob }}</span></div>
+      <div><span class="label">FG Make %:</span> <span class="value">{{ play.fg_make_prob }}</span></div>
+      <div><span class="label">WP If Succeed:</span> <span class="value">{{ play.wp_succeed }}</span></div>
+      <div><span class="label">WP If Fail:</span> <span class="value">{{ play.wp_fail }}</span></div>
+      <div><span class="label">Go Boost:</span> <span class="value">{{ play.go_boost }}</span></div>
+    </div>
+    <hr/>
+  {% endfor %}
+</div>

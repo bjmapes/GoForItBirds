@@ -5,7 +5,7 @@ import shutil
 from pathlib import Path
 
 # Paths
-CSV_PATH = Path("_data/eagles_4th_downs_1999-2024.csv").resolve()
+CSV_PATH = Path("_data/eagles_4th_downs_all_time.csv").resolve()
 SEASONS_DIR = Path("seasons")
 GAMES_DIR = Path("games")
 
@@ -19,7 +19,7 @@ def clear_directory(directory):
 def generate_pages():
     df = pd.read_csv(CSV_PATH)
     # Basic validation: drop rows with NaN in critical columns
-    df = df.dropna(subset=["game_id", "season", "week"])
+    df = df.dropna(subset=["game_id", "season", "week"]) 
 
     # Clear old .md files before regenerating
     clear_directory(SEASONS_DIR)
@@ -38,14 +38,19 @@ season: {season}
     # Create game pages
     grouped = df.groupby(["season", "week", "game_id"])
     for (season, week, game_id), _ in grouped:
+        game_df = df[(df["season"] == season) & (df["week"] == week) & (df["game_id"] == game_id)]
+        away_team = game_df["away_team"].iloc[0]
+        home_team = game_df["home_team"].iloc[0]
         slug = slugify(game_id)
         game_path = GAMES_DIR / f"{slug}.md"
-        title = f"Week {week} – Game {game_id}"
+        title = f"Week {week} – {away_team} at {home_team}"
         content = f"""---
 layout: game
 title: {title}
 season: {season}
 game_id: {game_id}
+away_team: {away_team}
+home_team: {home_team}
 ---"""
         game_path.write_text(content)
 
