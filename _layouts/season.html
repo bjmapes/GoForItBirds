@@ -19,8 +19,8 @@ first play: {{ season_games | first | inspect }}
 {% for game in games %}
   {% assign first_play = game.items[0] %}
   <li>
-    <a href="/games/{{ first_play.game_id | downcase | replace: '_', '-' }}.html">
-      Week {{ first_play.week }} — {{ first_play.away_team }} at {{ first_play.home_team }}
+    <a href="{{ site.baseurl }}/games/{{ first_play.game_id | downcase | replace: '_', '-' }}.html"></a>
+        Week {{ first_play.week }} — {{ first_play.away_team }} at {{ first_play.home_team }}
     </a>
   </li>
 {% endfor %}
