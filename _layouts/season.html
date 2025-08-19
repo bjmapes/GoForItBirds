@@ -1,12 +1,16 @@
 ---
 layout: default
 ---
+
 <h1>{{ page.title }}</h1>
+
+{% assign plays = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
 <ul>
-  {% assign season_games = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
-  {% for game in season_games %}
+  {% for play in plays %}
     <li>
-      <a href="{{ game.url }}">{{ game.title }}</a>
+      <a href="/games/{{ play.game_id | downcase | replace: '_', '-' }}.html">
+        Week {{ play.week }} — {{ play.away_team }} at {{ play.home_team }}
+      </a>
     </li>
   {% endfor %}
 </ul>
