@@ -76,7 +76,7 @@ li a:hover {
 
 .play {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.5rem 2rem;
   background: var(--white);
   border-left: 5px solid var(--kelly-green);
@@ -102,4 +102,36 @@ hr {
   border: none;
   border-top: 1px solid #ddd;
   margin: 1.5rem 0;
+}
+
+/* New layout format for game play entries */
+.play-row {
+  margin-bottom: 0.75rem;
+}
+
+.play-row.top-row,
+.play-row.mid-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  font-weight: bold;
+}
+
+.play-row.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 2rem;
+}
+
+.play-row.desc {
+  margin-top: 0.5rem;
+  display: block;
+  width: 100%;
+}
+
+.play-desc code {
+  font-family: monospace;
+  background: #f0f0f0;
+  padding: 0.2rem 0.4rem;
+  display: block;
+  margin-top: 0.3rem;
 }
