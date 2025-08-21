@@ -12,7 +12,14 @@ pbp <- purrr::map_df(seasons, load_pbp)
 
 # Filter for Eagles 4th down plays
 eagles_4th <- pbp %>%
-  filter(posteam == "PHI", down == 4)
+  filter(posteam == "PHI", down == 4) %>%
+  mutate(
+    field_position = dplyr::case_when(
+      yardline_100 == 50 ~ "50",
+      side_of_field == posteam ~ paste0("Own ", 100 - yardline_100),
+      TRUE ~ paste0("Opponent ", yardline_100)
+    )
+  )
 
 # Write to CSV
 write_csv(eagles_4th, output_path)
