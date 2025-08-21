@@ -1,5 +1,4 @@
 title: Go (for it) Birds!
-theme: minima
 plugins:
   - jekyll-feed
 baseurl: "/GoForItBirds"
