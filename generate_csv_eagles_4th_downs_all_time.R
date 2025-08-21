@@ -5,6 +5,8 @@ library(nfl4th)
 
 # Define output path
 output_path <- "_data/eagles_4th_downs_all_time.csv"
+output_path2 <- "assets/data/eagles_4th_downs_all_time.csv"
+
 
 # Load play-by-play data for all seasons
 pbp_all <- load_pbp(1999:2024)
@@ -38,3 +40,10 @@ write.csv(eagles_4th_all, output_path, row.names = FALSE)
 
 # Optional confirmation message
 cat("Exported", nrow(eagles_4th_all), "plays to", output_path, "\n")
+
+
+# Write to CSV
+write.csv(eagles_4th_all, output_path2, row.names = FALSE)
+
+# Optional confirmation message
+cat("Exported", nrow(eagles_4th_all), "plays to", output_path2, "\n")
