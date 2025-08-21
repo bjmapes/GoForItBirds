@@ -2,3 +2,17 @@ title: Go (for it) Birds!
 plugins:
   - jekyll-feed
 baseurl: "/GoForItBirds"
+incremental: true
+exclude:
+  - venv/
+  - node_modules/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - generate_pages.py
+  - requirements.txt
+  - GoForItBirds.code-workspace
+  - build_site.sh
+  - bin/
+  - .vscode/
+  - .jekyll-cache/
