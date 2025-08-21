@@ -30,7 +30,7 @@ def generate_pages():
         season_path = SEASONS_DIR / f"{season}.md"
         content = f"""---
 layout: season
-title: {season} Eagles 4th Downs
+title: {season}
 season: {season}
 ---"""
         season_path.write_text(content)
@@ -43,7 +43,7 @@ season: {season}
         home_team = game_df["home_team"].iloc[0]
         slug = slugify(game_id)
         game_path = GAMES_DIR / f"{slug}.md"
-        title = f"Week {week} – {away_team} at {home_team}"
+        title = f"Week {week} - {away_team} at {home_team}"
         content = f"""---
 layout: game
 title: {title}

@@ -5,15 +5,6 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 {% assign season_games = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
-
-<pre>
-page.season: {{ page.season }}
-data length: {{ site.data.eagles_4th_downs_all_time | size }}
-plays matched: {{ season_games | size }}
-unique game_ids: {{ season_games | map: "game_id" | uniq | size }}
-first play: {{ season_games | first | inspect }}
-</pre>
-
 <ul>
 {% assign games = season_games | group_by: "game_id" %}
 {% for game in games %}

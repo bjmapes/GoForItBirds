@@ -6,11 +6,6 @@ layout: default
 
 <h1>Week {{ plays[0].week }} — {{ plays[0].away_team }} at {{ plays[0].home_team }}</h1>
 
-<pre>
-game_id: {{ page.game_id }}
-data length: {{ site.data.eagles_4th_downs_all_time | size }}
-</pre>
-
 <div class="plays">
   {% for play in plays %}
     <div class="play">
