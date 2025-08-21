@@ -10,6 +10,7 @@ exclude:
   - Gemfile.lock
   - README.md
   - generate_pages.py
+  - generate_pages_csv_eagles_4th_downs_all_time.R
   - requirements.txt
   - GoForItBirds.code-workspace
   - build_site.sh
