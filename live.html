@@ -5,6 +5,14 @@ title: Live View
 
 <div x-data="live4thDown" x-init="startPolling()" class="live-container">
   <h1>Live 4th Down Decision</h1>
+  <template x-if="!isEaglesPlaying">
+    <p>No live Birds game right now.</p>
+  </template>
+
+  <template x-if="isEaglesPlaying && !lastDecision">
+    <p>The Birds are playing.</p>
+  </template>
+
   <template x-if="lastDecision">
     <div class="decision-box">
       <p><strong>Game:</strong> <span x-text="lastDecision.game"></span></p>
@@ -14,26 +22,32 @@ title: Live View
       <p><strong>Recommendation:</strong> <span x-text="lastDecision.recommendation"></span></p>
     </div>
   </template>
-  <template x-if="!lastDecision">
-    <p>No live 4th down yet.</p>
-  </template>
 </div>
 
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('live4thDown', () => ({
       lastDecision: null,
+      isEaglesPlaying: false,
       intervalMs: 30000,
       startPolling() {
         this.poll();
         setInterval(() => this.poll(), this.intervalMs);
       },
       poll() {
-        // Mocked placeholder — replace with live API call
-        fetch('/GoForItBirds/assets/mock/fake_live_4th.json')
+        console.log('Polling...');
+        fetch('https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard')
           .then(res => res.json())
           .then(data => {
-            this.lastDecision = data;
+            const games = data.events || [];
+            console.log("Games:", games);
+            const eaglesGame = games.find(game =>
+              game.competitions?.[0]?.competitors?.some(team => team.team.id === "21")
+              && game.competitions[0].status?.type?.state === "in"
+            );
+            console.log("Eagles Game:", eaglesGame);
+            this.isEaglesPlaying = !!eaglesGame;
           });
       }
     }));
