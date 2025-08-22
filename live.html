@@ -81,6 +81,20 @@ title: Live View
                   recommendation: birdsGame.status?.type?.description || "N/A",
                   score: birdsGame.competitions[0].competitors.map(t => `${t.team.abbreviation}: ${t.score}`).join(" vs ")
                 };
+                const eventId = birdsGame.id;
+                fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${eventId}/competitions/${eventId}/plays`)
+                  .then(res => res.json())
+                  .then(playsData => {
+                    const items = playsData.items || [];
+                    const lastPlay = items[items.length - 1];
+                    if (lastPlay) {
+                      const summary = lastPlay.summary || "";
+                      const down = lastPlay.down || "?";
+                      const distance = lastPlay.distance || "?";
+                      const yardLine = lastPlay.yardLine || "?";
+                      this.lastDecision.downDistance = `${down} & ${distance} @ ${yardLine} - ${summary}`;
+                    }
+                  });
                 this.nextGame = null;
               } else {
                 const isFuture = birdsGame.status?.type?.state === "pre";
