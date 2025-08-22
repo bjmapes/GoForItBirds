@@ -4,22 +4,34 @@ title: Live View
 ---
 
 <div x-data="live4thDown" x-init="startPolling()" class="live-container">
-  <h1>Live 4th Down Decision</h1>
-  <template x-if="!isEaglesPlaying">
-    <p>No live Birds game right now.</p>
+  <h1>Live Birds 4th Down Decision</h1>
+
+  <template x-if="!isBirdsPlaying && !lastDecision && !nextGame">
+    <p>No Birds game found.</p>
   </template>
 
-  <template x-if="isEaglesPlaying && !lastDecision">
-    <p>The Birds are playing.</p>
+  <template x-if="nextGame">
+    <div>
+      <p><strong>Next Birds Game:</strong> <span x-text="nextGame.name"></span></p>
+      <p><strong>Start Time:</strong> <span x-text="nextGame.date"></span></p>
+    </div>
   </template>
 
-  <template x-if="lastDecision">
+  <template x-if="lastDecision && !isBirdsPlaying">
     <div class="decision-box">
-      <p><strong>Game:</strong> <span x-text="lastDecision.game"></span></p>
+      <p><strong>Last Birds Game:</strong> <span x-text="lastDecision.game"></span></p>
+      <p><strong>Final Score:</strong> <span x-text="lastDecision.score"></span></p>
+    </div>
+  </template>
+
+  <template x-if="isBirdsPlaying && lastDecision">
+    <div class="decision-box">
+      <p><strong>Live Birds Game:</strong> <span x-text="lastDecision.game"></span></p>
       <p><strong>Quarter:</strong> <span x-text="lastDecision.quarter"></span></p>
       <p><strong>Clock:</strong> <span x-text="lastDecision.clock"></span></p>
       <p><strong>Down &amp; Distance:</strong> <span x-text="lastDecision.downDistance"></span></p>
       <p><strong>Recommendation:</strong> <span x-text="lastDecision.recommendation"></span></p>
+      <p x-show="lastDecision.score"><strong>Score:</strong> <span x-text="lastDecision.score"></span></p>
     </div>
   </template>
 </div>
@@ -29,7 +41,8 @@ title: Live View
   document.addEventListener('alpine:init', () => {
     Alpine.data('live4thDown', () => ({
       lastDecision: null,
-      isEaglesPlaying: false,
+      isBirdsPlaying: false,
+      nextGame: null,
       intervalMs: 30000,
       startPolling() {
         this.poll();
@@ -42,12 +55,66 @@ title: Live View
           .then(data => {
             const games = data.events || [];
             console.log("Games:", games);
-            const eaglesGame = games.find(game =>
+            const birdsGame = games.find(game =>
               game.competitions?.[0]?.competitors?.some(team => team.team.id === "21")
-              && game.competitions[0].status?.type?.state === "in"
             );
-            console.log("Eagles Game:", eaglesGame);
-            this.isEaglesPlaying = !!eaglesGame;
+            console.log("Birds Game:", birdsGame);
+
+            if (!birdsGame) {
+              this.lastDecision = null;
+              this.isBirdsPlaying = false;
+              this.nextGame = null;
+            } else {
+              const statusType = birdsGame.status?.type?.name;
+              const isActive = statusType === "in" || statusType === "live" || statusType === "inprogress";
+
+              this.isBirdsPlaying = isActive;
+
+              const opponent = birdsGame.competitions[0].competitors.find(team => team.team.id !== "21")?.team?.displayName || "Opponent";
+
+              if (isActive) {
+                this.lastDecision = {
+                  game: `vs ${opponent}`,
+                  quarter: birdsGame.status?.period,
+                  clock: birdsGame.status?.displayClock,
+                  downDistance: "N/A",
+                  recommendation: birdsGame.status?.type?.description || "N/A",
+                  score: birdsGame.competitions[0].competitors.map(t => `${t.team.abbreviation}: ${t.score}`).join(" vs ")
+                };
+                this.nextGame = null;
+              } else {
+                const isFuture = birdsGame.status?.type?.state === "pre";
+                const isPast = birdsGame.status?.type?.completed;
+
+                if (isFuture) {
+                  this.lastDecision = null;
+                  this.nextGame = {
+                    name: `vs ${opponent}`,
+                    date: new Date(birdsGame.date).toLocaleString('en-US', {
+                      hour: 'numeric',
+                      minute: '2-digit',
+                      hour12: true,
+                      month: 'long',
+                      day: 'numeric',
+                      year: 'numeric'
+                    })
+                  };
+                } else if (isPast) {
+                  this.lastDecision = {
+                    game: `vs ${opponent}`,
+                    quarter: "Final",
+                    clock: "",
+                    downDistance: "",
+                    recommendation: "Game Complete",
+                    score: birdsGame.competitions[0].competitors.map(t => `${t.team.abbreviation}: ${t.score}`).join(" vs ")
+                  };
+                  this.nextGame = null;
+                } else {
+                  this.lastDecision = null;
+                  this.nextGame = null;
+                }
+              }
+            }
           });
       }
     }));
