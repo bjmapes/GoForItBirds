@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/style.css">
 </head>
 <body class="{{ page.layout }}">
+  <div class="nav-container">
+    <div class="topnav">
+      <a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a>
+      <a href="{{ site.baseurl }}/data.html" {% if page.url == "/data.html" %}class="active"{% endif %}>Data</a>
+    </div>
+  </div>
   <main>
     {{ content }}
   </main>
