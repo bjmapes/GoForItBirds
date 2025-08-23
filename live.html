@@ -43,10 +43,11 @@ title: Live View
       lastDecision: null,
       isBirdsPlaying: false,
       nextGame: null,
-      intervalMs: 30000,
+      //intervalMs: 30000,
+      intervalMs: null,
       startPolling() {
         this.poll();
-        setInterval(() => this.poll(), this.intervalMs);
+        //setInterval(() => this.poll(), this.intervalMs);
       },
       poll() {
         console.log('Polling...');
