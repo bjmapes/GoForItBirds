@@ -65,8 +65,8 @@ title: Live View
               this.isBirdsPlaying = false;
               this.nextGame = null;
             } else {
-              const statusType = birdsGame.status?.type?.name;
-              const isActive = statusType === "in" || statusType === "live" || statusType === "inprogress";
+              const gameState = birdsGame.status?.type?.state;
+              const isActive = gameState === "in";
 
               this.isBirdsPlaying = isActive;
 
@@ -86,13 +86,12 @@ title: Live View
                   .then(res => res.json())
                   .then(playsData => {
                     const items = playsData.items || [];
-                    const lastPlay = items[items.length - 1];
+                    const lastPlay = items.reverse().find(play => play.start?.down !== undefined && play.start?.distance !== undefined);
+                    console.log("Last play with down info:", lastPlay);
                     if (lastPlay) {
                       const summary = lastPlay.summary || "";
-                      const down = lastPlay.down || "?";
-                      const distance = lastPlay.distance || "?";
-                      const yardLine = lastPlay.yardLine || "?";
-                      this.lastDecision.downDistance = `${down} & ${distance} @ ${yardLine} - ${summary}`;
+                      const downDistance = lastPlay.start.downDistanceText || `${lastPlay.start.down} & ${lastPlay.start.distance}`;
+                      this.lastDecision.downDistance = downDistance;
                     }
                   });
                 this.nextGame = null;
