@@ -15,8 +15,7 @@ jobs:
 
       - name: Install R packages
         run: |
-          Rscript -e 'install.packages("remotes")'
-          Rscript -e 'remotes::install_github("nflverse/nflfastR")'
+          Rscript -e 'install.packages("nflfastR", repos = "https://cran.rstudio.com")'
 
       - name: Run R script
         run: Rscript generate_csv_eagles_4th_downs_all_time.R
