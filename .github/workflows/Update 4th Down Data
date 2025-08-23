@@ -1,0 +1,2 @@
+- name: Run R script
+  run: Rscript generate_csv_eagles_4th_downs_all_time.R
