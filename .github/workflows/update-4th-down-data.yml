@@ -1,5 +1,8 @@
 name: Update 4th Down Data
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
 
