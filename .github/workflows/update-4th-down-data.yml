@@ -23,9 +23,9 @@ jobs:
         run: Rscript generate_csv_eagles_4th_downs_all_time.R
 
       - name: Commit and push CSV updates
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git add _data/*.csv assets/data/*.csv
-          git commit -m 'Automated CSV update' || echo "No changes to commit"
-          git push
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Automated CSV update"
+          add: "_data/*.csv assets/data/*.csv"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
