@@ -5,13 +5,13 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 {% assign season_games = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
-<ul>
+<ul class="tile-list">
 {% assign games = season_games | group_by: "game_id" %}
 {% for game in games %}
   {% assign first_play = game.items[0] %}
   <li>
     <a href="{{ site.baseurl }}/games/{{ first_play.game_id | downcase | replace: '_', '-' }}.html">
-        Week {{ first_play.week }} — {{ first_play.away_team }} at {{ first_play.home_team }}
+        Wk {{ first_play.week }} - {{ first_play.away_team }} at {{ first_play.home_team }}
     </a>
   </li>
 {% endfor %}
