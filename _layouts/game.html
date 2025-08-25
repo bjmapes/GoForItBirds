@@ -6,51 +6,10 @@ layout: default
 
 <h1>Week {{ plays[0].week }} — {{ plays[0].away_team }} at {{ plays[0].home_team }}</h1>
 
-<div class="plays">
+<ul class="tile-list full">
   {% for play in plays %}
-    <div class="play-row full-width">
-      <div class="play">
-        <!-- Row 1 -->
-        <div class="play-row top-row">
-          <div class="left">4th & {{ play.ydstogo }} at {{ play.yardline_100 }}</div>
-          <div class="right">Recommendation: {{ play.model_recommendation }}</div>
-        </div>
-
-        <!-- Row 2 -->
-        <div class="play-row mid-row">
-          <div class="left">
-            {% assign mins = play.quarter_seconds_remaining | divided_by: 60 %}
-            {% assign secs = play.quarter_seconds_remaining | modulo: 60 %}
-            {{ mins }}:{% if secs < 10 %}0{% endif %}{{ secs }} Q{{ play.qtr }}
-          </div>
-          <div class="right">Actual Decision: {{ play.actual_decision }}</div>
-        </div>
-
-        <!-- Row 3 -->
-        <div class="play-row metrics wp-row">
-          <div class="label">Go:</div>
-          <div class="value">{% if play.go_wp != "NA" %}{{ play.go_wp | times: 100 | round: 0 }}{% endif %}</div>
-          <div class="label">FG:</div>
-          <div class="value">{% if play.fg_wp != "NA" %}{{ play.fg_wp | times: 100 | round: 0 }}{% endif %}</div>
-          <div class="label">Punt:</div>
-          <div class="value">{% if play.punt_wp != "NA" %}{{ play.punt_wp | times: 100 | round: 0 }}{% endif %}</div>
-        </div>
-
-        <!-- Row 4 -->
-        <div class="play-row metrics">
-          <div class="label">Success:</div>
-          <div class="value">{% if play.wp_succeed != "NA" %}{{ play.wp_succeed | times: 100 | round: 0 }}{% endif %}</div>
-          <div class="label">Fail:</div>
-          <div class="value">{% if play.wp_fail != "NA" %}{{ play.wp_fail | times: 100 | round: 0 }}{% endif %}</div>
-        </div>
-
-        <!-- Row 5 -->
-        <div class="play-desc">
-          <span class="label">Description:</span>
-          <code>{{ play.desc }}</code>
-        </div>
-      </div>
-    </div>
-    <hr/>
+    <li>
+      {% include tile-play.html play=play %}
+    </li>
   {% endfor %}
-</div>
+</ul>

@@ -1,0 +1,43 @@
+
+
+<div>
+  <!-- Row 1 -->
+  <div>
+    <div>4th & {{ play.ydstogo }} at {{ play.yardline_100 }}</div>
+    <div>Recommendation: {{ play.model_recommendation }}</div>
+  </div>
+
+  <!-- Row 2 -->
+  <div>
+    <div>
+      {% assign mins = play.quarter_seconds_remaining | divided_by: 60 %}
+      {% assign secs = play.quarter_seconds_remaining | modulo: 60 %}
+      {{ mins }}:{% if secs < 10 %}0{% endif %}{{ secs }} Q{{ play.qtr }}
+    </div>
+    <div>Actual Decision: {{ play.actual_decision }}</div>
+  </div>
+
+  <!-- Row 3 -->
+  <div>
+    <div>Go:</div>
+    <div>{% if play.go_wp != "NA" %}{{ play.go_wp | times: 100 | round: 0 }}{% endif %}</div>
+    <div>FG:</div>
+    <div>{% if play.fg_wp != "NA" %}{{ play.fg_wp | times: 100 | round: 0 }}{% endif %}</div>
+    <div>Punt:</div>
+    <div>{% if play.punt_wp != "NA" %}{{ play.punt_wp | times: 100 | round: 0 }}{% endif %}</div>
+  </div>
+
+  <!-- Row 4 -->
+  <div>
+    <div>Success:</div>
+    <div>{% if play.wp_succeed != "NA" %}{{ play.wp_succeed | times: 100 | round: 0 }}{% endif %}</div>
+    <div>Fail:</div>
+    <div>{% if play.wp_fail != "NA" %}{{ play.wp_fail | times: 100 | round: 0 }}{% endif %}</div>
+  </div>
+
+  <!-- Row 5 -->
+  <div>
+    <span>Description:</span>
+    <code>{{ play.desc }}</code>
+  </div>
+</div>

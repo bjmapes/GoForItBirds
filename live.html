@@ -6,7 +6,7 @@ title: Live View
 <div x-data="live4thDown" x-init="startPolling()" class="live-container">
   <h1>Live Birds 4th Down Decision</h1>
 
-  <template x-if="!isBirdsPlaying && !lastDecision && !nextGame">
+  <template x-if="!isBirdsPlaying && !fourthDownPlays && !nextGame">
     <p>No Birds game found.</p>
   </template>
 
@@ -17,30 +17,44 @@ title: Live View
     </div>
   </template>
 
-  <template x-if="lastDecision && !isBirdsPlaying">
+  <template x-if="fourthDownPlays && !isBirdsPlaying">
     <div class="decision-box">
-      <p><strong>Last Birds Game:</strong> <span x-text="lastDecision.game"></span></p>
-      <p><strong>Final Score:</strong> <span x-text="lastDecision.score"></span></p>
+      <p><strong>Last Birds Game:</strong> <span x-text="fourthDownPlays.game"></span></p>
+      <p><strong>Final Score:</strong> <span x-text="fourthDownPlays.score"></span></p>
     </div>
   </template>
 
-  <template x-if="isBirdsPlaying && lastDecision">
+  <template x-if="isBirdsPlaying && latestHeader">
     <div class="decision-box">
-      <p><strong>Live Birds Game:</strong> <span x-text="lastDecision.game"></span></p>
-      <p><strong>Quarter:</strong> <span x-text="lastDecision.quarter"></span></p>
-      <p><strong>Clock:</strong> <span x-text="lastDecision.clock"></span></p>
-      <p><strong>Down &amp; Distance:</strong> <span x-text="lastDecision.downDistance"></span></p>
-      <p><strong>Recommendation:</strong> <span x-text="lastDecision.recommendation"></span></p>
-      <p x-show="lastDecision.score"><strong>Score:</strong> <span x-text="lastDecision.score"></span></p>
+      <div class="header-box">
+        <p><strong x-text="latestHeader.game"></strong></p>
+        <p><strong x-text="`Q${latestHeader.quarter} • ${latestHeader.clock} • ${latestHeader.downDistance}`"></strong></p>
+      </div>
+    </div>
+  </template>
+
+  <template x-if="fourthDownPlays">
+    <div class="fourth-down-list">
+      <template x-for="play in fourthDownPlays" :key="play.id">
+        <div class="card-box">
+          <p x-text="`Q${play.period?.number || 'N/A'} • ${play.clock?.displayValue || 'N/A'} • ${play.start?.downDistanceText || (play.start?.down + ' & ' + play.start?.distance)}`"></p>
+          <p><strong>Recommendation:</strong> Punt</p>
+          <p><strong>Decision:</strong> <span x-text="play.text || 'N/A'"></span></p>
+        </div>
+      </template>
     </div>
   </template>
 </div>
 
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script>
+  const params = new URLSearchParams(window.location.search);
+  const gameId = params.get('espn_game_id');
+
   document.addEventListener('alpine:init', () => {
     Alpine.data('live4thDown', () => ({
-      lastDecision: null,
+      fourthDownPlays: null,
+      latestHeader: null,
       isBirdsPlaying: false,
       nextGame: null,
       //intervalMs: 30000,
@@ -50,6 +64,31 @@ title: Live View
         //setInterval(() => this.poll(), this.intervalMs);
       },
       poll() {
+        if (gameId) {
+          this.isBirdsPlaying = true;
+          this.nextGame = null;
+          fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${gameId}/competitions/${gameId}/plays`)
+            .then(res => res.json())
+            .then(playsData => {
+              const items = playsData.items || [];
+              const fourthDowns = (items || [])
+                .filter(play => play.start?.down === 4)
+                .sort((a, b) => b.id - a.id); // newest first
+              if (fourthDowns.length > 0) {
+                const latest = fourthDowns[0];
+                this.latestHeader = {
+                  game: `Game ID: ${gameId}`,
+                  quarter: latest.period?.number || "N/A",
+                  clock: latest.clock?.displayValue || "N/A",
+                  downDistance: latest.start?.downDistanceText || `${latest.start.down} & ${latest.start.distance}`,
+                  recommendation: latest.summary || "",
+                  score: "Score unknown"
+                };
+              }
+              this.fourthDownPlays = fourthDowns;
+            });
+          return;
+        }
         console.log('Polling...');
         fetch('https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard')
           .then(res => res.json())
@@ -62,7 +101,8 @@ title: Live View
             console.log("Birds Game:", birdsGame);
 
             if (!birdsGame) {
-              this.lastDecision = null;
+              this.fourthDownPlays = null;
+              this.latestHeader = null;
               this.isBirdsPlaying = false;
               this.nextGame = null;
             } else {
@@ -74,7 +114,7 @@ title: Live View
               const opponent = birdsGame.competitions[0].competitors.find(team => team.team.id !== "21")?.team?.displayName || "Opponent";
 
               if (isActive) {
-                this.lastDecision = {
+                this.latestHeader = {
                   game: `vs ${opponent}`,
                   quarter: birdsGame.status?.period,
                   clock: birdsGame.status?.displayClock,
@@ -87,12 +127,23 @@ title: Live View
                   .then(res => res.json())
                   .then(playsData => {
                     const items = playsData.items || [];
-                    const lastPlay = items.reverse().find(play => play.start?.down !== undefined && play.start?.distance !== undefined);
-                    console.log("Last play with down info:", lastPlay);
-                    if (lastPlay) {
-                      const summary = lastPlay.summary || "";
-                      const downDistance = lastPlay.start.downDistanceText || `${lastPlay.start.down} & ${lastPlay.start.distance}`;
-                      this.lastDecision.downDistance = downDistance;
+                    const fourthDowns = (items || [])
+                      .filter(play => play.start?.down === 4)
+                      .sort((a, b) => b.id - a.id); // newest first
+                    console.log("Fourth down plays:", fourthDowns);
+                    if (fourthDowns.length > 0) {
+                      this.fourthDownPlays = fourthDowns;
+                      const latest = fourthDowns[0];
+                      this.latestHeader = {
+                        game: `vs ${opponent}`,
+                        quarter: latest.period?.number || "N/A",
+                        clock: latest.clock?.displayValue || "N/A",
+                        downDistance: latest.start?.downDistanceText || `${latest.start.down} & ${latest.start.distance}`,
+                        recommendation: latest.summary || "",
+                        score: this.latestHeader.score
+                      };
+                    } else {
+                      this.fourthDownPlays = [];
                     }
                   });
                 this.nextGame = null;
@@ -101,7 +152,8 @@ title: Live View
                 const isPast = birdsGame.status?.type?.completed;
 
                 if (isFuture) {
-                  this.lastDecision = null;
+                  this.fourthDownPlays = null;
+                  this.latestHeader = null;
                   this.nextGame = {
                     name: `vs ${opponent}`,
                     date: new Date(birdsGame.date).toLocaleString('en-US', {
@@ -114,7 +166,8 @@ title: Live View
                     })
                   };
                 } else if (isPast) {
-                  this.lastDecision = {
+                  this.fourthDownPlays = null;
+                  this.latestHeader = {
                     game: `vs ${opponent}`,
                     quarter: "Final",
                     clock: "",
@@ -124,7 +177,8 @@ title: Live View
                   };
                   this.nextGame = null;
                 } else {
-                  this.lastDecision = null;
+                  this.fourthDownPlays = null;
+                  this.latestHeader = null;
                   this.nextGame = null;
                 }
               }

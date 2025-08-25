@@ -37,6 +37,10 @@ h1 {
   padding: 0;
 }
 
+.tile-list.full {
+  grid-template-columns: 1fr;
+}
+
 .tile-list li a {
   display: block;
   background-color: var(--white);
