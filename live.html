@@ -3,7 +3,7 @@ layout: default
 title: Live View
 ---
 
-<div x-data="live4thDown" x-init="startPolling()" class="live-container">
+<div x-data="live4thDown" x-init="startPolling()">
   <h1>Live Birds 4th Down Decision</h1>
 
   <template x-if="!isBirdsPlaying && !fourthDownPlays && !nextGame">
@@ -18,15 +18,15 @@ title: Live View
   </template>
 
   <template x-if="fourthDownPlays && !isBirdsPlaying">
-    <div class="decision-box">
+    <div>
       <p><strong>Last Birds Game:</strong> <span x-text="fourthDownPlays.game"></span></p>
       <p><strong>Final Score:</strong> <span x-text="fourthDownPlays.score"></span></p>
     </div>
   </template>
 
   <template x-if="isBirdsPlaying && latestHeader">
-    <div class="decision-box">
-      <div class="header-box">
+    <div>
+      <div>
         <p><strong x-text="latestHeader.game"></strong></p>
         <p><strong x-text="`Q${latestHeader.quarter} • ${latestHeader.clock} • ${latestHeader.downDistance}`"></strong></p>
       </div>
@@ -34,19 +34,52 @@ title: Live View
   </template>
 
   <template x-if="fourthDownPlays">
-    <div class="fourth-down-list">
+    <ul class="tile-list full">
       <template x-for="play in fourthDownPlays" :key="play.id">
-        <div class="card-box">
-          <p x-text="`Q${play.period?.number || 'N/A'} • ${play.clock?.displayValue || 'N/A'} • ${play.start?.downDistanceText || (play.start?.down + ' & ' + play.start?.distance)}`"></p>
-          <p><strong>Recommendation:</strong> Punt</p>
-          <p><strong>Decision:</strong> <span x-text="play.text || 'N/A'"></span></p>
-        </div>
+        <li>
+          <div>
+            <!-- Row 1 -->
+            <div>
+              <div x-text="`4th & ${play.start?.distance} at ${play.start?.yardLine || 'N/A'}`"></div>
+              <div x-text="`Recommendation: ${play.recommendation || 'N/A'}`"></div>
+            </div>
+
+            <!-- Row 2 -->
+            <div>
+              <div x-text="`${Math.floor(play.clock?.value / 60)}:${String(play.clock?.value % 60).padStart(2, '0')} Q${play.period?.number}`"></div>
+              <div x-text="`Actual Decision: ${play.text || 'N/A'}`"></div>
+            </div>
+
+            <!-- Row 3 -->
+            <div>
+              <div>Go:</div>
+              <div x-text="play.go_wp !== 'NA' ? Math.round(play.go_wp * 100) : ''"></div>
+              <div>FG:</div>
+              <div x-text="play.fg_wp !== 'NA' ? Math.round(play.fg_wp * 100) : ''"></div>
+              <div>Punt:</div>
+              <div x-text="play.punt_wp !== 'NA' ? Math.round(play.punt_wp * 100) : ''"></div>
+            </div>
+
+            <!-- Row 4 -->
+            <div>
+              <div>Success:</div>
+              <div x-text="play.wp_succeed !== 'NA' ? Math.round(play.wp_succeed * 100) : ''"></div>
+              <div>Fail:</div>
+              <div x-text="play.wp_fail !== 'NA' ? Math.round(play.wp_fail * 100) : ''"></div>
+            </div>
+
+            <!-- Row 5 -->
+            <div>
+              <span>Description:</span>
+              <code x-text="play.text || ''"></code>
+            </div>
+          </div>
+        </li>
       </template>
-    </div>
+    </ul>
   </template>
 </div>
 
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script>
   const params = new URLSearchParams(window.location.search);
   const gameId = params.get('espn_game_id');
