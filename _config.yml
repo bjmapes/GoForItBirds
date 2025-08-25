@@ -1,5 +1,4 @@
 title: Go (for it) Birds!
-plugins:
 baseurl: "/GoForItBirds"
 incremental: true
 exclude:
