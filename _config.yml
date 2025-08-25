@@ -1,6 +1,5 @@
 title: Go (for it) Birds!
 plugins:
-  - jekyll-feed
 baseurl: "/GoForItBirds"
 incremental: true
 exclude:
