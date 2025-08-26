@@ -24,55 +24,48 @@ title: Live View
     </div>
   </template>
 
-  <template x-if="isBirdsPlaying && latestHeader">
-    <div>
-      <div>
-        <p><strong x-text="latestHeader.game"></strong></p>
-        <p><strong x-text="`Q${latestHeader.quarter} • ${latestHeader.clock} • ${latestHeader.downDistance}`"></strong></p>
-      </div>
-    </div>
-  </template>
-
   <template x-if="fourthDownPlays">
     <ul class="tile-list full">
       <template x-for="play in fourthDownPlays" :key="play.id">
         <li>
           <div>
-            <!-- Row 1 -->
-            <div>
-              <div x-text="`4th & ${play.start?.distance} at ${play.start?.yardLine || 'N/A'}`"></div>
-              <div x-text="`Recommendation: ${play.recommendation || 'N/A'}`"></div>
-            </div>
-
-            <!-- Row 2 -->
-            <div>
-              <div x-text="`${Math.floor(play.clock?.value / 60)}:${String(play.clock?.value % 60).padStart(2, '0')} Q${play.period?.number}`"></div>
-              <div x-text="`Actual Decision: ${play.text || 'N/A'}`"></div>
-            </div>
-
-            <!-- Row 3 -->
-            <div>
-              <div>Go:</div>
-              <div x-text="play.go_wp !== 'NA' ? Math.round(play.go_wp * 100) : ''"></div>
-              <div>FG:</div>
-              <div x-text="play.fg_wp !== 'NA' ? Math.round(play.fg_wp * 100) : ''"></div>
-              <div>Punt:</div>
-              <div x-text="play.punt_wp !== 'NA' ? Math.round(play.punt_wp * 100) : ''"></div>
-            </div>
-
-            <!-- Row 4 -->
-            <div>
-              <div>Success:</div>
-              <div x-text="play.wp_succeed !== 'NA' ? Math.round(play.wp_succeed * 100) : ''"></div>
-              <div>Fail:</div>
-              <div x-text="play.wp_fail !== 'NA' ? Math.round(play.wp_fail * 100) : ''"></div>
-            </div>
-
-            <!-- Row 5 -->
-            <div>
-              <span>Description:</span>
-              <code x-text="play.text || ''"></code>
-            </div>
+            <div x-text="`${play.start?.down} & ${play.start?.distance} from the ${play.start?.yardLine} | Q${play.period?.number} ${play.clock?.displayValue} | Birds are ???`"></div>
+            <div x-text="`Recomendation: ${play.recommendation} | Coach: {insert decision}`"></div>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Win%</th>
+                  <th>Success%</th>
+                  <th>Fail</th>
+                  <th>Succeed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Go for it</td>
+                  <td x-text="play.go_wp !== 'NA' ? Math.round(play.go_wp * 100) : ''"></td>
+                  <td x-text="play.first_down_prob !== 'NA' ? Math.round(play.first_down_prob * 100) : ''"></td>
+                  <td x-text="play.wp_fail !== 'NA' ? Math.round(play.wp_fail * 100) : ''"></td>
+                  <td x-text="play.wp_succeed !== 'NA' ? Math.round(play.wp_succeed * 100) : ''"></td>
+                </tr>
+                <tr>
+                  <td>Punt</td>
+                  <td x-text="play.punt_wp !== 'NA' ? Math.round(play.punt_wp * 100) : ''"></td>
+                  <td>NA</td>
+                  <td>NA</td>
+                  <td>NA</td>
+                </tr>
+                <tr>
+                  <td>Field goal</td>
+                  <td x-text="play.fg_wp !== 'NA' ? Math.round(play.fg_wp * 100) : ''"></td>
+                  <td x-text="play.fg_prob !== 'NA' ? Math.round(play.fg_prob * 100) : ''"></td>
+                  <td x-text="play.miss_fg_wp !== 'NA' ? Math.round(play.miss_fg_wp * 100) : ''"></td>
+                  <td x-text="play.make_fg_wp !== 'NA' ? Math.round(play.make_fg_wp * 100) : ''"></td>
+                </tr>
+              </tbody>
+            </table>
+            <div x-text="play.text || ''"></div>
           </div>
         </li>
       </template>
@@ -100,13 +93,15 @@ title: Live View
         if (gameId) {
           this.isBirdsPlaying = true;
           this.nextGame = null;
-          fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${gameId}/competitions/${gameId}/plays`)
+          fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${gameId}/competitions/${gameId}/plays?limit=1000`)
             .then(res => res.json())
             .then(playsData => {
               const items = playsData.items || [];
+              console.log("Total plays fetched:", items.length);
               const fourthDowns = (items || [])
                 .filter(play => play.start?.down === 4)
-                .sort((a, b) => b.id - a.id); // newest first
+                .sort((a, b) => a.id - b.id); // oldest first
+              console.log("All 4th down plays count:", fourthDowns.length);
               if (fourthDowns.length > 0) {
                 const latest = fourthDowns[0];
                 this.latestHeader = {
@@ -156,13 +151,15 @@ title: Live View
                   score: birdsGame.competitions[0].competitors.map(t => `${t.team.abbreviation}: ${t.score}`).join(" vs ")
                 };
                 const eventId = birdsGame.id;
-                fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${eventId}/competitions/${eventId}/plays`)
+                fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${eventId}/competitions/${eventId}/plays?limit=1000`)
                   .then(res => res.json())
                   .then(playsData => {
                     const items = playsData.items || [];
+                    console.log("Total plays fetched:", items.length);
                     const fourthDowns = (items || [])
                       .filter(play => play.start?.down === 4)
-                      .sort((a, b) => b.id - a.id); // newest first
+                      .sort((a, b) => a.id - b.id); // oldest first
+                    console.log("All 4th down plays count:", fourthDowns.length);
                     console.log("Fourth down plays:", fourthDowns);
                     if (fourthDowns.length > 0) {
                       this.fourthDownPlays = fourthDowns;
