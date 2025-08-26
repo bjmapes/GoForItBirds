@@ -37,22 +37,19 @@ h1 {
 
 .tile-list.full {
   grid-template-columns: 1fr;
+  max-width: 100%;
 }
 
 .tile-list li a {
   display: block;
   background-color: var(--white);
   border-left: 5px solid var(--kelly-green);
+  border-radius: 4px;
   padding: 1rem;
   text-decoration: none;
   color: var(--dark-gray);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: background 0.2s ease;
-}
-
-.tile-list li > div {
-  border-left: 5px solid var(--kelly-green);
-  padding-left: 1rem;
 }
 
 .tile-list li a:hover {
@@ -61,8 +58,10 @@ h1 {
 }
 
 .tile-list li > div {
-  border-left: 5px solid var(--kelly-green);
-  padding-left: 1rem;
+    border-left: 5px solid var(--kelly-green);
+    padding-left: 1rem;
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 

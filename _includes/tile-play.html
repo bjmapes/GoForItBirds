@@ -1,43 +1,90 @@
-
-
 <div>
-  <!-- Row 1 -->
-  <div>
-    <div>4th & {{ play.ydstogo }} at {{ play.yardline_100 }}</div>
-    <div>Recommendation: {{ play.model_recommendation }}</div>
-  </div>
+    <!-- Calculate clock -->
+    {% assign mins = play.quarter_seconds_remaining | divided_by: 60 %}
+    {% assign secs = play.quarter_seconds_remaining | modulo: 60 %}
+    {% assign padded_secs = secs | append: '' %}
+    {% if padded_secs.size == 1 %}
+        {% assign padded_secs = '0' | append: padded_secs %}
+    {% endif %}
+    {% assign clock = mins | append: ':' | append: padded_secs %}
 
-  <!-- Row 2 -->
-  <div>
-    <div>
-      {% assign mins = play.quarter_seconds_remaining | divided_by: 60 %}
-      {% assign secs = play.quarter_seconds_remaining | modulo: 60 %}
-      {{ mins }}:{% if secs < 10 %}0{% endif %}{{ secs }} Q{{ play.qtr }}
-    </div>
-    <div>Actual Decision: {{ play.actual_decision }}</div>
-  </div>
+    <!-- Determine home vs away -->
+    {% if play.home_team == "PHI" %}
+        {% assign birds_score = play.home_score %}
+        {% assign opp_score = play.away_score %}
+        {% assign birds_coach = play.home_coach %}
+        {% assign opp_coach = play.away_coach %}
+        {% assign birds_timeouts = play.home_timeouts_remaining %}
+        {% assign opp_timeouts = play.away_timeouts_remaining %}
+        {% assign birds_team = play.home_team %}
+        {% assign opp_team = play.away_team %}
+    {% else %}
+        {% assign birds_score = play.away_score %}
+        {% assign opp_score = play.home_score %}
+        {% assign birds_coach = play.away_coach %}
+        {% assign opp_coach = play.home_coach %}
+        {% assign birds_timeouts = play.away_timeouts_remaining %}
+        {% assign opp_timeouts = play.home_timeouts_remaining %}
+        {% assign birds_team = play.away_team %}
+        {% assign opp_team = play.home_team %}
+    {% endif %}
 
-  <!-- Row 3 -->
-  <div>
-    <div>Go:</div>
-    <div>{% if play.go_wp != "NA" %}{{ play.go_wp | times: 100 | round: 0 }}{% endif %}</div>
-    <div>FG:</div>
-    <div>{% if play.fg_wp != "NA" %}{{ play.fg_wp | times: 100 | round: 0 }}{% endif %}</div>
-    <div>Punt:</div>
-    <div>{% if play.punt_wp != "NA" %}{{ play.punt_wp | times: 100 | round: 0 }}{% endif %}</div>
-  </div>
+    <!-- Determine who is winning -->
+    {% if birds_score > opp_score %}
+        {% assign birds_winning_status = "winning" %}
+    {% elsif birds_score < opp_score %}
+        {% assign birds_winning_status = "losing" %}
+    {% else %}
+        {% assign birds_winning_status = "tied" %}
+    {% endif %}
 
-  <!-- Row 4 -->
-  <div>
-    <div>Success:</div>
-    <div>{% if play.wp_succeed != "NA" %}{{ play.wp_succeed | times: 100 | round: 0 }}{% endif %}</div>
-    <div>Fail:</div>
-    <div>{% if play.wp_fail != "NA" %}{{ play.wp_fail | times: 100 | round: 0 }}{% endif %}</div>
-  </div>
+    <!-- Determine score order -->
+    {% if play.home_score > play.away_score %}
+        {% assign high_score = play.home_score %}
+        {% assign low_score = play.away_score %}
+    {% else %}
+        {% assign high_score = play.away_score %}
+        {% assign low_score = play.home_score %}
+    {% endif %}
 
-  <!-- Row 5 -->
-  <div>
-    <span>Description:</span>
-    <code>{{ play.desc }}</code>
-  </div>
+    <div>{{play.down}} & {{play.ydstogo}} from the {{play.yrdln}} | Q{{ play.qtr }} {{ clock }} | Birds are {{birds_winning_status}} {{high_score}}-{{low_score}}</div>
+    <div>Recomendation: {{play.model_recommendation}} | {{birds_coach}}: {{play.actual_decision}}</div>
+
+    <table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Win%</th>
+            <th>Success%</th>
+            <th>Fail</th>
+            <th>Succeed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Go for it</td>
+            <td>{{play.go_wp | times: 100 | round}}</td>
+            <td>{{play.first_down_prob | times: 100 | round}}</td>
+            <td>{{play.wp_fail | times: 100 | round}}</td>
+            <td>{{play.wp_succeed | times: 100 | round}}</td>
+        </tr>
+        <tr>
+            <td>Punt</td>
+            <td>{{play.punt_wp | times: 100 | round}}</td>
+            <td>NA</td>
+            <td>NA</td>
+            <td>NA</td>
+        </tr>
+        <tr>
+            <td>Field goal</td>
+            <td>{{play.fg_wp | times: 100 | round}}</td>
+            <td>{{play.fg_prob | times: 100 | round}}</td>
+            <td>{{play.miss_fg_wp | times: 100 | round}}</td>
+            <td>{{play.make_fg_wp | times: 100 | round}}</td>
+        </tr>
+    </tbody>
+    </table>
+
+  <div>{{ play.desc }}</div>
+
 </div>

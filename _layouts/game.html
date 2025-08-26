@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign plays = site.data.eagles_4th_downs_all_time | where: "game_id", page.game_id %}
+{% assign plays = site.data.eagles_4th_downs_all_time | where: "game_id", page.game_id | where_exp: "play", "play.defteam != 'PHI'" %}
 
 <h1>Week {{ plays[0].week }} — {{ plays[0].away_team }} at {{ plays[0].home_team }}</h1>
 
