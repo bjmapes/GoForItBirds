@@ -9,46 +9,40 @@
     {% assign clock = mins | append: ':' | append: padded_secs %}
 
     <!-- Determine home vs away -->
+    {% assign birds_score = play.posteam_score %}
+
     {% if play.home_team == "PHI" %}
-        {% assign birds_score = play.home_score %}
-        {% assign opp_score = play.away_score %}
         {% assign birds_coach = play.home_coach %}
-        {% assign opp_coach = play.away_coach %}
-        {% assign birds_timeouts = play.home_timeouts_remaining %}
-        {% assign opp_timeouts = play.away_timeouts_remaining %}
-        {% assign birds_team = play.home_team %}
-        {% assign opp_team = play.away_team %}
     {% else %}
-        {% assign birds_score = play.away_score %}
-        {% assign opp_score = play.home_score %}
         {% assign birds_coach = play.away_coach %}
-        {% assign opp_coach = play.home_coach %}
-        {% assign birds_timeouts = play.away_timeouts_remaining %}
-        {% assign opp_timeouts = play.home_timeouts_remaining %}
-        {% assign birds_team = play.away_team %}
-        {% assign opp_team = play.home_team %}
     {% endif %}
 
-    <!-- Determine who is winning -->
-    {% if birds_score > opp_score %}
-        {% assign birds_winning_status = "winning" %}
-    {% elsif birds_score < opp_score %}
-        {% assign birds_winning_status = "losing" %}
-    {% else %}
-        {% assign birds_winning_status = "tied" %}
+    <!-- Handle decisions of Other -->
+    {% assign decision = play.actual_decision %}
+    {% if decision == "Other" %}
+        {% assign desc_lower = play.desc | downcase %}
+        {% assign punt = play.punt_attempt | default: 0 | plus: 0 %}
+        {% assign fg = play.field_goal_attempt | default: 0 | plus: 0 %}
+        {% assign pass_flag = play.pass | default: 0 | plus: 0 %}
+        {% assign rush_flag = play.rush | default: 0 | plus: 0 %}
+
+        {% if punt > 0 or desc_lower contains "punt formation" or desc_lower contains " punt" %}
+            {% assign decision = "Punt" %}
+        {% elsif fg > 0 or desc_lower contains "field goal formation" or desc_lower contains " fg" or desc_lower contains "field goal" %}
+            {% assign decision = "Field Goal" %}
+        {% elsif pass_flag > 0 or rush_flag > 0 %}
+            {% assign decision = "Go for it" %}
+        {% else %}
+            {% assign decision = "Other" %}
+        {% endif %}
+
+        {% if desc_lower contains "penalty" %}
+            {% assign decision = decision | append: " (Penalty)" %}
+        {% endif %}
     {% endif %}
 
-    <!-- Determine score order -->
-    {% if play.home_score > play.away_score %}
-        {% assign high_score = play.home_score %}
-        {% assign low_score = play.away_score %}
-    {% else %}
-        {% assign high_score = play.away_score %}
-        {% assign low_score = play.home_score %}
-    {% endif %}
-
-    <div>{{play.down}} & {{play.ydstogo}} from the {{play.yrdln}} | Q{{ play.qtr }} {{ clock }} | Birds are {{birds_winning_status}} {{high_score}}-{{low_score}}</div>
-    <div>Recomendation: {{play.model_recommendation}} | {{birds_coach}}: {{play.actual_decision}}</div>
+    <div>{{play.down}}th & {{play.ydstogo}} at {{play.yrdln}} | Q{{ play.qtr}} {{clock}} | Birds {{play.posteam_score}} - Opp {{play.defteam_score}} </div>
+    <div>Model: {{play.model_recommendation}} | {{birds_coach}}: {{decision}}</div>
 
     <table>
     <thead>
@@ -89,7 +83,12 @@
 
 </div>
 
+
+
 {% comment %}
+
+
+
 <table><tr><tr><td>aborted_play</td><td>{{ play.aborted_play }}</td></tr>
 <tr><td>actual_decision</td><td>{{ play.actual_decision }}</td></tr>
 <tr><td>air_epa</td><td>{{ play.air_epa }}</td></tr>
@@ -474,4 +473,9 @@
 <tr><td>ydsnet</td><td>{{ play.ydsnet }}</td></tr>
 <tr><td>ydstogo</td><td>{{ play.ydstogo }}</td></tr>
 <tr><td>yrdln</td><td>{{ play.yrdln }}</td></tr></tr></table>
+
+
+
+
+
 {% endcomment %}
