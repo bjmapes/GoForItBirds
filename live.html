@@ -28,47 +28,63 @@ title: Live View
     <ul class="tile-list full">
       <template x-for="play in fourthDownPlays" :key="play.id">
       <li>
-          <div>
-            <div x-text="`${play.downDistance} | Q${play.period?.number} ${play.clock} | Birds are ${play.birds_winning_status} ${play.high_score}-${play.low_score}`"></div>
-            <div x-text="`Recommendation: ${play.typeText} | ${play.birds_coach}: ${play.typeAbbr === 'Rush' || play.typeAbbr === 'Pass' ? 'Go for it' : play.typeText }`"></div>
+        <div class="tile-play">
 
+          <div class="tile-play-status">
+            <div x-text="`Q${play.qtr} ${play.clock} • ${
+              play.start.downDistanceText?.endsWith('at 50') 
+                ? play.start.downDistanceText.replace('at 50','at MID 50') 
+                : play.start.downDistanceText
+                }`">
+            </div>            
+            <div x-text="`Birds ${play.birds_score} - Opp ${play.opp_score}`"></div>
+            <div x-text="'Model: [model_recommendation]'"></div>
+            <div x-text="`[coach]: ${play.actual_decision}`"></div>
+          </div>
+
+          <div class="tile-play-description">
+            <div x-text="play.description"></div>
+          </div>
+
+          <div class="tile-play-table ">
             <table>
               <thead>
                 <tr>
                   <th></th>
                   <th>Win%</th>
                   <th>Success%</th>
-                  <th>Fail</th>
-                  <th>Succeed</th>
+                  <th>Win% if Fail</th>
+                  <th>Win% if Succeed</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Go for it</td>
-                  <td x-text="play.go_wp !== 'NA' ? Math.round(play.go_wp * 100) : ''"></td>
-                  <td x-text="play.first_down_prob !== 'NA' ? Math.round(play.first_down_prob * 100) : ''"></td>
-                  <td x-text="play.wp_fail !== 'NA' ? Math.round(play.wp_fail * 100) : ''"></td>
-                  <td x-text="play.wp_succeed !== 'NA' ? Math.round(play.wp_succeed * 100) : ''"></td>
+                  <td>[go_wp]</td>
+                  <td>[first_down_prob]</td>
+                  <td>[wp_fail]</td>
+                  <td>[wp_succeed]</td>
                 </tr>
                 <tr>
                   <td>Punt</td>
-                  <td x-text="play.punt_wp !== 'NA' ? Math.round(play.punt_wp * 100) : ''"></td>
-                  <td>NA</td>
-                  <td>NA</td>
-                  <td>NA</td>
+                  <td>[punt_wp]</td>
+                  <td>[success_na]</td>
+                  <td>[fail_na]</td>
+                  <td>[succeed_na]</td>
                 </tr>
                 <tr>
                   <td>Field goal</td>
-                  <td x-text="play.fg_wp !== 'NA' ? Math.round(play.fg_wp * 100) : ''"></td>
-                  <td x-text="play.fg_prob !== 'NA' ? Math.round(play.fg_prob * 100) : ''"></td>
-                  <td x-text="play.miss_fg_wp !== 'NA' ? Math.round(play.miss_fg_wp * 100) : ''"></td>
-                  <td x-text="play.make_fg_wp !== 'NA' ? Math.round(play.make_fg_wp * 100) : ''"></td>
+                  <td>[fg_wp]</td>
+                  <td>[fg_prob]</td>
+                  <td>[miss_fg_wp]</td>
+                  <td>[make_fg_wp]</td>
                 </tr>
               </tbody>
             </table>
-            <div x-text="play.text || ''"></div>
           </div>
-        </li>
+          
+        </div>
+      </li>
       </template>
     </ul>
   </template>
@@ -78,74 +94,95 @@ title: Live View
 function simplifyPlay(play) {
   return {
     id: play.id,
-    typeText: play.type?.text || '',
-    typeAbbr: play.type?.abbreviation || '',
     description: play.text || '',
-    quarter: play.period?.number ?? null,
     clock: play.clock?.displayValue || '',
-    offenseTeamId: play.team?.$ref?.split('/').pop() || null,
-    downDistance: play.start?.downDistanceText || '',
-
-    // Added fields
-    quarter_seconds_remaining: play.clock?.value ?? null,
-    home_team: play.competitors?.find(t => t.home)?.team?.abbreviation || '',
-    away_team: play.competitors?.find(t => t.away)?.team?.abbreviation || '',
     home_score: play.homeScore ?? null,
     away_score: play.awayScore ?? null,
-    home_coach: 'UnknownH', // not available in ESPN play-by-play
-    away_coach: 'UnknownA', // not available in ESPN play-by-play
-    home_timeouts_remaining: play.homeTimeouts ?? null,
-    away_timeouts_remaining: play.awayTimeouts ?? null,
-    down: play.start?.down ?? null,
-    ydstogo: play.start?.distance ?? null,
-    yrdln: play.start?.yardLine || '',
     qtr: play.period?.number ?? null,
-    model_recommendation: play.summary || '',
     actual_decision: play.type?.text || '',
-    go_wp: play.go_wp ?? null,
-    first_down_prob: play.first_down_prob ?? null,
-    wp_fail: play.wp_fail ?? null,
-    wp_succeed: play.wp_succeed ?? null,
-    punt_wp: play.punt_wp ?? null,
-    fg_wp: play.fg_wp ?? null,
-    fg_prob: play.fg_prob ?? null,
-    miss_fg_wp: play.miss_fg_wp ?? null,
-    make_fg_wp: play.make_fg_wp ?? null,
   };
 }
 
-function addBirdsContext(play) {
-  play.birdsIsHome = play.homeTeam?.$ref?.endsWith('/21');
-  play.birds_score = play.birdsIsHome ? play.homeScore : play.awayScore;
-  play.opp_score = play.birdsIsHome ? play.awayScore : play.homeScore;
-  play.birds_team = play.birdsIsHome ? play.homeTeamAbbreviation : play.awayTeamAbbreviation;
-  play.opp_team = play.birdsIsHome ? play.awayTeamAbbreviation : play.homeTeamAbbreviation;
-  play.birds_coach = play.birdsIsHome ? play.home_coach : play.away_coach;
-  play.birds_winning_status = play.birds_score > play.opp_score ? 'winning' :
-                               play.birds_score < play.opp_score ? 'losing' : 'tied';
-  play.high_score = Math.max(play.homeScore, play.awayScore);
-  play.low_score = Math.min(play.homeScore, play.awayScore);
+function addBirdsContext(play, ctx) {
+  // ctx.birdsIsHome is a boolean derived from competition competitors (team 21 home/away)
+  const birdsIsHome = !!ctx?.birdsIsHome;
+
+  // Scores on the play object come as homeScore/awayScore (raw) and also mapped in simplifyPlay as home_score/away_score.
+  const homeScore = play.homeScore ?? play.home_score ?? null;
+  const awayScore = play.awayScore ?? play.away_score ?? null;
+
+  play.birdsIsHome = birdsIsHome;
+  play.birds_score = birdsIsHome ? homeScore : awayScore;
+  play.opp_score   = birdsIsHome ? awayScore : homeScore;
+
+  // Removed assignments to birds_team, opp_team, birds_coach per instructions
+
+  // Status strings
+  if (typeof play.birds_score === 'number' && typeof play.opp_score === 'number') {
+    play.birds_winning_status = play.birds_score > play.opp_score ? 'winning'
+                                 : play.birds_score < play.opp_score ? 'losing'
+                                 : 'tied';
+    play.high_score = Math.max(play.birds_score, play.opp_score);
+    play.low_score  = Math.min(play.birds_score, play.opp_score);
+  } else {
+    play.birds_winning_status = '';
+    play.high_score = null;
+    play.low_score = null;
+  }
   return play;
 }
 
-function fetchFourthDownPlaysForGame(gameId) {
-  return fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${gameId}/competitions/${gameId}/plays?limit=1000`)
+function getBirdsContextForGame(gameId) {
+  // Use site API summary to get competitors with home/away and abbreviations
+  return fetch(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=${gameId}`)
     .then(res => res.json())
-    .then(playsData => {
-      const rawPlays = playsData.items || [];
-      console.log("Total plays fetched:", rawPlays.length);
-      const filteredPlays = rawPlays
-        .filter(p =>
-          p.start?.down === 4 &&
-          p.start?.team?.$ref?.includes('/21')
-        )
-        .map(p => {
-          const simplified = { ...p, ...simplifyPlay(p) };
-          return addBirdsContext(simplified);
-        });
-      console.log("All 4th down plays count:", filteredPlays.length);
-      return filteredPlays;
-    });
+    .then(summary => {
+      const comps = summary?.boxscore?.teams || summary?.competitions?.[0]?.competitors || [];
+      // Normalize competitors into objects with homeAway and team info
+      let home = null, away = null;
+      if (Array.isArray(comps)) {
+        // boxscore.teams format
+        const bsTeams = comps.filter(t => t?.homeAway && t?.team);
+        if (bsTeams.length === 2) {
+          home = bsTeams.find(t => t.homeAway === 'home');
+          away = bsTeams.find(t => t.homeAway === 'away');
+        } else {
+          // competitions[0].competitors format
+          home = comps.find(t => t.homeAway === 'home');
+          away = comps.find(t => t.homeAway === 'away');
+        }
+      }
+      const homeId  = home?.team?.id || home?.team?.$ref?.split('/').pop();
+      const awayId  = away?.team?.id || away?.team?.$ref?.split('/').pop();
+
+      const birdsIsHome = homeId === '21';
+
+      return { birdsIsHome };
+    })
+    .catch(() => ({ birdsIsHome: false }));
+}
+
+function fetchFourthDownPlaysForGame(gameId) {
+  return getBirdsContextForGame(gameId).then(ctx => {
+    return fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${gameId}/competitions/${gameId}/plays?limit=1000`)
+      .then(res => res.json())
+      .then(playsData => {
+        const rawPlays = playsData.items || [];
+        console.log("Total plays fetched:", rawPlays.length);
+        const filteredPlays = rawPlays
+          .filter(p =>
+            p.start?.down === 4 &&
+            p.start?.team?.$ref?.includes('/21') &&
+            p.type?.abbreviation !== 'TO'
+          )
+          .map(p => {
+            const simplified = { ...p, ...simplifyPlay(p) };
+            return addBirdsContext(simplified, ctx);
+          });
+        console.log("All 4th down plays count:", filteredPlays.length);
+        return filteredPlays;
+      });
+  });
 }
 
   const params = new URLSearchParams(window.location.search);
