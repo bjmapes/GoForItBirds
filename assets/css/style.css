@@ -26,7 +26,6 @@ h1 {
   margin-bottom: 1rem;
 }
 
-
 .tile-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -62,6 +61,63 @@ h1 {
     padding-left: 1rem;
     background-color: var(--white);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+.tile-play {
+  display: flex; 
+  width: 100%
+}
+
+.tile-play > div {
+  margin: .1rem;
+}
+
+.tile-play-status {
+  width: 25%;
+}
+
+.tile-play-description {
+  width: 30%;
+  font-size: smaller;
+}
+
+.tile-play-description > div {
+  width: 90%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+
+}
+
+.tile-play-table {
+  width: 40%;  
+  margin-top: 1rem;
+}
+
+.tile-play-table > table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: smaller;
+}
+
+.tile-play-table th,
+.tile-play-table td {
+  padding: 0.25rem;
+  text-align: left;
+}
+
+.tile-play-table th {
+  border-bottom: 1px solid var(--dark-gray);
+  border-right: 1px solid var(--light-gray);
+}
+
+.tile-play-table td {
+  border: 1px solid var(--light-gray);
+}
+
+.tile-play-table th:first-child,
+.tile-play-table td:first-child {
+  border-right: 1px solid var(--dark-gray);
 }
 
 /* Top navigation (W3Schools style) */

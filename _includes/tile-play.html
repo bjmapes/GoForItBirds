@@ -1,4 +1,4 @@
-<div>
+<div class="tile-play">
     <!-- Calculate clock -->
     {% assign mins = play.quarter_seconds_remaining | divided_by: 60 %}
     {% assign secs = play.quarter_seconds_remaining | modulo: 60 %}
@@ -41,52 +41,61 @@
         {% endif %}
     {% endif %}
 
-    <div>{{play.down}}th & {{play.ydstogo}} at {{play.yrdln}} | Q{{ play.qtr}} {{clock}} | Birds {{play.posteam_score}} - Opp {{play.defteam_score}} </div>
-    <div>Model: {{play.model_recommendation}} | {{birds_coach}}: {{decision}}</div>
+    <div class="tile-play-status">
+        <div>Q{{ play.qtr}} {{clock}} • {{play.down}}th & {{play.ydstogo}} at {{play.yrdln}}</div>
+        <div>Birds {{play.posteam_score}} - Opp {{play.defteam_score}} </div>
+        <div>Model: {{play.model_recommendation}}</div>
+        <div>{{birds_coach}}: {{decision}}</div>
+    </div>
 
-    <table>
-    <thead>
-        <tr>
-            <th></th>
-            <th>Win%</th>
-            <th>Success%</th>
-            <th>Fail</th>
-            <th>Succeed</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Go for it</td>
-            <td>{{play.go_wp | times: 100 | round}}</td>
-            <td>{{play.first_down_prob | times: 100 | round}}</td>
-            <td>{{play.wp_fail | times: 100 | round}}</td>
-            <td>{{play.wp_succeed | times: 100 | round}}</td>
-        </tr>
-        <tr>
-            <td>Punt</td>
-            <td>{{play.punt_wp | times: 100 | round}}</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>NA</td>
-        </tr>
-        <tr>
-            <td>Field goal</td>
-            <td>{{play.fg_wp | times: 100 | round}}</td>
-            <td>{{play.fg_prob | times: 100 | round}}</td>
-            <td>{{play.miss_fg_wp | times: 100 | round}}</td>
-            <td>{{play.make_fg_wp | times: 100 | round}}</td>
-        </tr>
-    </tbody>
-    </table>
+    <div class="tile-play-description">
+        <div>{{play.desc}}</div>
+    </div>
 
-  <div>{{play.desc}}</div>
+    <div class="tile-play-table">
+        <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Win%</th>
+                <th>Success%</th>
+                <th>Win% if Fail</th>
+                <th>Win% if Succeed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Go for it</td>
+                <td>{{play.go_wp | times: 100 | round}}</td>
+                <td>{{play.first_down_prob | times: 100 | round}}</td>
+                <td>{{play.wp_fail | times: 100 | round}}</td>
+                <td>{{play.wp_succeed | times: 100 | round}}</td>
+            </tr>
+            <tr>
+                <td>Punt</td>
+                <td>{{play.punt_wp | times: 100 | round}}</td>
+                <td>NA</td>
+                <td>NA</td>
+                <td>NA</td>
+            </tr>
+            <tr>
+                <td>Field goal</td>
+                <td>{{play.fg_wp | times: 100 | round}}</td>
+                <td>{{play.fg_prob | times: 100 | round}}</td>
+                <td>{{play.miss_fg_wp | times: 100 | round}}</td>
+                <td>{{play.make_fg_wp | times: 100 | round}}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
 
 </div>
 
 
 
-{% comment %}
 
+
+{% comment %}
 
 
 <table><tr><tr><td>aborted_play</td><td>{{ play.aborted_play }}</td></tr>
