@@ -31,7 +31,7 @@ title: Live View
         <div class="tile-play">
 
           <div class="tile-play-status">
-            <div x-text="`Q${play.qtr} ${play.clock} • ${
+            <div x-text="`Q${play.period?.number} ${play.clock?.displayValue} • ${
               play.start.downDistanceText?.endsWith('at 50') 
                 ? play.start.downDistanceText.replace('at 50','at MID 50') 
                 : play.start.downDistanceText
@@ -39,11 +39,11 @@ title: Live View
             </div>            
             <div x-text="`Birds ${play.birds_score} - Opp ${play.opp_score}`"></div>
             <div x-text="'Model: [model_recommendation]'"></div>
-            <div x-text="`[coach]: ${play.actual_decision}`"></div>
+            <div x-text="`Nick Sirianni: ${play.actual_decision}`"></div>
           </div>
 
           <div class="tile-play-description">
-            <div x-text="play.description"></div>
+            <div x-text="play.text"></div>
           </div>
 
           <div class="tile-play-table ">
@@ -91,44 +91,68 @@ title: Live View
 </div>
 
 <script>
-function simplifyPlay(play) {
-  return {
-    id: play.id,
-    description: play.text || '',
-    clock: play.clock?.displayValue || '',
-    home_score: play.homeScore ?? null,
-    away_score: play.awayScore ?? null,
-    qtr: play.period?.number ?? null,
-    actual_decision: play.type?.text || '',
-  };
-}
-
 function addBirdsContext(play, ctx) {
   // ctx.birdsIsHome is a boolean derived from competition competitors (team 21 home/away)
   const birdsIsHome = !!ctx?.birdsIsHome;
 
-  // Scores on the play object come as homeScore/awayScore (raw) and also mapped in simplifyPlay as home_score/away_score.
-  const homeScore = play.homeScore ?? play.home_score ?? null;
-  const awayScore = play.awayScore ?? play.away_score ?? null;
+  // ESPN attaches scores after the play. Adjust to pre-play when scoring occurs.
+  let homeScore = play.homeScore ?? null;
+  let awayScore = play.awayScore ?? null;
+
+  if (play.scoringPlay === true && Number.isFinite(play.scoreValue) && play.scoreValue > 0) {
+    const teamRef = play.team?.$ref || '';
+    const eaglesScored = teamRef.includes('/21'); // team 21 = Eagles
+
+    if (eaglesScored) {
+      // Subtract from the Eagles' side
+      if (birdsIsHome) {
+        homeScore = Math.max(0, (homeScore ?? 0) - play.scoreValue);
+      } else {
+        awayScore = Math.max(0, (awayScore ?? 0) - play.scoreValue);
+      }
+    } else {
+      // Opponent scored: subtract from the opponent's side
+      if (birdsIsHome) {
+        awayScore = Math.max(0, (awayScore ?? 0) - play.scoreValue);
+      } else {
+        homeScore = Math.max(0, (homeScore ?? 0) - play.scoreValue);
+      }
+    }
+  }
 
   play.birdsIsHome = birdsIsHome;
   play.birds_score = birdsIsHome ? homeScore : awayScore;
   play.opp_score   = birdsIsHome ? awayScore : homeScore;
 
-  // Removed assignments to birds_team, opp_team, birds_coach per instructions
+  // Derive ACTUAL decision from ESPN fields (penalty-aware). Update play.actual_decision only.
+  (function deriveActualDecision() {
+    let decision = play.type?.text || '';
+    const abbr = play.type?.abbreviation || '';
+    const desc = (play.text || '').toLowerCase();
 
-  // Status strings
-  if (typeof play.birds_score === 'number' && typeof play.opp_score === 'number') {
-    play.birds_winning_status = play.birds_score > play.opp_score ? 'winning'
-                                 : play.birds_score < play.opp_score ? 'losing'
-                                 : 'tied';
-    play.high_score = Math.max(play.birds_score, play.opp_score);
-    play.low_score  = Math.min(play.birds_score, play.opp_score);
-  } else {
-    play.birds_winning_status = '';
-    play.high_score = null;
-    play.low_score = null;
-  }
+    if (abbr === 'PEN') {
+      if (desc.includes('punt formation') || desc.includes(' punt')) {
+        decision = 'Punt (Penalty)';
+      } else if (desc.includes('field goal formation') || desc.includes(' fg') || desc.includes('field goal')) {
+        decision = 'Field Goal (Penalty)';
+      } else if (desc.includes('pass') || desc.includes('rush')) {
+        decision = 'Go for it (Penalty)';
+      } else {
+        decision = 'Other (Penalty)';
+      }
+    } else {
+      if (abbr === 'PUNT') {
+        decision = 'Punt';
+      } else if (abbr === 'FG') {
+        decision = 'Field Goal';
+      } else {
+        decision = 'Go for it';
+      }
+    }
+
+    play.actual_decision = decision;
+  })();
+
   return play;
 }
 
@@ -162,6 +186,8 @@ function getBirdsContextForGame(gameId) {
     .catch(() => ({ birdsIsHome: false }));
 }
 
+const ignoreTypeIds = ['70','2','21','74','75','65','66','53','32'];
+// coin toss, end period, timeout, official TO, two-minute warning, end of half, end of game, kickoff, kickoff return TD
 function fetchFourthDownPlaysForGame(gameId) {
   return getBirdsContextForGame(gameId).then(ctx => {
     return fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${gameId}/competitions/${gameId}/plays?limit=1000`)
@@ -173,12 +199,9 @@ function fetchFourthDownPlaysForGame(gameId) {
           .filter(p =>
             p.start?.down === 4 &&
             p.start?.team?.$ref?.includes('/21') &&
-            p.type?.abbreviation !== 'TO'
+            !ignoreTypeIds.includes((p.type?.id || '').toString())
           )
-          .map(p => {
-            const simplified = { ...p, ...simplifyPlay(p) };
-            return addBirdsContext(simplified, ctx);
-          });
+          .map(p => addBirdsContext(p, ctx));
         console.log("All 4th down plays count:", filteredPlays.length);
         return filteredPlays;
       });
