@@ -1,69 +1,88 @@
-# generate_fg_model.R — empirical FG table via LOESS (no fastrmodels)
+# generate_fg_model.R — deterministic FG make table via nfl4th
+# Writes /assets/data/fg_table.json with rows: distance, roof, prob
 
 suppressPackageStartupMessages({
-  library(nflfastR)
   library(dplyr)
+  library(tibble)
   library(jsonlite)
+  library(nfl4th)
 })
 
-cat("Working dir:", getwd(), "\n")
+cat("WD:", getwd(), "\n")
 
-# 1) Load play-by-play (adjust seasons if needed for speed)
-seasons <- 1999:2024
-cat("Loading PBP for seasons:", paste(range(seasons), collapse = "-"), "\n")
-pbp <- load_pbp(seasons)
+# --- Build grid of (distance, roof) ---
+fg_grid <- expand.grid(
+  distance = 10:70,
+  roof = c("outdoors", "dome"),   # nfl4th roof levels
+  stringsAsFactors = FALSE
+) %>%
+  as_tibble() %>%
+  mutate(
+    yardline_100 = pmin(pmax(distance - 17L, 1L), 99L)
+  )
 
-# 2) Filter field goal attempts with distances in [10, 80]
-fg <- pbp %>%
-  filter(play_type == "field_goal",
-         !is.na(kick_distance),
-         kick_distance >= 10, kick_distance <= 80,
-         !is.na(field_goal_result)) %>%
-  transmute(kick_distance = as.numeric(kick_distance),
-            made = as.integer(field_goal_result == "made"))
+# --- Minimal PBP frame for nfl4th::add_4th_probs() ---
+# Use neutral, valid context so fg_make_prob is defined.
+base_ctx <- tibble(
+  season = 2024L,
+  season_type = "REG",
+  qtr = 1L,
+  quarter_seconds_remaining = 900L,
+  half_seconds_remaining = 900L,
+  game_seconds_remaining = 3600L,
+  down = 4L,
+  ydstogo = 1L,
+  posteam = "PHI",
+  defteam = "KC",
+  home_team = "PHI",
+  away_team = "KC",
+  posteam_timeouts_remaining = 3L,
+  defteam_timeouts_remaining = 3L,
+  posteam_score = 0L,
+  defteam_score = 0L,
+  score_differential = 0L,
+  turnover = 0L,
+  # neutral environment to avoid NA from missing factors
+  temp = 70L,
+  wind = 0L,
+  surface = "fieldturf",
+  home_opening_kickoff = TRUE,
+  receive_2h_ko = FALSE
+)
 
-cat("FG rows:", nrow(fg), " range(dist):",
-    paste(range(fg$kick_distance, na.rm = TRUE), collapse = "-"),
-    " made%:", round(mean(fg$made) * 100, 1), "%\n")
+pbp_rows <- fg_grid %>%
+  bind_cols(base_ctx[rep(1, nrow(fg_grid)), ]) %>%
+  select(
+    season, season_type, qtr, quarter_seconds_remaining,
+    half_seconds_remaining, game_seconds_remaining,
+    down, ydstogo, posteam, defteam, home_team, away_team,
+    home_opening_kickoff, receive_2h_ko,
+    posteam_timeouts_remaining, defteam_timeouts_remaining,
+    posteam_score, defteam_score, score_differential, turnover,
+    temp, wind, surface,
+    yardline_100, roof
+  )
 
-if (nrow(fg) < 1000) {
-  stop("Not enough FG attempts in dataset. Check seasons or data load.")
+# --- Query nfl4th for probabilities ---
+with_probs <- nfl4th::add_4th_probs(pbp_rows)
+
+if (!"fg_make_prob" %in% names(with_probs)) {
+  stop("fg_make_prob not found in nfl4th output; update nfl4th and retry.")
 }
 
-# 3) Fit LOESS on (distance -> make probability)
-#    Span controls smoothing (0.25–0.4 typical). Degree=1 for robustness.
-span_val <- 0.3
-lo <- loess(made ~ kick_distance, data = fg, span = span_val, degree = 1)
+fg_table <- with_probs %>%
+  transmute(
+    distance = fg_grid$distance,
+    roof = fg_grid$roof,
+    prob = round(pmin(pmax(as.numeric(.data$fg_make_prob), 0), 1), 4)
+  )
 
-# 4) Predict for integer distances 10..80 and clamp to [0,1]
-distances <- seq(10, 80, by = 1)
-p <- predict(lo, newdata = data.frame(kick_distance = distances))
-p[!is.finite(p)] <- NA
-# Fill any NA by simple nearest-neighbor then clamp
-for (i in seq_along(p)) {
-  if (is.na(p[i])) {
-    # nearest non-NA index
-    left <- max(which(!is.na(p[seq_len(i)])), na.rm = TRUE)
-    right <- i + which(!is.na(p[-seq_len(i)]))[1]
-    cand <- c(ifelse(is.finite(left), p[left], NA), ifelse(is.finite(right), p[right], NA))
-    p[i] <- mean(cand, na.rm = TRUE)
-  }
-}
-p <- pmin(pmax(p, 0), 1)
+cat("NA probs:", sum(is.na(fg_table$prob)), "of", nrow(fg_table), "\n")
+cat("Preview (first/last 6):\n"); print(head(fg_table)); print(tail(fg_table))
 
-fg_table <- data.frame(distance = distances, prob = p)
-cat("Preview:\n"); print(head(fg_table)); print(tail(fg_table))
-
-# 5) Write JSON to assets/data/fg_table.json
 out_dir <- file.path(getwd(), "assets", "data")
 if (!dir.exists(out_dir)) dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 out_path <- file.path(out_dir, "fg_table.json")
-cat("Writing:", out_path, "\n")
 write_json(fg_table, out_path, pretty = TRUE, auto_unbox = TRUE)
-
-if (file.exists(out_path)) {
-  cat("Wrote file:", out_path, " (", file.info(out_path)$size, " bytes)\n", sep = "")
-} else {
-  stop("FAILED to write ", out_path)
-}
+cat("Wrote:", out_path, "\n")
