@@ -9,10 +9,10 @@ output_path2 <- "assets/data/eagles_4th_downs_all_time.csv"
 
 
 # Load play-by-play data for all seasons
-pbp_all <- load_pbp()
+pbp_all <- load_pbp(TRUE)
 
 # Filter for Eagles 4th down plays
-eagles_4th_all <- pbp_all %>%
+eagles_4th_all <- pbp_all %>% 
   filter(posteam == "PHI", down == 4)
 
 # Add actual decision label
