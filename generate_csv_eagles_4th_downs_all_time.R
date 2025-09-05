@@ -9,9 +9,7 @@ output_path2 <- "assets/data/eagles_4th_downs_all_time.csv"
 
 
 # Load play-by-play data for all seasons
-# Load play-by-play data for all seasons
-latest <- nflfastR::most_recent_season()
-pbp_all <- load_pbp(1999:latest)
+pbp_all <- load_pbp(1999:2025)
 
 # Filter for Eagles 4th down plays
 eagles_4th_all <- pbp_all %>%
