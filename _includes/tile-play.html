@@ -89,6 +89,8 @@
                         {{ play.fg_make_prob | times: 100 | round }}
                     {% endif %}
                 </td>
+                <td>{{play.miss_fg_wp | times: 100 | round}}</td>
+                <td>{{play.make_fg_wp | times: 100 | round}}</td>
             </tr>
         </tbody>
         </table>
