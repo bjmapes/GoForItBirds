@@ -9,7 +9,7 @@ output_path2 <- "assets/data/eagles_4th_downs_all_time.csv"
 
 
 # Load play-by-play data for all seasons
-pbp_all <- load_pbp(TRUE)
+pbp_all <- load_pbp(1999:2025)
 
 # Filter for Eagles 4th down plays
 eagles_4th_all <- pbp_all %>% 
@@ -47,3 +47,4 @@ write.csv(eagles_4th_all, output_path2, row.names = FALSE)
 
 # Optional confirmation message
 cat("Exported", nrow(eagles_4th_all), "plays to", output_path2, "\n")
+
