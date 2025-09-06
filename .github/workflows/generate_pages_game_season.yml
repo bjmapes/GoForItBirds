@@ -1,4 +1,4 @@
-name: generate_pages_game_season
+name: generate-pages-game-season
 
 permissions:
   contents: write

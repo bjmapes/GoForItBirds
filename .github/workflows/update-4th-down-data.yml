@@ -1,4 +1,4 @@
-name: generate_csv_eagles_all_plays
+name: generate-csv-eagles-all-plays
 
 permissions:
   contents: write
