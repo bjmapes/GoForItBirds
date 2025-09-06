@@ -4,14 +4,14 @@ layout: default
 
 <h1>{{ page.title }}</h1>
 
-{% assign season_games = site.data.eagles_4th_downs_all_time | where: "season", page.season %}
+{% assign seasons = site.data.games_index | where: "season", page.season | first %}
+{% assign games = seasons.games | sort: "week" %}
+
 <ul class="tile-list">
-{% assign games = season_games | group_by: "game_id" %}
 {% for game in games %}
-  {% assign first_play = game.items[0] %}
   <li>
-    <a href="{{ site.baseurl }}/games/{{ first_play.game_id | downcase | replace: '_', '-' }}.html">
-        Wk {{ first_play.week }} - {{ first_play.away_team }} at {{ first_play.home_team }}
+    <a href="{{ site.baseurl }}/games/{{ game.game_id | downcase | replace: '_', '-' }}.html">
+      Wk {{ game.week }} - {{ game.away }} at {{ game.home }}
     </a>
   </li>
 {% endfor %}

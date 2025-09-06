@@ -2,14 +2,17 @@
 layout: default
 ---
 
-{% assign plays = site.data.eagles_4th_downs_all_time | where: "game_id", page.game_id | where_exp: "play", "play.defteam != 'PHI'" %}
+{% assign season_key        = page.season | append: '' %}
+{% assign game_key          = page.game_id | append: '' %}
+{% assign all_plays         = site.data.pbp[season_key][game_key] %}
+{% assign plays             = all_plays | where_exp: "p", "p.defteam != 'PHI'" %}
+{% assign fourth_down_plays = plays | where: "down", 4 %}
 
-<h1>Week {{ plays[0].week }} — {{ plays[0].away_team }} at {{ plays[0].home_team }}</h1>
+
+<h1>{{ page.title }}</h1>
 
 <ul class="tile-list full">
-  {% for play in plays %}
-    <li>
-      {% include tile-play.html play=play %}
-    </li>
+  {% for play in fourth_down_plays %}
+    <li>{% include tile-play.html play=play %}</li>
   {% endfor %}
 </ul>
