@@ -1,4 +1,4 @@
-name: Update 4th Down Data
+name: generate_csv_eagles_all_plays
 
 permissions:
   contents: write
@@ -25,7 +25,7 @@ jobs:
           extra-packages: nflfastR
 
       - name: Run R script
-        run: Rscript generate_csv_eagles_4th_downs_all_time.R
+        run: Rscript scripts/generate_csv_eagles_all_plays.R TRUE
 
       - name: Commit and push CSV updates
         uses: EndBug/add-and-commit@v9

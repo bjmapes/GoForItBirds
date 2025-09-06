@@ -1,4 +1,4 @@
-name: Generate Pages
+name: generate_pages_game_season
 
 permissions:
   contents: write
@@ -26,7 +26,7 @@ jobs:
           pip install pandas
 
       - name: Run Python script
-        run: python generate_pages.py
+        run: python scripts/generate_pages_game_season.py
 
       - name: Commit and push CSV updates
         uses: EndBug/add-and-commit@v9
