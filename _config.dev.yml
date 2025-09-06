@@ -1,0 +1,6 @@
+incremental: true
+defaults:
+  - scope:
+      path: "games"
+    values:
+      published: false
