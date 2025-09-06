@@ -1,0 +1,37 @@
+name: sync-csv-eagles-all-plays
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    # Run nightly to keep _data in sync with assets
+    - cron: '45 1 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: sync-csv-eagles-all-plays
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Make sync script executable
+        run: chmod +x scripts/sync_csv_eagles_all_plays.sh
+
+      - name: Run sync script
+        shell: bash
+        run: scripts/sync_csv_eagles_all_plays.sh
+
+      - name: Commit and push changes
+        if: always()
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "_data/pbp/**/*.csv"
+          message: "Sync: mirror assets/data/pbp into _data (unzipped for Jekyll)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

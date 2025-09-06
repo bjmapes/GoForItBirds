@@ -36,28 +36,10 @@ jobs:
       - name: Run R script
         run: Rscript scripts/generate_csv_eagles_all_plays.R TRUE
 
-      - name: Mirror assets CSV.gz into _data
-        shell: bash
-        run: |
-          mkdir -p _data/pbp
-          if [ -d assets/data/pbp ]; then
-            find assets/data/pbp -type f -name '*.csv.gz' -print0 | while IFS= read -r -d '' f; do
-              rel="${f#assets/data/pbp/}"
-              out="_data/pbp/${rel%.gz}"
-              mkdir -p "$(dirname "$out")"
-              gunzip -c "$f" > "$out"
-            done
-          fi
-
       - name: Commit and push CSV updates
         uses: EndBug/add-and-commit@v9
         with:
-          message: "Sync _data from assets CSV.gz + CSV updates"
-          add: |
-            _data/**/*.csv
-            _data/**/*.json
-            assets/data/**/*.csv
-            assets/data/**/*.csv.gz
-            assets/data/**/*.json
+          message: "Automated CSV update"
+          add: "_data/*.csv assets/data/*.csv"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
