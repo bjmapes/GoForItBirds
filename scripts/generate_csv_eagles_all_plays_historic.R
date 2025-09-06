@@ -10,7 +10,10 @@ library(stringr)
 library(tibble)
 
 # ---- Config ----
-seasons <- 1999:2024
+# Seasons/args passthrough: do NOT interpret. Whatever is provided on CLI
+# is forwarded directly to load_pbp(...). If nothing provided, call with no args.
+cli_args <- commandArgs(trailingOnly = TRUE)
+
 pbp_out_dir <- "assets/data/pbp"                 # per-game CSV.gz
 index_out_liquid <- "_data/games_index.json"     # for Jekyll/Liquid
 index_out_js     <- "assets/data/games_index.json" # for client JS
@@ -26,8 +29,40 @@ last_non_na <- function(x) {
 }
 
 # ---- Load PBP ----
-message("Loading play-by-play ", min(seasons), "-", max(seasons), " ...")
-pbp_all <- load_pbp(seasons)
+# Pass through exactly what the CLI provided.
+# Supports:
+#   Rscript ...                -> load_pbp()
+#   Rscript ... 1999           -> load_pbp(1999)
+#   Rscript ... 1999:2004      -> load_pbp(1999:2004)
+#   Rscript ... 1999 2000 2001 -> load_pbp(c(1999,2000,2001))
+#   Rscript ... TRUE           -> load_pbp(TRUE)
+#   Rscript ... any_garbage    -> raw passthrough; load_pbp(any_garbage) will error there.
+if (length(cli_args) == 0) {
+  message("Loading play-by-play with NO season arg (full passthrough)...")
+  pbp_all <- load_pbp()
+} else {
+  # Build an expression string: single token as-is; multiple tokens become c(token1,token2,...)
+  arg_expr <- if (length(cli_args) == 1) {
+    cli_args[[1]]
+  } else {
+    paste0("c(", paste(cli_args, collapse = ","), ")")
+  }
+
+  message("Loading play-by-play with arg text: ", arg_expr)
+
+  parsed <- tryCatch(
+    eval(parse(text = arg_expr)),
+    error = function(e) structure(list(.raw = arg_expr, .err = conditionMessage(e)),
+                                  class = "goforit_parse_error")
+  )
+
+  if (inherits(parsed, "goforit_parse_error")) {
+    # Raw passthrough: let load_pbp(...) handle/throw the error.
+    pbp_all <- load_pbp(arg_expr)
+  } else {
+    pbp_all <- load_pbp(parsed)
+  }
+}
 
 # Only games involving PHI (home or away)
 eagles_pbp <- pbp_all %>% filter(home_team == "PHI" | away_team == "PHI")
@@ -104,7 +139,7 @@ idx_by_season <- idx_rows %>%
           date = dt,
           home = hm,
           away = aw,
-          final = fin[[1]],
+          final = fin,
           pbp_url = url
         )
       }

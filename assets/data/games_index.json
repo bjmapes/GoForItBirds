@@ -8,7 +8,10 @@
         "date": "1999-09-12",
         "home": "PHI",
         "away": "ARI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_01_ARI_PHI.csv.gz"
       },
       {
@@ -17,7 +20,10 @@
         "date": "1999-09-19",
         "home": "PHI",
         "away": "TB",
-        "final": 5,
+        "final": {
+          "home": 5,
+          "away": 19
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_02_TB_PHI.csv.gz"
       },
       {
@@ -26,7 +32,10 @@
         "date": "1999-09-26",
         "home": "BUF",
         "away": "PHI",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 0
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_03_PHI_BUF.csv.gz"
       },
       {
@@ -35,7 +44,10 @@
         "date": "1999-10-03",
         "home": "NYG",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 15
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_04_PHI_NYG.csv.gz"
       },
       {
@@ -44,7 +56,10 @@
         "date": "1999-10-10",
         "home": "PHI",
         "away": "DAL",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_05_DAL_PHI.csv.gz"
       },
       {
@@ -53,7 +68,10 @@
         "date": "1999-10-17",
         "home": "CHI",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_06_PHI_CHI.csv.gz"
       },
       {
@@ -62,7 +80,10 @@
         "date": "1999-10-24",
         "home": "MIA",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_07_PHI_MIA.csv.gz"
       },
       {
@@ -71,7 +92,10 @@
         "date": "1999-10-31",
         "home": "PHI",
         "away": "NYG",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_08_NYG_PHI.csv.gz"
       },
       {
@@ -80,7 +104,10 @@
         "date": "1999-11-07",
         "home": "CAR",
         "away": "PHI",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_09_PHI_CAR.csv.gz"
       },
       {
@@ -89,7 +116,10 @@
         "date": "1999-11-14",
         "home": "PHI",
         "away": "WAS",
-        "final": 35,
+        "final": {
+          "home": 35,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_10_WAS_PHI.csv.gz"
       },
       {
@@ -98,7 +128,10 @@
         "date": "1999-11-21",
         "home": "PHI",
         "away": "IND",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 44
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_11_IND_PHI.csv.gz"
       },
       {
@@ -107,7 +140,10 @@
         "date": "1999-11-28",
         "home": "WAS",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_12_PHI_WAS.csv.gz"
       },
       {
@@ -116,7 +152,10 @@
         "date": "1999-12-05",
         "home": "ARI",
         "away": "PHI",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_13_PHI_ARI.csv.gz"
       },
       {
@@ -125,7 +164,10 @@
         "date": "1999-12-12",
         "home": "DAL",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_14_PHI_DAL.csv.gz"
       },
       {
@@ -134,7 +176,10 @@
         "date": "1999-12-19",
         "home": "PHI",
         "away": "NE",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_15_NE_PHI.csv.gz"
       },
       {
@@ -143,7 +188,10 @@
         "date": "2000-01-02",
         "home": "PHI",
         "away": "LA",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/1999/1999_17_STL_PHI.csv.gz"
       }
     ]
@@ -157,7 +205,10 @@
         "date": "2000-09-03",
         "home": "DAL",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 41
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_01_PHI_DAL.csv.gz"
       },
       {
@@ -166,7 +217,10 @@
         "date": "2000-09-10",
         "home": "PHI",
         "away": "NYG",
-        "final": 18,
+        "final": {
+          "home": 18,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_02_NYG_PHI.csv.gz"
       },
       {
@@ -175,7 +229,10 @@
         "date": "2000-09-17",
         "home": "GB",
         "away": "PHI",
-        "final": 6,
+        "final": {
+          "home": 6,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_03_PHI_GB.csv.gz"
       },
       {
@@ -184,7 +241,10 @@
         "date": "2000-09-24",
         "home": "NO",
         "away": "PHI",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_04_PHI_NO.csv.gz"
       },
       {
@@ -193,7 +253,10 @@
         "date": "2000-10-01",
         "home": "PHI",
         "away": "ATL",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_05_ATL_PHI.csv.gz"
       },
       {
@@ -202,7 +265,10 @@
         "date": "2000-10-08",
         "home": "PHI",
         "away": "WAS",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_06_WAS_PHI.csv.gz"
       },
       {
@@ -211,7 +277,10 @@
         "date": "2000-10-15",
         "home": "ARI",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_07_PHI_ARI.csv.gz"
       },
       {
@@ -220,7 +289,10 @@
         "date": "2000-10-22",
         "home": "PHI",
         "away": "CHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_08_CHI_PHI.csv.gz"
       },
       {
@@ -229,7 +301,10 @@
         "date": "2000-10-29",
         "home": "NYG",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_09_PHI_NYG.csv.gz"
       },
       {
@@ -238,7 +313,10 @@
         "date": "2000-11-05",
         "home": "PHI",
         "away": "DAL",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_10_DAL_PHI.csv.gz"
       },
       {
@@ -247,7 +325,10 @@
         "date": "2000-11-12",
         "home": "PIT",
         "away": "PHI",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_11_PHI_PIT.csv.gz"
       },
       {
@@ -256,7 +337,10 @@
         "date": "2000-11-19",
         "home": "PHI",
         "away": "ARI",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_12_ARI_PHI.csv.gz"
       },
       {
@@ -265,7 +349,10 @@
         "date": "2000-11-26",
         "home": "WAS",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_13_PHI_WAS.csv.gz"
       },
       {
@@ -274,7 +361,10 @@
         "date": "2000-12-03",
         "home": "PHI",
         "away": "TEN",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 15
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_14_TEN_PHI.csv.gz"
       },
       {
@@ -283,7 +373,10 @@
         "date": "2000-12-10",
         "home": "CLE",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 35
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_15_PHI_CLE.csv.gz"
       },
       {
@@ -292,7 +385,10 @@
         "date": "2000-12-24",
         "home": "PHI",
         "away": "CIN",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_17_CIN_PHI.csv.gz"
       },
       {
@@ -301,7 +397,10 @@
         "date": "2000-12-31",
         "home": "PHI",
         "away": "TB",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_18_TB_PHI.csv.gz"
       },
       {
@@ -310,7 +409,10 @@
         "date": "2001-01-07",
         "home": "NYG",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2000/2000_19_PHI_NYG.csv.gz"
       }
     ]
@@ -324,7 +426,10 @@
         "date": "2001-09-09",
         "home": "PHI",
         "away": "LA",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_01_STL_PHI.csv.gz"
       },
       {
@@ -333,7 +438,10 @@
         "date": "2001-09-23",
         "home": "SEA",
         "away": "PHI",
-        "final": 3,
+        "final": {
+          "home": 3,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_02_PHI_SEA.csv.gz"
       },
       {
@@ -342,7 +450,10 @@
         "date": "2001-09-30",
         "home": "PHI",
         "away": "DAL",
-        "final": 40,
+        "final": {
+          "home": 40,
+          "away": 18
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_03_DAL_PHI.csv.gz"
       },
       {
@@ -351,7 +462,10 @@
         "date": "2001-10-07",
         "home": "PHI",
         "away": "ARI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_04_ARI_PHI.csv.gz"
       },
       {
@@ -360,7 +474,10 @@
         "date": "2001-10-22",
         "home": "NYG",
         "away": "PHI",
-        "final": 9,
+        "final": {
+          "home": 9,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_06_PHI_NYG.csv.gz"
       },
       {
@@ -369,7 +486,10 @@
         "date": "2001-10-28",
         "home": "PHI",
         "away": "LV",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_07_OAK_PHI.csv.gz"
       },
       {
@@ -378,7 +498,10 @@
         "date": "2001-11-04",
         "home": "ARI",
         "away": "PHI",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_08_PHI_ARI.csv.gz"
       },
       {
@@ -387,7 +510,10 @@
         "date": "2001-11-11",
         "home": "PHI",
         "away": "MIN",
-        "final": 48,
+        "final": {
+          "home": 48,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_09_MIN_PHI.csv.gz"
       },
       {
@@ -396,7 +522,10 @@
         "date": "2001-11-18",
         "home": "DAL",
         "away": "PHI",
-        "final": 3,
+        "final": {
+          "home": 3,
+          "away": 36
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_10_PHI_DAL.csv.gz"
       },
       {
@@ -405,7 +534,10 @@
         "date": "2001-11-25",
         "home": "PHI",
         "away": "WAS",
-        "final": 3,
+        "final": {
+          "home": 3,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_11_WAS_PHI.csv.gz"
       },
       {
@@ -414,7 +546,10 @@
         "date": "2001-11-29",
         "home": "KC",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_12_PHI_KC.csv.gz"
       },
       {
@@ -423,7 +558,10 @@
         "date": "2001-12-09",
         "home": "PHI",
         "away": "LAC",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_13_SD_PHI.csv.gz"
       },
       {
@@ -432,7 +570,10 @@
         "date": "2001-12-16",
         "home": "WAS",
         "away": "PHI",
-        "final": 6,
+        "final": {
+          "home": 6,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_14_PHI_WAS.csv.gz"
       },
       {
@@ -441,7 +582,10 @@
         "date": "2001-12-22",
         "home": "SF",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_15_PHI_SF.csv.gz"
       },
       {
@@ -450,7 +594,10 @@
         "date": "2001-12-30",
         "home": "PHI",
         "away": "NYG",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_16_NYG_PHI.csv.gz"
       },
       {
@@ -459,7 +606,10 @@
         "date": "2002-01-06",
         "home": "TB",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_17_PHI_TB.csv.gz"
       },
       {
@@ -468,7 +618,10 @@
         "date": "2002-01-12",
         "home": "PHI",
         "away": "TB",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_18_TB_PHI.csv.gz"
       },
       {
@@ -477,7 +630,10 @@
         "date": "2002-01-19",
         "home": "CHI",
         "away": "PHI",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_19_PHI_CHI.csv.gz"
       },
       {
@@ -486,7 +642,10 @@
         "date": "2002-01-27",
         "home": "LA",
         "away": "PHI",
-        "final": 29,
+        "final": {
+          "home": 29,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2001/2001_20_PHI_STL.csv.gz"
       }
     ]
@@ -500,7 +659,10 @@
         "date": "2002-09-08",
         "home": "TEN",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_01_PHI_TEN.csv.gz"
       },
       {
@@ -509,7 +671,10 @@
         "date": "2002-09-16",
         "home": "WAS",
         "away": "PHI",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 37
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_02_PHI_WAS.csv.gz"
       },
       {
@@ -518,7 +683,10 @@
         "date": "2002-09-22",
         "home": "PHI",
         "away": "DAL",
-        "final": 44,
+        "final": {
+          "home": 44,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_03_DAL_PHI.csv.gz"
       },
       {
@@ -527,7 +695,10 @@
         "date": "2002-09-29",
         "home": "PHI",
         "away": "HOU",
-        "final": 35,
+        "final": {
+          "home": 35,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_04_HOU_PHI.csv.gz"
       },
       {
@@ -536,7 +707,10 @@
         "date": "2002-10-06",
         "home": "JAX",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 43
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_05_PHI_JAX.csv.gz"
       },
       {
@@ -545,7 +719,10 @@
         "date": "2002-10-20",
         "home": "PHI",
         "away": "TB",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_07_TB_PHI.csv.gz"
       },
       {
@@ -554,7 +731,10 @@
         "date": "2002-10-28",
         "home": "PHI",
         "away": "NYG",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_08_NYG_PHI.csv.gz"
       },
       {
@@ -563,7 +743,10 @@
         "date": "2002-11-03",
         "home": "CHI",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 19
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_09_PHI_CHI.csv.gz"
       },
       {
@@ -572,7 +755,10 @@
         "date": "2002-11-10",
         "home": "PHI",
         "away": "IND",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 35
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_10_IND_PHI.csv.gz"
       },
       {
@@ -581,7 +767,10 @@
         "date": "2002-11-17",
         "home": "PHI",
         "away": "ARI",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_11_ARI_PHI.csv.gz"
       },
       {
@@ -590,7 +779,10 @@
         "date": "2002-11-25",
         "home": "SF",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_12_PHI_SF.csv.gz"
       },
       {
@@ -599,7 +791,10 @@
         "date": "2002-12-01",
         "home": "PHI",
         "away": "LA",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_13_STL_PHI.csv.gz"
       },
       {
@@ -608,7 +803,10 @@
         "date": "2002-12-08",
         "home": "SEA",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_14_PHI_SEA.csv.gz"
       },
       {
@@ -617,7 +815,10 @@
         "date": "2002-12-15",
         "home": "PHI",
         "away": "WAS",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_15_WAS_PHI.csv.gz"
       },
       {
@@ -626,7 +827,10 @@
         "date": "2002-12-21",
         "home": "DAL",
         "away": "PHI",
-        "final": 3,
+        "final": {
+          "home": 3,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_16_PHI_DAL.csv.gz"
       },
       {
@@ -635,7 +839,10 @@
         "date": "2002-12-28",
         "home": "NYG",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_17_PHI_NYG.csv.gz"
       },
       {
@@ -644,7 +851,10 @@
         "date": "2003-01-11",
         "home": "PHI",
         "away": "ATL",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 6
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_19_ATL_PHI.csv.gz"
       },
       {
@@ -653,7 +863,10 @@
         "date": "2003-01-19",
         "home": "PHI",
         "away": "TB",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2002/2002_20_TB_PHI.csv.gz"
       }
     ]
@@ -667,7 +880,10 @@
         "date": "2003-09-08",
         "home": "PHI",
         "away": "TB",
-        "final": 0,
+        "final": {
+          "home": 0,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_01_TB_PHI.csv.gz"
       },
       {
@@ -676,7 +892,10 @@
         "date": "2003-09-14",
         "home": "PHI",
         "away": "NE",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_02_NE_PHI.csv.gz"
       },
       {
@@ -685,7 +904,10 @@
         "date": "2003-09-28",
         "home": "BUF",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_04_PHI_BUF.csv.gz"
       },
       {
@@ -694,7 +916,10 @@
         "date": "2003-10-05",
         "home": "PHI",
         "away": "WAS",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_05_WAS_PHI.csv.gz"
       },
       {
@@ -703,7 +928,10 @@
         "date": "2003-10-12",
         "home": "DAL",
         "away": "PHI",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_06_PHI_DAL.csv.gz"
       },
       {
@@ -712,7 +940,10 @@
         "date": "2003-10-19",
         "home": "NYG",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_07_PHI_NYG.csv.gz"
       },
       {
@@ -721,7 +952,10 @@
         "date": "2003-10-26",
         "home": "PHI",
         "away": "NYJ",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_08_NYJ_PHI.csv.gz"
       },
       {
@@ -730,7 +964,10 @@
         "date": "2003-11-02",
         "home": "ATL",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_09_PHI_ATL.csv.gz"
       },
       {
@@ -739,7 +976,10 @@
         "date": "2003-11-10",
         "home": "GB",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_10_PHI_GB.csv.gz"
       },
       {
@@ -748,7 +988,10 @@
         "date": "2003-11-16",
         "home": "PHI",
         "away": "NYG",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_11_NYG_PHI.csv.gz"
       },
       {
@@ -757,7 +1000,10 @@
         "date": "2003-11-23",
         "home": "PHI",
         "away": "NO",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_12_NO_PHI.csv.gz"
       },
       {
@@ -766,7 +1012,10 @@
         "date": "2003-11-30",
         "home": "CAR",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_13_PHI_CAR.csv.gz"
       },
       {
@@ -775,7 +1024,10 @@
         "date": "2003-12-07",
         "home": "PHI",
         "away": "DAL",
-        "final": 36,
+        "final": {
+          "home": 36,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_14_DAL_PHI.csv.gz"
       },
       {
@@ -784,7 +1036,10 @@
         "date": "2003-12-15",
         "home": "MIA",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_15_PHI_MIA.csv.gz"
       },
       {
@@ -793,7 +1048,10 @@
         "date": "2003-12-21",
         "home": "PHI",
         "away": "SF",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_16_SF_PHI.csv.gz"
       },
       {
@@ -802,7 +1060,10 @@
         "date": "2003-12-27",
         "home": "WAS",
         "away": "PHI",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_17_PHI_WAS.csv.gz"
       },
       {
@@ -811,7 +1072,10 @@
         "date": "2004-01-11",
         "home": "PHI",
         "away": "GB",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_19_GB_PHI.csv.gz"
       },
       {
@@ -820,7 +1084,10 @@
         "date": "2004-01-18",
         "home": "PHI",
         "away": "CAR",
-        "final": 3,
+        "final": {
+          "home": 3,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2003/2003_20_CAR_PHI.csv.gz"
       }
     ]
@@ -834,7 +1101,10 @@
         "date": "2004-09-12",
         "home": "PHI",
         "away": "NYG",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_01_NYG_PHI.csv.gz"
       },
       {
@@ -843,7 +1113,10 @@
         "date": "2004-09-20",
         "home": "PHI",
         "away": "MIN",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_02_MIN_PHI.csv.gz"
       },
       {
@@ -852,7 +1125,10 @@
         "date": "2004-09-26",
         "home": "DET",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_03_PHI_DET.csv.gz"
       },
       {
@@ -861,7 +1137,10 @@
         "date": "2004-10-03",
         "home": "CHI",
         "away": "PHI",
-        "final": 9,
+        "final": {
+          "home": 9,
+          "away": 19
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_04_PHI_CHI.csv.gz"
       },
       {
@@ -870,7 +1149,10 @@
         "date": "2004-10-17",
         "home": "PHI",
         "away": "CAR",
-        "final": 30,
+        "final": {
+          "home": 30,
+          "away": 8
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_06_CAR_PHI.csv.gz"
       },
       {
@@ -879,7 +1161,10 @@
         "date": "2004-10-24",
         "home": "CLE",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_07_PHI_CLE.csv.gz"
       },
       {
@@ -888,7 +1173,10 @@
         "date": "2004-10-31",
         "home": "PHI",
         "away": "BAL",
-        "final": 15,
+        "final": {
+          "home": 15,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_08_BAL_PHI.csv.gz"
       },
       {
@@ -897,7 +1185,10 @@
         "date": "2004-11-07",
         "home": "PIT",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_09_PHI_PIT.csv.gz"
       },
       {
@@ -906,7 +1197,10 @@
         "date": "2004-11-15",
         "home": "DAL",
         "away": "PHI",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 49
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_10_PHI_DAL.csv.gz"
       },
       {
@@ -915,7 +1209,10 @@
         "date": "2004-11-21",
         "home": "PHI",
         "away": "WAS",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 6
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_11_WAS_PHI.csv.gz"
       },
       {
@@ -924,7 +1221,10 @@
         "date": "2004-11-28",
         "home": "NYG",
         "away": "PHI",
-        "final": 6,
+        "final": {
+          "home": 6,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_12_PHI_NYG.csv.gz"
       },
       {
@@ -933,7 +1233,10 @@
         "date": "2004-12-05",
         "home": "PHI",
         "away": "GB",
-        "final": 47,
+        "final": {
+          "home": 47,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_13_GB_PHI.csv.gz"
       },
       {
@@ -942,7 +1245,10 @@
         "date": "2004-12-12",
         "home": "WAS",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_14_PHI_WAS.csv.gz"
       },
       {
@@ -951,7 +1257,10 @@
         "date": "2004-12-19",
         "home": "PHI",
         "away": "DAL",
-        "final": 12,
+        "final": {
+          "home": 12,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_15_DAL_PHI.csv.gz"
       },
       {
@@ -960,7 +1269,10 @@
         "date": "2004-12-27",
         "home": "LA",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_16_PHI_STL.csv.gz"
       },
       {
@@ -969,7 +1281,10 @@
         "date": "2005-01-02",
         "home": "PHI",
         "away": "CIN",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_17_CIN_PHI.csv.gz"
       },
       {
@@ -978,7 +1293,10 @@
         "date": "2005-01-16",
         "home": "PHI",
         "away": "MIN",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_19_MIN_PHI.csv.gz"
       },
       {
@@ -987,7 +1305,10 @@
         "date": "2005-01-23",
         "home": "PHI",
         "away": "ATL",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_20_ATL_PHI.csv.gz"
       },
       {
@@ -996,7 +1317,10 @@
         "date": "2005-02-06",
         "home": "PHI",
         "away": "NE",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2004/2004_21_NE_PHI.csv.gz"
       }
     ]
@@ -1010,7 +1334,10 @@
         "date": "2005-09-12",
         "home": "ATL",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_01_PHI_ATL.csv.gz"
       },
       {
@@ -1019,7 +1346,10 @@
         "date": "2005-09-18",
         "home": "PHI",
         "away": "SF",
-        "final": 42,
+        "final": {
+          "home": 42,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_02_SF_PHI.csv.gz"
       },
       {
@@ -1028,7 +1358,10 @@
         "date": "2005-09-25",
         "home": "PHI",
         "away": "LV",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_03_OAK_PHI.csv.gz"
       },
       {
@@ -1037,7 +1370,10 @@
         "date": "2005-10-02",
         "home": "KC",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 37
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_04_PHI_KC.csv.gz"
       },
       {
@@ -1046,7 +1382,10 @@
         "date": "2005-10-09",
         "home": "DAL",
         "away": "PHI",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_05_PHI_DAL.csv.gz"
       },
       {
@@ -1055,7 +1394,10 @@
         "date": "2005-10-23",
         "home": "PHI",
         "away": "LAC",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_07_SD_PHI.csv.gz"
       },
       {
@@ -1064,7 +1406,10 @@
         "date": "2005-10-30",
         "home": "DEN",
         "away": "PHI",
-        "final": 49,
+        "final": {
+          "home": 49,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_08_PHI_DEN.csv.gz"
       },
       {
@@ -1073,7 +1418,10 @@
         "date": "2005-11-06",
         "home": "WAS",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_09_PHI_WAS.csv.gz"
       },
       {
@@ -1082,7 +1430,10 @@
         "date": "2005-11-14",
         "home": "PHI",
         "away": "DAL",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_10_DAL_PHI.csv.gz"
       },
       {
@@ -1091,7 +1442,10 @@
         "date": "2005-11-20",
         "home": "NYG",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_11_PHI_NYG.csv.gz"
       },
       {
@@ -1100,7 +1454,10 @@
         "date": "2005-11-27",
         "home": "PHI",
         "away": "GB",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_12_GB_PHI.csv.gz"
       },
       {
@@ -1109,7 +1466,10 @@
         "date": "2005-12-05",
         "home": "PHI",
         "away": "SEA",
-        "final": 0,
+        "final": {
+          "home": 0,
+          "away": 42
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_13_SEA_PHI.csv.gz"
       },
       {
@@ -1118,7 +1478,10 @@
         "date": "2005-12-11",
         "home": "PHI",
         "away": "NYG",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_14_NYG_PHI.csv.gz"
       },
       {
@@ -1127,7 +1490,10 @@
         "date": "2005-12-18",
         "home": "LA",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_15_PHI_STL.csv.gz"
       },
       {
@@ -1136,7 +1502,10 @@
         "date": "2005-12-24",
         "home": "ARI",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_16_PHI_ARI.csv.gz"
       },
       {
@@ -1145,7 +1514,10 @@
         "date": "2006-01-01",
         "home": "PHI",
         "away": "WAS",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2005/2005_17_WAS_PHI.csv.gz"
       }
     ]
@@ -1159,7 +1531,10 @@
         "date": "2006-09-10",
         "home": "HOU",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_01_PHI_HOU.csv.gz"
       },
       {
@@ -1168,7 +1543,10 @@
         "date": "2006-09-17",
         "home": "PHI",
         "away": "NYG",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_02_NYG_PHI.csv.gz"
       },
       {
@@ -1177,7 +1555,10 @@
         "date": "2006-09-24",
         "home": "SF",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_03_PHI_SF.csv.gz"
       },
       {
@@ -1186,7 +1567,10 @@
         "date": "2006-10-02",
         "home": "PHI",
         "away": "GB",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_04_GB_PHI.csv.gz"
       },
       {
@@ -1195,7 +1579,10 @@
         "date": "2006-10-08",
         "home": "PHI",
         "away": "DAL",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_05_DAL_PHI.csv.gz"
       },
       {
@@ -1204,7 +1591,10 @@
         "date": "2006-10-15",
         "home": "NO",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_06_PHI_NO.csv.gz"
       },
       {
@@ -1213,7 +1603,10 @@
         "date": "2006-10-22",
         "home": "TB",
         "away": "PHI",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_07_PHI_TB.csv.gz"
       },
       {
@@ -1222,7 +1615,10 @@
         "date": "2006-10-29",
         "home": "PHI",
         "away": "JAX",
-        "final": 6,
+        "final": {
+          "home": 6,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_08_JAX_PHI.csv.gz"
       },
       {
@@ -1231,7 +1627,10 @@
         "date": "2006-11-12",
         "home": "PHI",
         "away": "WAS",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_10_WAS_PHI.csv.gz"
       },
       {
@@ -1240,7 +1639,10 @@
         "date": "2006-11-19",
         "home": "PHI",
         "away": "TEN",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_11_TEN_PHI.csv.gz"
       },
       {
@@ -1249,7 +1651,10 @@
         "date": "2006-11-26",
         "home": "IND",
         "away": "PHI",
-        "final": 45,
+        "final": {
+          "home": 45,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_12_PHI_IND.csv.gz"
       },
       {
@@ -1258,7 +1663,10 @@
         "date": "2006-12-04",
         "home": "PHI",
         "away": "CAR",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_13_CAR_PHI.csv.gz"
       },
       {
@@ -1267,7 +1675,10 @@
         "date": "2006-12-10",
         "home": "WAS",
         "away": "PHI",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_14_PHI_WAS.csv.gz"
       },
       {
@@ -1276,7 +1687,10 @@
         "date": "2006-12-17",
         "home": "NYG",
         "away": "PHI",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 36
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_15_PHI_NYG.csv.gz"
       },
       {
@@ -1285,7 +1699,10 @@
         "date": "2006-12-25",
         "home": "DAL",
         "away": "PHI",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_16_PHI_DAL.csv.gz"
       },
       {
@@ -1294,7 +1711,10 @@
         "date": "2006-12-31",
         "home": "PHI",
         "away": "ATL",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_17_ATL_PHI.csv.gz"
       },
       {
@@ -1303,7 +1723,10 @@
         "date": "2007-01-07",
         "home": "PHI",
         "away": "NYG",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_18_NYG_PHI.csv.gz"
       },
       {
@@ -1312,7 +1735,10 @@
         "date": "2007-01-13",
         "home": "NO",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2006/2006_19_PHI_NO.csv.gz"
       }
     ]
@@ -1326,7 +1752,10 @@
         "date": "2007-09-09",
         "home": "GB",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_01_PHI_GB.csv.gz"
       },
       {
@@ -1335,7 +1764,10 @@
         "date": "2007-09-17",
         "home": "PHI",
         "away": "WAS",
-        "final": 12,
+        "final": {
+          "home": 12,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_02_WAS_PHI.csv.gz"
       },
       {
@@ -1344,7 +1776,10 @@
         "date": "2007-09-23",
         "home": "PHI",
         "away": "DET",
-        "final": 56,
+        "final": {
+          "home": 56,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_03_DET_PHI.csv.gz"
       },
       {
@@ -1353,7 +1788,10 @@
         "date": "2007-09-30",
         "home": "NYG",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_04_PHI_NYG.csv.gz"
       },
       {
@@ -1362,7 +1800,10 @@
         "date": "2007-10-14",
         "home": "NYJ",
         "away": "PHI",
-        "final": 9,
+        "final": {
+          "home": 9,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_06_PHI_NYJ.csv.gz"
       },
       {
@@ -1371,7 +1812,10 @@
         "date": "2007-10-21",
         "home": "PHI",
         "away": "CHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 19
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_07_CHI_PHI.csv.gz"
       },
       {
@@ -1380,7 +1824,10 @@
         "date": "2007-10-28",
         "home": "MIN",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_08_PHI_MIN.csv.gz"
       },
       {
@@ -1389,7 +1836,10 @@
         "date": "2007-11-04",
         "home": "PHI",
         "away": "DAL",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_09_DAL_PHI.csv.gz"
       },
       {
@@ -1398,7 +1848,10 @@
         "date": "2007-11-11",
         "home": "WAS",
         "away": "PHI",
-        "final": 25,
+        "final": {
+          "home": 25,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_10_PHI_WAS.csv.gz"
       },
       {
@@ -1407,7 +1860,10 @@
         "date": "2007-11-18",
         "home": "PHI",
         "away": "MIA",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_11_MIA_PHI.csv.gz"
       },
       {
@@ -1416,7 +1872,10 @@
         "date": "2007-11-25",
         "home": "NE",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_12_PHI_NE.csv.gz"
       },
       {
@@ -1425,7 +1884,10 @@
         "date": "2007-12-02",
         "home": "PHI",
         "away": "SEA",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_13_SEA_PHI.csv.gz"
       },
       {
@@ -1434,7 +1896,10 @@
         "date": "2007-12-09",
         "home": "PHI",
         "away": "NYG",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_14_NYG_PHI.csv.gz"
       },
       {
@@ -1443,7 +1908,10 @@
         "date": "2007-12-16",
         "home": "DAL",
         "away": "PHI",
-        "final": 6,
+        "final": {
+          "home": 6,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_15_PHI_DAL.csv.gz"
       },
       {
@@ -1452,7 +1920,10 @@
         "date": "2007-12-23",
         "home": "NO",
         "away": "PHI",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_16_PHI_NO.csv.gz"
       },
       {
@@ -1461,7 +1932,10 @@
         "date": "2007-12-30",
         "home": "PHI",
         "away": "BUF",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2007/2007_17_BUF_PHI.csv.gz"
       }
     ]
@@ -1475,7 +1949,10 @@
         "date": "2008-09-07",
         "home": "PHI",
         "away": "LA",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_01_STL_PHI.csv.gz"
       },
       {
@@ -1484,7 +1961,10 @@
         "date": "2008-09-15",
         "home": "DAL",
         "away": "PHI",
-        "final": 41,
+        "final": {
+          "home": 41,
+          "away": 37
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_02_PHI_DAL.csv.gz"
       },
       {
@@ -1493,7 +1973,10 @@
         "date": "2008-09-21",
         "home": "PHI",
         "away": "PIT",
-        "final": 15,
+        "final": {
+          "home": 15,
+          "away": 6
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_03_PIT_PHI.csv.gz"
       },
       {
@@ -1502,7 +1985,10 @@
         "date": "2008-09-28",
         "home": "CHI",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_04_PHI_CHI.csv.gz"
       },
       {
@@ -1511,7 +1997,10 @@
         "date": "2008-10-05",
         "home": "PHI",
         "away": "WAS",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_05_WAS_PHI.csv.gz"
       },
       {
@@ -1520,7 +2009,10 @@
         "date": "2008-10-12",
         "home": "SF",
         "away": "PHI",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 40
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_06_PHI_SF.csv.gz"
       },
       {
@@ -1529,7 +2021,10 @@
         "date": "2008-10-26",
         "home": "PHI",
         "away": "ATL",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_08_ATL_PHI.csv.gz"
       },
       {
@@ -1538,7 +2033,10 @@
         "date": "2008-11-02",
         "home": "SEA",
         "away": "PHI",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_09_PHI_SEA.csv.gz"
       },
       {
@@ -1547,7 +2045,10 @@
         "date": "2008-11-09",
         "home": "PHI",
         "away": "NYG",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 36
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_10_NYG_PHI.csv.gz"
       },
       {
@@ -1556,7 +2057,10 @@
         "date": "2008-11-16",
         "home": "CIN",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_11_PHI_CIN.csv.gz"
       },
       {
@@ -1565,7 +2069,10 @@
         "date": "2008-11-23",
         "home": "BAL",
         "away": "PHI",
-        "final": 36,
+        "final": {
+          "home": 36,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_12_PHI_BAL.csv.gz"
       },
       {
@@ -1574,7 +2081,10 @@
         "date": "2008-11-27",
         "home": "PHI",
         "away": "ARI",
-        "final": 48,
+        "final": {
+          "home": 48,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_13_ARI_PHI.csv.gz"
       },
       {
@@ -1583,7 +2093,10 @@
         "date": "2008-12-07",
         "home": "NYG",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_14_PHI_NYG.csv.gz"
       },
       {
@@ -1592,7 +2105,10 @@
         "date": "2008-12-15",
         "home": "PHI",
         "away": "CLE",
-        "final": 30,
+        "final": {
+          "home": 30,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_15_CLE_PHI.csv.gz"
       },
       {
@@ -1601,7 +2117,10 @@
         "date": "2008-12-21",
         "home": "WAS",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_16_PHI_WAS.csv.gz"
       },
       {
@@ -1610,7 +2129,10 @@
         "date": "2008-12-28",
         "home": "PHI",
         "away": "DAL",
-        "final": 44,
+        "final": {
+          "home": 44,
+          "away": 6
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_17_DAL_PHI.csv.gz"
       },
       {
@@ -1619,7 +2141,10 @@
         "date": "2009-01-04",
         "home": "MIN",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_18_PHI_MIN.csv.gz"
       },
       {
@@ -1628,7 +2153,10 @@
         "date": "2009-01-11",
         "home": "NYG",
         "away": "PHI",
-        "final": 11,
+        "final": {
+          "home": 11,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_19_PHI_NYG.csv.gz"
       },
       {
@@ -1637,7 +2165,10 @@
         "date": "2009-01-18",
         "home": "ARI",
         "away": "PHI",
-        "final": 32,
+        "final": {
+          "home": 32,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/2008/2008_20_PHI_ARI.csv.gz"
       }
     ]
@@ -1651,7 +2182,10 @@
         "date": "2009-09-13",
         "home": "CAR",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_01_PHI_CAR.csv.gz"
       },
       {
@@ -1660,7 +2194,10 @@
         "date": "2009-09-20",
         "home": "PHI",
         "away": "NO",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 48
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_02_NO_PHI.csv.gz"
       },
       {
@@ -1669,7 +2206,10 @@
         "date": "2009-09-27",
         "home": "PHI",
         "away": "KC",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_03_KC_PHI.csv.gz"
       },
       {
@@ -1678,7 +2218,10 @@
         "date": "2009-10-11",
         "home": "PHI",
         "away": "TB",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_05_TB_PHI.csv.gz"
       },
       {
@@ -1687,7 +2230,10 @@
         "date": "2009-10-18",
         "home": "LV",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_06_PHI_OAK.csv.gz"
       },
       {
@@ -1696,7 +2242,10 @@
         "date": "2009-10-26",
         "home": "WAS",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_07_PHI_WAS.csv.gz"
       },
       {
@@ -1705,7 +2254,10 @@
         "date": "2009-11-01",
         "home": "PHI",
         "away": "NYG",
-        "final": 40,
+        "final": {
+          "home": 40,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_08_NYG_PHI.csv.gz"
       },
       {
@@ -1714,7 +2266,10 @@
         "date": "2009-11-08",
         "home": "PHI",
         "away": "DAL",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_09_DAL_PHI.csv.gz"
       },
       {
@@ -1723,7 +2278,10 @@
         "date": "2009-11-15",
         "home": "LAC",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_10_PHI_SD.csv.gz"
       },
       {
@@ -1732,7 +2290,10 @@
         "date": "2009-11-22",
         "home": "CHI",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_11_PHI_CHI.csv.gz"
       },
       {
@@ -1741,7 +2302,10 @@
         "date": "2009-11-29",
         "home": "PHI",
         "away": "WAS",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_12_WAS_PHI.csv.gz"
       },
       {
@@ -1750,7 +2314,10 @@
         "date": "2009-12-06",
         "home": "ATL",
         "away": "PHI",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_13_PHI_ATL.csv.gz"
       },
       {
@@ -1759,7 +2326,10 @@
         "date": "2009-12-13",
         "home": "NYG",
         "away": "PHI",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 45
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_14_PHI_NYG.csv.gz"
       },
       {
@@ -1768,7 +2338,10 @@
         "date": "2009-12-20",
         "home": "PHI",
         "away": "SF",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_15_SF_PHI.csv.gz"
       },
       {
@@ -1777,7 +2350,10 @@
         "date": "2009-12-27",
         "home": "PHI",
         "away": "DEN",
-        "final": 30,
+        "final": {
+          "home": 30,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_16_DEN_PHI.csv.gz"
       },
       {
@@ -1786,7 +2362,10 @@
         "date": "2010-01-03",
         "home": "DAL",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 0
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_17_PHI_DAL.csv.gz"
       },
       {
@@ -1795,7 +2374,10 @@
         "date": "2010-01-09",
         "home": "DAL",
         "away": "PHI",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2009/2009_18_PHI_DAL.csv.gz"
       }
     ]
@@ -1809,7 +2391,10 @@
         "date": "2010-09-12",
         "home": "PHI",
         "away": "GB",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_01_GB_PHI.csv.gz"
       },
       {
@@ -1818,7 +2403,10 @@
         "date": "2010-09-19",
         "home": "DET",
         "away": "PHI",
-        "final": 32,
+        "final": {
+          "home": 32,
+          "away": 35
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_02_PHI_DET.csv.gz"
       },
       {
@@ -1827,7 +2415,10 @@
         "date": "2010-09-26",
         "home": "JAX",
         "away": "PHI",
-        "final": 3,
+        "final": {
+          "home": 3,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_03_PHI_JAX.csv.gz"
       },
       {
@@ -1836,7 +2427,10 @@
         "date": "2010-10-03",
         "home": "PHI",
         "away": "WAS",
-        "final": 12,
+        "final": {
+          "home": 12,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_04_WAS_PHI.csv.gz"
       },
       {
@@ -1845,7 +2439,10 @@
         "date": "2010-10-10",
         "home": "SF",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_05_PHI_SF.csv.gz"
       },
       {
@@ -1854,7 +2451,10 @@
         "date": "2010-10-17",
         "home": "PHI",
         "away": "ATL",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_06_ATL_PHI.csv.gz"
       },
       {
@@ -1863,7 +2463,10 @@
         "date": "2010-10-24",
         "home": "TEN",
         "away": "PHI",
-        "final": 37,
+        "final": {
+          "home": 37,
+          "away": 19
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_07_PHI_TEN.csv.gz"
       },
       {
@@ -1872,7 +2475,10 @@
         "date": "2010-11-07",
         "home": "PHI",
         "away": "IND",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_09_IND_PHI.csv.gz"
       },
       {
@@ -1881,7 +2487,10 @@
         "date": "2010-11-15",
         "home": "WAS",
         "away": "PHI",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 59
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_10_PHI_WAS.csv.gz"
       },
       {
@@ -1890,7 +2499,10 @@
         "date": "2010-11-21",
         "home": "PHI",
         "away": "NYG",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_11_NYG_PHI.csv.gz"
       },
       {
@@ -1899,7 +2511,10 @@
         "date": "2010-11-28",
         "home": "CHI",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_12_PHI_CHI.csv.gz"
       },
       {
@@ -1908,7 +2523,10 @@
         "date": "2010-12-02",
         "home": "PHI",
         "away": "HOU",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_13_HOU_PHI.csv.gz"
       },
       {
@@ -1917,7 +2535,10 @@
         "date": "2010-12-12",
         "home": "DAL",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_14_PHI_DAL.csv.gz"
       },
       {
@@ -1926,7 +2547,10 @@
         "date": "2010-12-19",
         "home": "NYG",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_15_PHI_NYG.csv.gz"
       },
       {
@@ -1935,7 +2559,10 @@
         "date": "2010-12-28",
         "home": "PHI",
         "away": "MIN",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_16_MIN_PHI.csv.gz"
       },
       {
@@ -1944,7 +2571,10 @@
         "date": "2011-01-02",
         "home": "PHI",
         "away": "DAL",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_17_DAL_PHI.csv.gz"
       },
       {
@@ -1953,7 +2583,10 @@
         "date": "2011-01-09",
         "home": "PHI",
         "away": "GB",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2010/2010_18_GB_PHI.csv.gz"
       }
     ]
@@ -1967,7 +2600,10 @@
         "date": "2011-09-11",
         "home": "LA",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_01_PHI_STL.csv.gz"
       },
       {
@@ -1976,7 +2612,10 @@
         "date": "2011-09-18",
         "home": "ATL",
         "away": "PHI",
-        "final": 35,
+        "final": {
+          "home": 35,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_02_PHI_ATL.csv.gz"
       },
       {
@@ -1985,7 +2624,10 @@
         "date": "2011-09-25",
         "home": "PHI",
         "away": "NYG",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 29
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_03_NYG_PHI.csv.gz"
       },
       {
@@ -1994,7 +2636,10 @@
         "date": "2011-10-02",
         "home": "PHI",
         "away": "SF",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_04_SF_PHI.csv.gz"
       },
       {
@@ -2003,7 +2648,10 @@
         "date": "2011-10-09",
         "home": "BUF",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_05_PHI_BUF.csv.gz"
       },
       {
@@ -2012,7 +2660,10 @@
         "date": "2011-10-16",
         "home": "WAS",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_06_PHI_WAS.csv.gz"
       },
       {
@@ -2021,7 +2672,10 @@
         "date": "2011-10-30",
         "home": "PHI",
         "away": "DAL",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_08_DAL_PHI.csv.gz"
       },
       {
@@ -2030,7 +2684,10 @@
         "date": "2011-11-07",
         "home": "PHI",
         "away": "CHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_09_CHI_PHI.csv.gz"
       },
       {
@@ -2039,7 +2696,10 @@
         "date": "2011-11-13",
         "home": "PHI",
         "away": "ARI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_10_ARI_PHI.csv.gz"
       },
       {
@@ -2048,7 +2708,10 @@
         "date": "2011-11-20",
         "home": "NYG",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_11_PHI_NYG.csv.gz"
       },
       {
@@ -2057,7 +2720,10 @@
         "date": "2011-11-27",
         "home": "PHI",
         "away": "NE",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_12_NE_PHI.csv.gz"
       },
       {
@@ -2066,7 +2732,10 @@
         "date": "2011-12-01",
         "home": "SEA",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_13_PHI_SEA.csv.gz"
       },
       {
@@ -2075,7 +2744,10 @@
         "date": "2011-12-11",
         "home": "MIA",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_14_PHI_MIA.csv.gz"
       },
       {
@@ -2084,7 +2756,10 @@
         "date": "2011-12-18",
         "home": "PHI",
         "away": "NYJ",
-        "final": 45,
+        "final": {
+          "home": 45,
+          "away": 19
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_15_NYJ_PHI.csv.gz"
       },
       {
@@ -2093,7 +2768,10 @@
         "date": "2011-12-24",
         "home": "DAL",
         "away": "PHI",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_16_PHI_DAL.csv.gz"
       },
       {
@@ -2102,7 +2780,10 @@
         "date": "2012-01-01",
         "home": "PHI",
         "away": "WAS",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2011/2011_17_WAS_PHI.csv.gz"
       }
     ]
@@ -2116,7 +2797,10 @@
         "date": "2012-09-09",
         "home": "CLE",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_01_PHI_CLE.csv.gz"
       },
       {
@@ -2125,7 +2809,10 @@
         "date": "2012-09-16",
         "home": "PHI",
         "away": "BAL",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_02_BAL_PHI.csv.gz"
       },
       {
@@ -2134,7 +2821,10 @@
         "date": "2012-09-23",
         "home": "ARI",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 6
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_03_PHI_ARI.csv.gz"
       },
       {
@@ -2143,7 +2833,10 @@
         "date": "2012-09-30",
         "home": "PHI",
         "away": "NYG",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_04_NYG_PHI.csv.gz"
       },
       {
@@ -2152,7 +2845,10 @@
         "date": "2012-10-07",
         "home": "PIT",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_05_PHI_PIT.csv.gz"
       },
       {
@@ -2161,7 +2857,10 @@
         "date": "2012-10-14",
         "home": "PHI",
         "away": "DET",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_06_DET_PHI.csv.gz"
       },
       {
@@ -2170,7 +2869,10 @@
         "date": "2012-10-28",
         "home": "PHI",
         "away": "ATL",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_08_ATL_PHI.csv.gz"
       },
       {
@@ -2179,7 +2881,10 @@
         "date": "2012-11-05",
         "home": "NO",
         "away": "PHI",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_09_PHI_NO.csv.gz"
       },
       {
@@ -2188,7 +2893,10 @@
         "date": "2012-11-11",
         "home": "PHI",
         "away": "DAL",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_10_DAL_PHI.csv.gz"
       },
       {
@@ -2197,7 +2905,10 @@
         "date": "2012-11-18",
         "home": "WAS",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 6
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_11_PHI_WAS.csv.gz"
       },
       {
@@ -2206,7 +2917,10 @@
         "date": "2012-11-26",
         "home": "PHI",
         "away": "CAR",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_12_CAR_PHI.csv.gz"
       },
       {
@@ -2215,7 +2929,10 @@
         "date": "2012-12-02",
         "home": "DAL",
         "away": "PHI",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_13_PHI_DAL.csv.gz"
       },
       {
@@ -2224,7 +2941,10 @@
         "date": "2012-12-09",
         "home": "TB",
         "away": "PHI",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_14_PHI_TB.csv.gz"
       },
       {
@@ -2233,7 +2953,10 @@
         "date": "2012-12-13",
         "home": "PHI",
         "away": "CIN",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_15_CIN_PHI.csv.gz"
       },
       {
@@ -2242,7 +2965,10 @@
         "date": "2012-12-23",
         "home": "PHI",
         "away": "WAS",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_16_WAS_PHI.csv.gz"
       },
       {
@@ -2251,7 +2977,10 @@
         "date": "2012-12-30",
         "home": "NYG",
         "away": "PHI",
-        "final": 42,
+        "final": {
+          "home": 42,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2012/2012_17_PHI_NYG.csv.gz"
       }
     ]
@@ -2265,7 +2994,10 @@
         "date": "2013-09-09",
         "home": "WAS",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_01_PHI_WAS.csv.gz"
       },
       {
@@ -2274,7 +3006,10 @@
         "date": "2013-09-15",
         "home": "PHI",
         "away": "LAC",
-        "final": 30,
+        "final": {
+          "home": 30,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_02_SD_PHI.csv.gz"
       },
       {
@@ -2283,7 +3018,10 @@
         "date": "2013-09-19",
         "home": "PHI",
         "away": "KC",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_03_KC_PHI.csv.gz"
       },
       {
@@ -2292,7 +3030,10 @@
         "date": "2013-09-29",
         "home": "DEN",
         "away": "PHI",
-        "final": 52,
+        "final": {
+          "home": 52,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_04_PHI_DEN.csv.gz"
       },
       {
@@ -2301,7 +3042,10 @@
         "date": "2013-10-06",
         "home": "NYG",
         "away": "PHI",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 36
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_05_PHI_NYG.csv.gz"
       },
       {
@@ -2310,7 +3054,10 @@
         "date": "2013-10-13",
         "home": "TB",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_06_PHI_TB.csv.gz"
       },
       {
@@ -2319,7 +3066,10 @@
         "date": "2013-10-20",
         "home": "PHI",
         "away": "DAL",
-        "final": 3,
+        "final": {
+          "home": 3,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_07_DAL_PHI.csv.gz"
       },
       {
@@ -2328,7 +3078,10 @@
         "date": "2013-10-27",
         "home": "PHI",
         "away": "NYG",
-        "final": 7,
+        "final": {
+          "home": 7,
+          "away": 15
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_08_NYG_PHI.csv.gz"
       },
       {
@@ -2337,7 +3090,10 @@
         "date": "2013-11-03",
         "home": "LV",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 49
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_09_PHI_OAK.csv.gz"
       },
       {
@@ -2346,7 +3102,10 @@
         "date": "2013-11-10",
         "home": "GB",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_10_PHI_GB.csv.gz"
       },
       {
@@ -2355,7 +3114,10 @@
         "date": "2013-11-17",
         "home": "PHI",
         "away": "WAS",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_11_WAS_PHI.csv.gz"
       },
       {
@@ -2364,7 +3126,10 @@
         "date": "2013-12-01",
         "home": "PHI",
         "away": "ARI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_13_ARI_PHI.csv.gz"
       },
       {
@@ -2373,7 +3138,10 @@
         "date": "2013-12-08",
         "home": "PHI",
         "away": "DET",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_14_DET_PHI.csv.gz"
       },
       {
@@ -2382,7 +3150,10 @@
         "date": "2013-12-15",
         "home": "MIN",
         "away": "PHI",
-        "final": 48,
+        "final": {
+          "home": 48,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_15_PHI_MIN.csv.gz"
       },
       {
@@ -2391,7 +3162,10 @@
         "date": "2013-12-22",
         "home": "PHI",
         "away": "CHI",
-        "final": 54,
+        "final": {
+          "home": 54,
+          "away": 11
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_16_CHI_PHI.csv.gz"
       },
       {
@@ -2400,7 +3174,10 @@
         "date": "2013-12-29",
         "home": "DAL",
         "away": "PHI",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_17_PHI_DAL.csv.gz"
       },
       {
@@ -2409,7 +3186,10 @@
         "date": "2014-01-04",
         "home": "PHI",
         "away": "NO",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2013/2013_18_NO_PHI.csv.gz"
       }
     ]
@@ -2423,7 +3203,10 @@
         "date": "2014-09-07",
         "home": "PHI",
         "away": "JAX",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_01_JAX_PHI.csv.gz"
       },
       {
@@ -2432,7 +3215,10 @@
         "date": "2014-09-15",
         "home": "IND",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_02_PHI_IND.csv.gz"
       },
       {
@@ -2441,7 +3227,10 @@
         "date": "2014-09-21",
         "home": "PHI",
         "away": "WAS",
-        "final": 37,
+        "final": {
+          "home": 37,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_03_WAS_PHI.csv.gz"
       },
       {
@@ -2450,7 +3239,10 @@
         "date": "2014-09-28",
         "home": "SF",
         "away": "PHI",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_04_PHI_SF.csv.gz"
       },
       {
@@ -2459,7 +3251,10 @@
         "date": "2014-10-05",
         "home": "PHI",
         "away": "LA",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_05_STL_PHI.csv.gz"
       },
       {
@@ -2468,7 +3263,10 @@
         "date": "2014-10-12",
         "home": "PHI",
         "away": "NYG",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 0
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_06_NYG_PHI.csv.gz"
       },
       {
@@ -2477,7 +3275,10 @@
         "date": "2014-10-26",
         "home": "ARI",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_08_PHI_ARI.csv.gz"
       },
       {
@@ -2486,7 +3287,10 @@
         "date": "2014-11-02",
         "home": "HOU",
         "away": "PHI",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_09_PHI_HOU.csv.gz"
       },
       {
@@ -2495,7 +3299,10 @@
         "date": "2014-11-10",
         "home": "PHI",
         "away": "CAR",
-        "final": 45,
+        "final": {
+          "home": 45,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_10_CAR_PHI.csv.gz"
       },
       {
@@ -2504,7 +3311,10 @@
         "date": "2014-11-16",
         "home": "GB",
         "away": "PHI",
-        "final": 53,
+        "final": {
+          "home": 53,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_11_PHI_GB.csv.gz"
       },
       {
@@ -2513,7 +3323,10 @@
         "date": "2014-11-23",
         "home": "PHI",
         "away": "TEN",
-        "final": 43,
+        "final": {
+          "home": 43,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_12_TEN_PHI.csv.gz"
       },
       {
@@ -2522,7 +3335,10 @@
         "date": "2014-11-27",
         "home": "DAL",
         "away": "PHI",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_13_PHI_DAL.csv.gz"
       },
       {
@@ -2531,7 +3347,10 @@
         "date": "2014-12-07",
         "home": "PHI",
         "away": "SEA",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_14_SEA_PHI.csv.gz"
       },
       {
@@ -2540,7 +3359,10 @@
         "date": "2014-12-14",
         "home": "PHI",
         "away": "DAL",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_15_DAL_PHI.csv.gz"
       },
       {
@@ -2549,7 +3371,10 @@
         "date": "2014-12-20",
         "home": "WAS",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_16_PHI_WAS.csv.gz"
       },
       {
@@ -2558,7 +3383,10 @@
         "date": "2014-12-28",
         "home": "NYG",
         "away": "PHI",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2014/2014_17_PHI_NYG.csv.gz"
       }
     ]
@@ -2572,7 +3400,10 @@
         "date": "2015-09-14",
         "home": "ATL",
         "away": "PHI",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_01_PHI_ATL.csv.gz"
       },
       {
@@ -2581,7 +3412,10 @@
         "date": "2015-09-20",
         "home": "PHI",
         "away": "DAL",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_02_DAL_PHI.csv.gz"
       },
       {
@@ -2590,7 +3424,10 @@
         "date": "2015-09-27",
         "home": "NYJ",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_03_PHI_NYJ.csv.gz"
       },
       {
@@ -2599,7 +3436,10 @@
         "date": "2015-10-04",
         "home": "WAS",
         "away": "PHI",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_04_PHI_WAS.csv.gz"
       },
       {
@@ -2608,7 +3448,10 @@
         "date": "2015-10-11",
         "home": "PHI",
         "away": "NO",
-        "final": 39,
+        "final": {
+          "home": 39,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_05_NO_PHI.csv.gz"
       },
       {
@@ -2617,7 +3460,10 @@
         "date": "2015-10-19",
         "home": "PHI",
         "away": "NYG",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_06_NYG_PHI.csv.gz"
       },
       {
@@ -2626,7 +3472,10 @@
         "date": "2015-10-25",
         "home": "CAR",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_07_PHI_CAR.csv.gz"
       },
       {
@@ -2635,7 +3484,10 @@
         "date": "2015-11-08",
         "home": "DAL",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_09_PHI_DAL.csv.gz"
       },
       {
@@ -2644,7 +3496,10 @@
         "date": "2015-11-15",
         "home": "PHI",
         "away": "MIA",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_10_MIA_PHI.csv.gz"
       },
       {
@@ -2653,7 +3508,10 @@
         "date": "2015-11-22",
         "home": "PHI",
         "away": "TB",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 45
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_11_TB_PHI.csv.gz"
       },
       {
@@ -2662,7 +3520,10 @@
         "date": "2015-11-26",
         "home": "DET",
         "away": "PHI",
-        "final": 45,
+        "final": {
+          "home": 45,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_12_PHI_DET.csv.gz"
       },
       {
@@ -2671,7 +3532,10 @@
         "date": "2015-12-06",
         "home": "NE",
         "away": "PHI",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 35
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_13_PHI_NE.csv.gz"
       },
       {
@@ -2680,7 +3544,10 @@
         "date": "2015-12-13",
         "home": "PHI",
         "away": "BUF",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_14_BUF_PHI.csv.gz"
       },
       {
@@ -2689,7 +3556,10 @@
         "date": "2015-12-20",
         "home": "PHI",
         "away": "ARI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 40
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_15_ARI_PHI.csv.gz"
       },
       {
@@ -2698,7 +3568,10 @@
         "date": "2015-12-26",
         "home": "PHI",
         "away": "WAS",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_16_WAS_PHI.csv.gz"
       },
       {
@@ -2707,7 +3580,10 @@
         "date": "2016-01-03",
         "home": "NYG",
         "away": "PHI",
-        "final": 30,
+        "final": {
+          "home": 30,
+          "away": 35
+        },
         "pbp_url": "/assets/data/pbp/2015/2015_17_PHI_NYG.csv.gz"
       }
     ]
@@ -2721,7 +3597,10 @@
         "date": "2016-09-11",
         "home": "PHI",
         "away": "CLE",
-        "final": 29,
+        "final": {
+          "home": 29,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_01_CLE_PHI.csv.gz"
       },
       {
@@ -2730,7 +3609,10 @@
         "date": "2016-09-19",
         "home": "CHI",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 29
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_02_PHI_CHI.csv.gz"
       },
       {
@@ -2739,7 +3621,10 @@
         "date": "2016-09-25",
         "home": "PHI",
         "away": "PIT",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_03_PIT_PHI.csv.gz"
       },
       {
@@ -2748,7 +3633,10 @@
         "date": "2016-10-09",
         "home": "DET",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_05_PHI_DET.csv.gz"
       },
       {
@@ -2757,7 +3645,10 @@
         "date": "2016-10-16",
         "home": "WAS",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_06_PHI_WAS.csv.gz"
       },
       {
@@ -2766,7 +3657,10 @@
         "date": "2016-10-23",
         "home": "PHI",
         "away": "MIN",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_07_MIN_PHI.csv.gz"
       },
       {
@@ -2775,7 +3669,10 @@
         "date": "2016-10-30",
         "home": "DAL",
         "away": "PHI",
-        "final": 29,
+        "final": {
+          "home": 29,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_08_PHI_DAL.csv.gz"
       },
       {
@@ -2784,7 +3681,10 @@
         "date": "2016-11-06",
         "home": "NYG",
         "away": "PHI",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_09_PHI_NYG.csv.gz"
       },
       {
@@ -2793,7 +3693,10 @@
         "date": "2016-11-13",
         "home": "PHI",
         "away": "ATL",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 15
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_10_ATL_PHI.csv.gz"
       },
       {
@@ -2802,7 +3705,10 @@
         "date": "2016-11-20",
         "home": "SEA",
         "away": "PHI",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 15
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_11_PHI_SEA.csv.gz"
       },
       {
@@ -2811,7 +3717,10 @@
         "date": "2016-11-28",
         "home": "PHI",
         "away": "GB",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_12_GB_PHI.csv.gz"
       },
       {
@@ -2820,7 +3729,10 @@
         "date": "2016-12-04",
         "home": "CIN",
         "away": "PHI",
-        "final": 32,
+        "final": {
+          "home": 32,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_13_PHI_CIN.csv.gz"
       },
       {
@@ -2829,7 +3741,10 @@
         "date": "2016-12-11",
         "home": "PHI",
         "away": "WAS",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_14_WAS_PHI.csv.gz"
       },
       {
@@ -2838,7 +3753,10 @@
         "date": "2016-12-18",
         "home": "BAL",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_15_PHI_BAL.csv.gz"
       },
       {
@@ -2847,7 +3765,10 @@
         "date": "2016-12-22",
         "home": "PHI",
         "away": "NYG",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 19
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_16_NYG_PHI.csv.gz"
       },
       {
@@ -2856,7 +3777,10 @@
         "date": "2017-01-01",
         "home": "PHI",
         "away": "DAL",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2016/2016_17_DAL_PHI.csv.gz"
       }
     ]
@@ -2870,7 +3794,10 @@
         "date": "2017-09-10",
         "home": "WAS",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_01_PHI_WAS.csv.gz"
       },
       {
@@ -2879,7 +3806,10 @@
         "date": "2017-09-17",
         "home": "KC",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_02_PHI_KC.csv.gz"
       },
       {
@@ -2888,7 +3818,10 @@
         "date": "2017-09-24",
         "home": "PHI",
         "away": "NYG",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_03_NYG_PHI.csv.gz"
       },
       {
@@ -2897,7 +3830,10 @@
         "date": "2017-10-01",
         "home": "LAC",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_04_PHI_LAC.csv.gz"
       },
       {
@@ -2906,7 +3842,10 @@
         "date": "2017-10-08",
         "home": "PHI",
         "away": "ARI",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_05_ARI_PHI.csv.gz"
       },
       {
@@ -2915,7 +3854,10 @@
         "date": "2017-10-12",
         "home": "CAR",
         "away": "PHI",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_06_PHI_CAR.csv.gz"
       },
       {
@@ -2924,7 +3866,10 @@
         "date": "2017-10-23",
         "home": "PHI",
         "away": "WAS",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_07_WAS_PHI.csv.gz"
       },
       {
@@ -2933,7 +3878,10 @@
         "date": "2017-10-29",
         "home": "PHI",
         "away": "SF",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_08_SF_PHI.csv.gz"
       },
       {
@@ -2942,7 +3890,10 @@
         "date": "2017-11-05",
         "home": "PHI",
         "away": "DEN",
-        "final": 51,
+        "final": {
+          "home": 51,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_09_DEN_PHI.csv.gz"
       },
       {
@@ -2951,7 +3902,10 @@
         "date": "2017-11-19",
         "home": "DAL",
         "away": "PHI",
-        "final": 9,
+        "final": {
+          "home": 9,
+          "away": 37
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_11_PHI_DAL.csv.gz"
       },
       {
@@ -2960,7 +3914,10 @@
         "date": "2017-11-26",
         "home": "PHI",
         "away": "CHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 3
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_12_CHI_PHI.csv.gz"
       },
       {
@@ -2969,7 +3926,10 @@
         "date": "2017-12-03",
         "home": "SEA",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_13_PHI_SEA.csv.gz"
       },
       {
@@ -2978,7 +3938,10 @@
         "date": "2017-12-10",
         "home": "LA",
         "away": "PHI",
-        "final": 35,
+        "final": {
+          "home": 35,
+          "away": 43
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_14_PHI_LA.csv.gz"
       },
       {
@@ -2987,7 +3950,10 @@
         "date": "2017-12-17",
         "home": "NYG",
         "away": "PHI",
-        "final": 29,
+        "final": {
+          "home": 29,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_15_PHI_NYG.csv.gz"
       },
       {
@@ -2996,7 +3962,10 @@
         "date": "2017-12-25",
         "home": "PHI",
         "away": "LV",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_16_OAK_PHI.csv.gz"
       },
       {
@@ -3005,7 +3974,10 @@
         "date": "2017-12-31",
         "home": "PHI",
         "away": "DAL",
-        "final": 0,
+        "final": {
+          "home": 0,
+          "away": 6
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_17_DAL_PHI.csv.gz"
       },
       {
@@ -3014,7 +3986,10 @@
         "date": "2018-01-13",
         "home": "PHI",
         "away": "ATL",
-        "final": 15,
+        "final": {
+          "home": 15,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_19_ATL_PHI.csv.gz"
       },
       {
@@ -3023,7 +3998,10 @@
         "date": "2018-01-21",
         "home": "PHI",
         "away": "MIN",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_20_MIN_PHI.csv.gz"
       },
       {
@@ -3032,7 +4010,10 @@
         "date": "2018-02-04",
         "home": "NE",
         "away": "PHI",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 41
+        },
         "pbp_url": "/assets/data/pbp/2017/2017_21_PHI_NE.csv.gz"
       }
     ]
@@ -3046,7 +4027,10 @@
         "date": "2018-09-06",
         "home": "PHI",
         "away": "ATL",
-        "final": 18,
+        "final": {
+          "home": 18,
+          "away": 12
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_01_ATL_PHI.csv.gz"
       },
       {
@@ -3055,7 +4039,10 @@
         "date": "2018-09-16",
         "home": "TB",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_02_PHI_TB.csv.gz"
       },
       {
@@ -3064,7 +4051,10 @@
         "date": "2018-09-23",
         "home": "PHI",
         "away": "IND",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_03_IND_PHI.csv.gz"
       },
       {
@@ -3073,7 +4063,10 @@
         "date": "2018-09-30",
         "home": "TEN",
         "away": "PHI",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_04_PHI_TEN.csv.gz"
       },
       {
@@ -3082,7 +4075,10 @@
         "date": "2018-10-07",
         "home": "PHI",
         "away": "MIN",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_05_MIN_PHI.csv.gz"
       },
       {
@@ -3091,7 +4087,10 @@
         "date": "2018-10-11",
         "home": "NYG",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_06_PHI_NYG.csv.gz"
       },
       {
@@ -3100,7 +4099,10 @@
         "date": "2018-10-21",
         "home": "PHI",
         "away": "CAR",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_07_CAR_PHI.csv.gz"
       },
       {
@@ -3109,7 +4111,10 @@
         "date": "2018-10-28",
         "home": "JAX",
         "away": "PHI",
-        "final": 18,
+        "final": {
+          "home": 18,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_08_PHI_JAX.csv.gz"
       },
       {
@@ -3118,7 +4123,10 @@
         "date": "2018-11-11",
         "home": "PHI",
         "away": "DAL",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_10_DAL_PHI.csv.gz"
       },
       {
@@ -3127,7 +4135,10 @@
         "date": "2018-11-18",
         "home": "NO",
         "away": "PHI",
-        "final": 48,
+        "final": {
+          "home": 48,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_11_PHI_NO.csv.gz"
       },
       {
@@ -3136,7 +4147,10 @@
         "date": "2018-11-25",
         "home": "PHI",
         "away": "NYG",
-        "final": 25,
+        "final": {
+          "home": 25,
+          "away": 22
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_12_NYG_PHI.csv.gz"
       },
       {
@@ -3145,7 +4159,10 @@
         "date": "2018-12-03",
         "home": "PHI",
         "away": "WAS",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_13_WAS_PHI.csv.gz"
       },
       {
@@ -3154,7 +4171,10 @@
         "date": "2018-12-09",
         "home": "DAL",
         "away": "PHI",
-        "final": 29,
+        "final": {
+          "home": 29,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_14_PHI_DAL.csv.gz"
       },
       {
@@ -3163,7 +4183,10 @@
         "date": "2018-12-16",
         "home": "LA",
         "away": "PHI",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_15_PHI_LA.csv.gz"
       },
       {
@@ -3172,7 +4195,10 @@
         "date": "2018-12-23",
         "home": "PHI",
         "away": "HOU",
-        "final": 32,
+        "final": {
+          "home": 32,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_16_HOU_PHI.csv.gz"
       },
       {
@@ -3181,7 +4207,10 @@
         "date": "2018-12-30",
         "home": "WAS",
         "away": "PHI",
-        "final": 0,
+        "final": {
+          "home": 0,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_17_PHI_WAS.csv.gz"
       },
       {
@@ -3190,7 +4219,10 @@
         "date": "2019-01-06",
         "home": "CHI",
         "away": "PHI",
-        "final": 15,
+        "final": {
+          "home": 15,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_18_PHI_CHI.csv.gz"
       },
       {
@@ -3199,7 +4231,10 @@
         "date": "2019-01-13",
         "home": "NO",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2018/2018_19_PHI_NO.csv.gz"
       }
     ]
@@ -3213,7 +4248,10 @@
         "date": "2019-09-08",
         "home": "PHI",
         "away": "WAS",
-        "final": 32,
+        "final": {
+          "home": 32,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_01_WAS_PHI.csv.gz"
       },
       {
@@ -3222,7 +4260,10 @@
         "date": "2019-09-15",
         "home": "ATL",
         "away": "PHI",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_02_PHI_ATL.csv.gz"
       },
       {
@@ -3231,7 +4272,10 @@
         "date": "2019-09-22",
         "home": "PHI",
         "away": "DET",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_03_DET_PHI.csv.gz"
       },
       {
@@ -3240,7 +4284,10 @@
         "date": "2019-09-26",
         "home": "GB",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_04_PHI_GB.csv.gz"
       },
       {
@@ -3249,7 +4296,10 @@
         "date": "2019-10-06",
         "home": "PHI",
         "away": "NYJ",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 6
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_05_NYJ_PHI.csv.gz"
       },
       {
@@ -3258,7 +4308,10 @@
         "date": "2019-10-13",
         "home": "MIN",
         "away": "PHI",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_06_PHI_MIN.csv.gz"
       },
       {
@@ -3267,7 +4320,10 @@
         "date": "2019-10-20",
         "home": "DAL",
         "away": "PHI",
-        "final": 37,
+        "final": {
+          "home": 37,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_07_PHI_DAL.csv.gz"
       },
       {
@@ -3276,7 +4332,10 @@
         "date": "2019-10-27",
         "home": "BUF",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_08_PHI_BUF.csv.gz"
       },
       {
@@ -3285,7 +4344,10 @@
         "date": "2019-11-03",
         "home": "PHI",
         "away": "CHI",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_09_CHI_PHI.csv.gz"
       },
       {
@@ -3294,7 +4356,10 @@
         "date": "2019-11-17",
         "home": "PHI",
         "away": "NE",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_11_NE_PHI.csv.gz"
       },
       {
@@ -3303,7 +4368,10 @@
         "date": "2019-11-24",
         "home": "PHI",
         "away": "SEA",
-        "final": 9,
+        "final": {
+          "home": 9,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_12_SEA_PHI.csv.gz"
       },
       {
@@ -3312,7 +4380,10 @@
         "date": "2019-12-01",
         "home": "MIA",
         "away": "PHI",
-        "final": 37,
+        "final": {
+          "home": 37,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_13_PHI_MIA.csv.gz"
       },
       {
@@ -3321,7 +4392,10 @@
         "date": "2019-12-09",
         "home": "PHI",
         "away": "NYG",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_14_NYG_PHI.csv.gz"
       },
       {
@@ -3330,7 +4404,10 @@
         "date": "2019-12-15",
         "home": "WAS",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 37
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_15_PHI_WAS.csv.gz"
       },
       {
@@ -3339,7 +4416,10 @@
         "date": "2019-12-22",
         "home": "PHI",
         "away": "DAL",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_16_DAL_PHI.csv.gz"
       },
       {
@@ -3348,7 +4428,10 @@
         "date": "2019-12-29",
         "home": "NYG",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_17_PHI_NYG.csv.gz"
       },
       {
@@ -3357,7 +4440,10 @@
         "date": "2020-01-05",
         "home": "PHI",
         "away": "SEA",
-        "final": 9,
+        "final": {
+          "home": 9,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2019/2019_18_SEA_PHI.csv.gz"
       }
     ]
@@ -3371,7 +4457,10 @@
         "date": "2020-09-13",
         "home": "WAS",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_01_PHI_WAS.csv.gz"
       },
       {
@@ -3380,7 +4469,10 @@
         "date": "2020-09-20",
         "home": "PHI",
         "away": "LA",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 37
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_02_LA_PHI.csv.gz"
       },
       {
@@ -3389,7 +4481,10 @@
         "date": "2020-09-27",
         "home": "PHI",
         "away": "CIN",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_03_CIN_PHI.csv.gz"
       },
       {
@@ -3398,7 +4493,10 @@
         "date": "2020-10-04",
         "home": "SF",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_04_PHI_SF.csv.gz"
       },
       {
@@ -3407,7 +4505,10 @@
         "date": "2020-10-11",
         "home": "PIT",
         "away": "PHI",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 29
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_05_PHI_PIT.csv.gz"
       },
       {
@@ -3416,7 +4517,10 @@
         "date": "2020-10-18",
         "home": "PHI",
         "away": "BAL",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_06_BAL_PHI.csv.gz"
       },
       {
@@ -3425,7 +4529,10 @@
         "date": "2020-10-22",
         "home": "PHI",
         "away": "NYG",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_07_NYG_PHI.csv.gz"
       },
       {
@@ -3434,7 +4541,10 @@
         "date": "2020-11-01",
         "home": "PHI",
         "away": "DAL",
-        "final": 23,
+        "final": {
+          "home": 23,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_08_DAL_PHI.csv.gz"
       },
       {
@@ -3443,7 +4553,10 @@
         "date": "2020-11-15",
         "home": "NYG",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_10_PHI_NYG.csv.gz"
       },
       {
@@ -3452,7 +4565,10 @@
         "date": "2020-11-22",
         "home": "CLE",
         "away": "PHI",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_11_PHI_CLE.csv.gz"
       },
       {
@@ -3461,7 +4577,10 @@
         "date": "2020-11-30",
         "home": "PHI",
         "away": "SEA",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_12_SEA_PHI.csv.gz"
       },
       {
@@ -3470,7 +4589,10 @@
         "date": "2020-12-06",
         "home": "GB",
         "away": "PHI",
-        "final": 30,
+        "final": {
+          "home": 30,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_13_PHI_GB.csv.gz"
       },
       {
@@ -3479,7 +4601,10 @@
         "date": "2020-12-13",
         "home": "PHI",
         "away": "NO",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_14_NO_PHI.csv.gz"
       },
       {
@@ -3488,7 +4613,10 @@
         "date": "2020-12-20",
         "home": "ARI",
         "away": "PHI",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 26
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_15_PHI_ARI.csv.gz"
       },
       {
@@ -3497,7 +4625,10 @@
         "date": "2020-12-27",
         "home": "DAL",
         "away": "PHI",
-        "final": 37,
+        "final": {
+          "home": 37,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_16_PHI_DAL.csv.gz"
       },
       {
@@ -3506,7 +4637,10 @@
         "date": "2021-01-03",
         "home": "PHI",
         "away": "WAS",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2020/2020_17_WAS_PHI.csv.gz"
       }
     ]
@@ -3520,7 +4654,10 @@
         "date": "2021-09-12",
         "home": "ATL",
         "away": "PHI",
-        "final": 6,
+        "final": {
+          "home": 6,
+          "away": 32
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_01_PHI_ATL.csv.gz"
       },
       {
@@ -3529,7 +4666,10 @@
         "date": "2021-09-19",
         "home": "PHI",
         "away": "SF",
-        "final": 11,
+        "final": {
+          "home": 11,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_02_SF_PHI.csv.gz"
       },
       {
@@ -3538,7 +4678,10 @@
         "date": "2021-09-27",
         "home": "DAL",
         "away": "PHI",
-        "final": 41,
+        "final": {
+          "home": 41,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_03_PHI_DAL.csv.gz"
       },
       {
@@ -3547,7 +4690,10 @@
         "date": "2021-10-03",
         "home": "PHI",
         "away": "KC",
-        "final": 30,
+        "final": {
+          "home": 30,
+          "away": 42
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_04_KC_PHI.csv.gz"
       },
       {
@@ -3556,7 +4702,10 @@
         "date": "2021-10-10",
         "home": "CAR",
         "away": "PHI",
-        "final": 18,
+        "final": {
+          "home": 18,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_05_PHI_CAR.csv.gz"
       },
       {
@@ -3565,7 +4714,10 @@
         "date": "2021-10-14",
         "home": "PHI",
         "away": "TB",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_06_TB_PHI.csv.gz"
       },
       {
@@ -3574,7 +4726,10 @@
         "date": "2021-10-24",
         "home": "LV",
         "away": "PHI",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 22
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_07_PHI_LV.csv.gz"
       },
       {
@@ -3583,7 +4738,10 @@
         "date": "2021-10-31",
         "home": "DET",
         "away": "PHI",
-        "final": 6,
+        "final": {
+          "home": 6,
+          "away": 44
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_08_PHI_DET.csv.gz"
       },
       {
@@ -3592,7 +4750,10 @@
         "date": "2021-11-07",
         "home": "PHI",
         "away": "LAC",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 27
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_09_LAC_PHI.csv.gz"
       },
       {
@@ -3601,7 +4762,10 @@
         "date": "2021-11-14",
         "home": "DEN",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 30
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_10_PHI_DEN.csv.gz"
       },
       {
@@ -3610,7 +4774,10 @@
         "date": "2021-11-21",
         "home": "PHI",
         "away": "NO",
-        "final": 40,
+        "final": {
+          "home": 40,
+          "away": 29
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_11_NO_PHI.csv.gz"
       },
       {
@@ -3619,7 +4786,10 @@
         "date": "2021-11-28",
         "home": "NYG",
         "away": "PHI",
-        "final": 13,
+        "final": {
+          "home": 13,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_12_PHI_NYG.csv.gz"
       },
       {
@@ -3628,7 +4798,10 @@
         "date": "2021-12-05",
         "home": "NYJ",
         "away": "PHI",
-        "final": 18,
+        "final": {
+          "home": 18,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_13_PHI_NYJ.csv.gz"
       },
       {
@@ -3637,7 +4810,10 @@
         "date": "2021-12-21",
         "home": "PHI",
         "away": "WAS",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_15_WAS_PHI.csv.gz"
       },
       {
@@ -3646,7 +4822,10 @@
         "date": "2021-12-26",
         "home": "PHI",
         "away": "NYG",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_16_NYG_PHI.csv.gz"
       },
       {
@@ -3655,7 +4834,10 @@
         "date": "2022-01-02",
         "home": "WAS",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_17_PHI_WAS.csv.gz"
       },
       {
@@ -3664,7 +4846,10 @@
         "date": "2022-01-08",
         "home": "PHI",
         "away": "DAL",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 51
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_18_DAL_PHI.csv.gz"
       },
       {
@@ -3673,7 +4858,10 @@
         "date": "2022-01-16",
         "home": "TB",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 15
+        },
         "pbp_url": "/assets/data/pbp/2021/2021_19_PHI_TB.csv.gz"
       }
     ]
@@ -3687,7 +4875,10 @@
         "date": "2022-09-11",
         "home": "DET",
         "away": "PHI",
-        "final": 35,
+        "final": {
+          "home": 35,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_01_PHI_DET.csv.gz"
       },
       {
@@ -3696,7 +4887,10 @@
         "date": "2022-09-19",
         "home": "PHI",
         "away": "MIN",
-        "final": 24,
+        "final": {
+          "home": 24,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_02_MIN_PHI.csv.gz"
       },
       {
@@ -3705,7 +4899,10 @@
         "date": "2022-09-25",
         "home": "WAS",
         "away": "PHI",
-        "final": 8,
+        "final": {
+          "home": 8,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_03_PHI_WAS.csv.gz"
       },
       {
@@ -3714,7 +4911,10 @@
         "date": "2022-10-02",
         "home": "PHI",
         "away": "JAX",
-        "final": 29,
+        "final": {
+          "home": 29,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_04_JAX_PHI.csv.gz"
       },
       {
@@ -3723,7 +4923,10 @@
         "date": "2022-10-09",
         "home": "ARI",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_05_PHI_ARI.csv.gz"
       },
       {
@@ -3732,7 +4935,10 @@
         "date": "2022-10-16",
         "home": "PHI",
         "away": "DAL",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_06_DAL_PHI.csv.gz"
       },
       {
@@ -3741,7 +4947,10 @@
         "date": "2022-10-30",
         "home": "PHI",
         "away": "PIT",
-        "final": 35,
+        "final": {
+          "home": 35,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_08_PIT_PHI.csv.gz"
       },
       {
@@ -3750,7 +4959,10 @@
         "date": "2022-11-03",
         "home": "HOU",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 29
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_09_PHI_HOU.csv.gz"
       },
       {
@@ -3759,7 +4971,10 @@
         "date": "2022-11-14",
         "home": "PHI",
         "away": "WAS",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 32
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_10_WAS_PHI.csv.gz"
       },
       {
@@ -3768,7 +4983,10 @@
         "date": "2022-11-20",
         "home": "IND",
         "away": "PHI",
-        "final": 16,
+        "final": {
+          "home": 16,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_11_PHI_IND.csv.gz"
       },
       {
@@ -3777,7 +4995,10 @@
         "date": "2022-11-27",
         "home": "PHI",
         "away": "GB",
-        "final": 40,
+        "final": {
+          "home": 40,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_12_GB_PHI.csv.gz"
       },
       {
@@ -3786,7 +5007,10 @@
         "date": "2022-12-04",
         "home": "PHI",
         "away": "TEN",
-        "final": 35,
+        "final": {
+          "home": 35,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_13_TEN_PHI.csv.gz"
       },
       {
@@ -3795,7 +5019,10 @@
         "date": "2022-12-11",
         "home": "NYG",
         "away": "PHI",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 48
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_14_PHI_NYG.csv.gz"
       },
       {
@@ -3804,7 +5031,10 @@
         "date": "2022-12-18",
         "home": "CHI",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_15_PHI_CHI.csv.gz"
       },
       {
@@ -3813,7 +5043,10 @@
         "date": "2022-12-24",
         "home": "DAL",
         "away": "PHI",
-        "final": 40,
+        "final": {
+          "home": 40,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_16_PHI_DAL.csv.gz"
       },
       {
@@ -3822,7 +5055,10 @@
         "date": "2023-01-01",
         "home": "PHI",
         "away": "NO",
-        "final": 10,
+        "final": {
+          "home": 10,
+          "away": 20
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_17_NO_PHI.csv.gz"
       },
       {
@@ -3831,7 +5067,10 @@
         "date": "2023-01-08",
         "home": "PHI",
         "away": "NYG",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_18_NYG_PHI.csv.gz"
       },
       {
@@ -3840,7 +5079,10 @@
         "date": "2023-01-21",
         "home": "PHI",
         "away": "NYG",
-        "final": 38,
+        "final": {
+          "home": 38,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_20_NYG_PHI.csv.gz"
       },
       {
@@ -3849,7 +5091,10 @@
         "date": "2023-01-29",
         "home": "PHI",
         "away": "SF",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_21_SF_PHI.csv.gz"
       },
       {
@@ -3858,7 +5103,10 @@
         "date": "2023-02-12",
         "home": "PHI",
         "away": "KC",
-        "final": 35,
+        "final": {
+          "home": 35,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2022/2022_22_KC_PHI.csv.gz"
       }
     ]
@@ -3872,7 +5120,10 @@
         "date": "2023-09-10",
         "home": "NE",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_01_PHI_NE.csv.gz"
       },
       {
@@ -3881,7 +5132,10 @@
         "date": "2023-09-14",
         "home": "PHI",
         "away": "MIN",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_02_MIN_PHI.csv.gz"
       },
       {
@@ -3890,7 +5144,10 @@
         "date": "2023-09-25",
         "home": "TB",
         "away": "PHI",
-        "final": 11,
+        "final": {
+          "home": 11,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_03_PHI_TB.csv.gz"
       },
       {
@@ -3899,7 +5156,10 @@
         "date": "2023-10-01",
         "home": "PHI",
         "away": "WAS",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 31
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_04_WAS_PHI.csv.gz"
       },
       {
@@ -3908,7 +5168,10 @@
         "date": "2023-10-08",
         "home": "LA",
         "away": "PHI",
-        "final": 14,
+        "final": {
+          "home": 14,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_05_PHI_LA.csv.gz"
       },
       {
@@ -3917,7 +5180,10 @@
         "date": "2023-10-15",
         "home": "NYJ",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 14
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_06_PHI_NYJ.csv.gz"
       },
       {
@@ -3926,7 +5192,10 @@
         "date": "2023-10-22",
         "home": "PHI",
         "away": "MIA",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_07_MIA_PHI.csv.gz"
       },
       {
@@ -3935,7 +5204,10 @@
         "date": "2023-10-29",
         "home": "WAS",
         "away": "PHI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 38
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_08_PHI_WAS.csv.gz"
       },
       {
@@ -3944,7 +5216,10 @@
         "date": "2023-11-05",
         "home": "PHI",
         "away": "DAL",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_09_DAL_PHI.csv.gz"
       },
       {
@@ -3953,7 +5228,10 @@
         "date": "2023-11-20",
         "home": "KC",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 21
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_11_PHI_KC.csv.gz"
       },
       {
@@ -3962,7 +5240,10 @@
         "date": "2023-11-26",
         "home": "PHI",
         "away": "BUF",
-        "final": 37,
+        "final": {
+          "home": 37,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_12_BUF_PHI.csv.gz"
       },
       {
@@ -3971,7 +5252,10 @@
         "date": "2023-12-03",
         "home": "PHI",
         "away": "SF",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 42
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_13_SF_PHI.csv.gz"
       },
       {
@@ -3980,7 +5264,10 @@
         "date": "2023-12-10",
         "home": "DAL",
         "away": "PHI",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_14_PHI_DAL.csv.gz"
       },
       {
@@ -3989,7 +5276,10 @@
         "date": "2023-12-18",
         "home": "SEA",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 17
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_15_PHI_SEA.csv.gz"
       },
       {
@@ -3998,7 +5288,10 @@
         "date": "2023-12-25",
         "home": "PHI",
         "away": "NYG",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 25
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_16_NYG_PHI.csv.gz"
       },
       {
@@ -4007,7 +5300,10 @@
         "date": "2023-12-31",
         "home": "PHI",
         "away": "ARI",
-        "final": 31,
+        "final": {
+          "home": 31,
+          "away": 35
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_17_ARI_PHI.csv.gz"
       },
       {
@@ -4016,7 +5312,10 @@
         "date": "2024-01-07",
         "home": "NYG",
         "away": "PHI",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_18_PHI_NYG.csv.gz"
       },
       {
@@ -4025,7 +5324,10 @@
         "date": "2024-01-15",
         "home": "TB",
         "away": "PHI",
-        "final": 32,
+        "final": {
+          "home": 32,
+          "away": 9
+        },
         "pbp_url": "/assets/data/pbp/2023/2023_19_PHI_TB.csv.gz"
       }
     ]
@@ -4039,7 +5341,10 @@
         "date": "2024-09-06",
         "home": "PHI",
         "away": "GB",
-        "final": 34,
+        "final": {
+          "home": 34,
+          "away": 29
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_01_GB_PHI.csv.gz"
       },
       {
@@ -4048,7 +5353,10 @@
         "date": "2024-09-16",
         "home": "PHI",
         "away": "ATL",
-        "final": 21,
+        "final": {
+          "home": 21,
+          "away": 22
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_02_ATL_PHI.csv.gz"
       },
       {
@@ -4057,7 +5365,10 @@
         "date": "2024-09-22",
         "home": "NO",
         "away": "PHI",
-        "final": 12,
+        "final": {
+          "home": 12,
+          "away": 15
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_03_PHI_NO.csv.gz"
       },
       {
@@ -4066,7 +5377,10 @@
         "date": "2024-09-29",
         "home": "TB",
         "away": "PHI",
-        "final": 33,
+        "final": {
+          "home": 33,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_04_PHI_TB.csv.gz"
       },
       {
@@ -4075,7 +5389,10 @@
         "date": "2024-10-13",
         "home": "PHI",
         "away": "CLE",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_06_CLE_PHI.csv.gz"
       },
       {
@@ -4084,7 +5401,10 @@
         "date": "2024-10-20",
         "home": "NYG",
         "away": "PHI",
-        "final": 3,
+        "final": {
+          "home": 3,
+          "away": 28
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_07_PHI_NYG.csv.gz"
       },
       {
@@ -4093,7 +5413,10 @@
         "date": "2024-10-27",
         "home": "CIN",
         "away": "PHI",
-        "final": 17,
+        "final": {
+          "home": 17,
+          "away": 37
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_08_PHI_CIN.csv.gz"
       },
       {
@@ -4102,7 +5425,10 @@
         "date": "2024-11-03",
         "home": "PHI",
         "away": "JAX",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_09_JAX_PHI.csv.gz"
       },
       {
@@ -4111,7 +5437,10 @@
         "date": "2024-11-10",
         "home": "DAL",
         "away": "PHI",
-        "final": 6,
+        "final": {
+          "home": 6,
+          "away": 34
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_10_PHI_DAL.csv.gz"
       },
       {
@@ -4120,7 +5449,10 @@
         "date": "2024-11-14",
         "home": "PHI",
         "away": "WAS",
-        "final": 26,
+        "final": {
+          "home": 26,
+          "away": 18
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_11_WAS_PHI.csv.gz"
       },
       {
@@ -4129,7 +5461,10 @@
         "date": "2024-11-24",
         "home": "LA",
         "away": "PHI",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 37
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_12_PHI_LA.csv.gz"
       },
       {
@@ -4138,7 +5473,10 @@
         "date": "2024-12-01",
         "home": "BAL",
         "away": "PHI",
-        "final": 19,
+        "final": {
+          "home": 19,
+          "away": 24
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_13_PHI_BAL.csv.gz"
       },
       {
@@ -4147,7 +5485,10 @@
         "date": "2024-12-08",
         "home": "PHI",
         "away": "CAR",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 16
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_14_CAR_PHI.csv.gz"
       },
       {
@@ -4156,7 +5497,10 @@
         "date": "2024-12-15",
         "home": "PHI",
         "away": "PIT",
-        "final": 27,
+        "final": {
+          "home": 27,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_15_PIT_PHI.csv.gz"
       },
       {
@@ -4165,7 +5509,10 @@
         "date": "2024-12-22",
         "home": "WAS",
         "away": "PHI",
-        "final": 36,
+        "final": {
+          "home": 36,
+          "away": 33
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_16_PHI_WAS.csv.gz"
       },
       {
@@ -4174,7 +5521,10 @@
         "date": "2024-12-29",
         "home": "PHI",
         "away": "DAL",
-        "final": 41,
+        "final": {
+          "home": 41,
+          "away": 7
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_17_DAL_PHI.csv.gz"
       },
       {
@@ -4183,7 +5533,10 @@
         "date": "2025-01-05",
         "home": "PHI",
         "away": "NYG",
-        "final": 20,
+        "final": {
+          "home": 20,
+          "away": 13
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_18_NYG_PHI.csv.gz"
       },
       {
@@ -4192,7 +5545,10 @@
         "date": "2025-01-12",
         "home": "PHI",
         "away": "GB",
-        "final": 22,
+        "final": {
+          "home": 22,
+          "away": 10
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_19_GB_PHI.csv.gz"
       },
       {
@@ -4201,7 +5557,10 @@
         "date": "2025-01-19",
         "home": "PHI",
         "away": "LA",
-        "final": 28,
+        "final": {
+          "home": 28,
+          "away": 22
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_20_LA_PHI.csv.gz"
       },
       {
@@ -4210,7 +5569,10 @@
         "date": "2025-01-26",
         "home": "PHI",
         "away": "WAS",
-        "final": 55,
+        "final": {
+          "home": 55,
+          "away": 23
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_21_WAS_PHI.csv.gz"
       },
       {
@@ -4219,8 +5581,28 @@
         "date": "2025-02-09",
         "home": "PHI",
         "away": "KC",
-        "final": 40,
+        "final": {
+          "home": 40,
+          "away": 22
+        },
         "pbp_url": "/assets/data/pbp/2024/2024_22_KC_PHI.csv.gz"
+      }
+    ]
+  },
+  {
+    "season": 2025,
+    "games": [
+      {
+        "game_id": "2025_01_DAL_PHI",
+        "week": 1,
+        "date": "2025-09-04",
+        "home": "PHI",
+        "away": "DAL",
+        "final": {
+          "home": 24,
+          "away": 20
+        },
+        "pbp_url": "/assets/data/pbp/2025/2025_01_DAL_PHI.csv.gz"
       }
     ]
   }
