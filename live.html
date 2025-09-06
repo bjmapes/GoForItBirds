@@ -75,7 +75,7 @@ title: Live View
                 <tr>
                   <td>Field goal</td>
                   <td>[fg_wp]</td>
-                  <td>[fg_prob]</td>
+                  <td x-text="play.fg_prob ?? '[fg_prob]'"></td>
                   <td>[miss_fg_wp]</td>
                   <td>[make_fg_wp]</td>
                 </tr>
@@ -89,6 +89,37 @@ title: Live View
     </ul>
   </template>
 </div>
+
+<script>
+  // Preloaded FG table and helpers (sync lookup)
+  window.fgTable = null;
+  window.fgMap = null;
+  window.fgMin = null;
+  window.fgMax = null;
+
+  async function loadFgTable() {
+    if (window.fgMap) return; // already loaded
+    const res = await fetch('{{ site.baseurl }}/assets/data/baseline_field_goal_metrics.json', { cache: 'no-store' });
+    if (!res.ok) { console.error('FG table fetch failed', res.status, res.url); return; }
+    const data = await res.json();
+    // Ensure ascending order and build a fast lookup map
+    data.sort((a, b) => a.yards_from_endzone - b.yards_from_endzone);
+    window.fgTable = data;
+    window.fgMap = Object.fromEntries(
+      data.map(r => [String(Math.round(r.yards_from_endzone)), Number(r.fg_prob)])
+    );
+    const ds = data.map(r => r.yards_from_endzone);
+    window.fgMin = Math.min(...ds);
+    window.fgMax = Math.max(...ds);
+  }
+
+  function lookupFgProb(yards) {
+    if (!Number.isFinite(yards) || !window.fgMap) return null;
+    const y = Math.round(yards);
+    const clamped = Math.min(window.fgMax, Math.max(window.fgMin, y));
+    return window.fgMap[String(clamped)] ?? null;
+  }
+</script>
 
 <script>
 function addBirdsContext(play, ctx) {
@@ -152,6 +183,28 @@ function addBirdsContext(play, ctx) {
 
     play.actual_decision = decision;
   })();
+
+  (function attachFgProb() {
+    const yardLine = Number(play.start?.yardLine);
+    let yardsToEndzone = null;
+
+    if (Number.isFinite(yardLine)) {
+      // ESPN yardLine: 0 at home GL → 100 at away GL
+      yardsToEndzone = play.birdsIsHome ? (100 - yardLine) : yardLine;
+    } else {
+      const rawYardsToEndzone = Number(play.start?.yardsToEndzone);
+      if (Number.isFinite(rawYardsToEndzone)) yardsToEndzone = rawYardsToEndzone;
+    }
+
+    if (Number.isFinite(yardsToEndzone)) {
+      const prob = lookupFgProb(yardsToEndzone);
+      play.fg_prob = prob;
+      play.fg_estimated_prob = prob;
+    } else {
+      play.fg_prob = null;
+    }
+  })();
+
 
   return play;
 }
@@ -219,7 +272,8 @@ function fetchFourthDownPlaysForGame(gameId) {
       nextGame: null,
       //intervalMs: 30000,
       intervalMs: null,
-      startPolling() {
+      async startPolling() {
+        await loadFgTable();
         this.poll();
         //setInterval(() => this.poll(), this.intervalMs);
       },
