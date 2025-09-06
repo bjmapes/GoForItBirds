@@ -81,17 +81,20 @@
             <tr>
                 <td>Field goal</td>
                 <td>{{play.fg_wp | times: 100 | round}}</td>
-                <td>{{play.fg_make_prob | times: 100 | round}}</td>
-                <td>{{play.miss_fg_wp | times: 100 | round}}</td>
-                <td>{{play.make_fg_wp | times: 100 | round}}</td>
+                <td>
+                    {% assign fga = play.field_goal_attempt | default: 0 | plus: 0 %}
+                    {% if fga > 0 %}
+                        {{ play.fg_prob | times: 100 | round }}
+                    {% else %}
+                        {{ play.fg_make_prob | times: 100 | round }}
+                    {% endif %}
+                </td>
             </tr>
         </tbody>
         </table>
     </div>
 
 </div>
-
-
 
 
 
@@ -482,8 +485,6 @@
 <tr><td>ydsnet</td><td>{{ play.ydsnet }}</td></tr>
 <tr><td>ydstogo</td><td>{{ play.ydstogo }}</td></tr>
 <tr><td>yrdln</td><td>{{ play.yrdln }}</td></tr></tr></table>
-
-
 
 
 
