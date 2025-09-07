@@ -8,6 +8,7 @@ library(readr)
 library(jsonlite)
 library(stringr)
 library(tibble)
+library(nfl4th)
 
 # ---- Config ----
 # Seasons/args passthrough: do NOT interpret. Whatever is provided on CLI
@@ -81,6 +82,30 @@ gids <- unique(eagles_pbp$game_id)
 for (i in seq_along(gids)) {
   gid <- gids[[i]]
   g <- eagles_pbp %>% filter(game_id == gid)
+
+  # Add decision label, 4th-down probabilities, and model recommendation
+  g <- g %>%
+    dplyr::mutate(
+      actual_decision = dplyr::case_when(
+        play_type == "punt" ~ "Punt",
+        play_type == "field_goal" ~ "Field Goal",
+        play_type %in% c("run", "pass") ~ "Go for it",
+        TRUE ~ "Other"
+      )
+    )
+
+  # Add nfl4th model probabilities (non-4th downs will be NA)
+  g <- nfl4th::add_4th_probs(g)
+
+  # Pick model recommendation based on win probabilities
+  g <- g %>%
+    dplyr::mutate(
+      model_recommendation = dplyr::case_when(
+        go_wp > fg_wp & go_wp > punt_wp ~ "Go for it",
+        fg_wp > punt_wp ~ "Field Goal",
+        TRUE ~ "Punt"
+      )
+    )
 
   if (nrow(g) == 0) next
 
