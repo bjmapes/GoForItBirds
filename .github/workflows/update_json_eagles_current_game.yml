@@ -1,5 +1,4 @@
 name: update-json-eagles-current-game
-name: update-json-eagles-current-game
 
 on:
   workflow_dispatch:
