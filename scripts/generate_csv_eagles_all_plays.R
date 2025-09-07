@@ -79,27 +79,25 @@ message("Writing per-game CSV.gz ...")
 idx_list <- list()
 gids <- unique(eagles_pbp$game_id)
 
-for (i in seq_along(gids)) {
-  gid <- gids[[i]]
-  g <- eagles_pbp %>% filter(game_id == gid)
+# ---- Enrich once (outside the write loop) ----
+  # --- Preserve original season for output/index ---
+  eagles_pbp <- eagles_pbp %>%
+    dplyr::mutate(season_orig = season)
 
-  # Add decision label, 4th-down probabilities, and model recommendation
-  g <- g %>%
+  # --- Enrich once (use 2024 model for any 2025 games; no date logic) ---
+  enriched <- eagles_pbp %>%
     dplyr::mutate(
+      season = dplyr::if_else(season_orig == 2025L, 2024L, season_orig),
       actual_decision = dplyr::case_when(
         play_type == "punt" ~ "Punt",
         play_type == "field_goal" ~ "Field Goal",
         play_type %in% c("run", "pass") ~ "Go for it",
         TRUE ~ "Other"
       )
-    )
-
-  # Add nfl4th model probabilities (non-4th downs will be NA)
-  g <- nfl4th::add_4th_probs(g)
-
-  # Pick model recommendation based on win probabilities
-  g <- g %>%
+    ) %>%
+    nfl4th::add_4th_probs() %>%
     dplyr::mutate(
+      season = season_orig,
       model_recommendation = dplyr::case_when(
         go_wp > fg_wp & go_wp > punt_wp ~ "Go for it",
         fg_wp > punt_wp ~ "Field Goal",
@@ -107,16 +105,37 @@ for (i in seq_along(gids)) {
       )
     )
 
+  # --- Meta uses original season for paths/index ---
+  meta <- enriched %>%
+    dplyr::group_by(game_id) %>%
+    dplyr::summarise(
+      season = dplyr::first(season_orig),
+      week   = dplyr::first(week),
+      date   = as.character(dplyr::first(game_date)),
+      home   = dplyr::first(home_team),
+      away   = dplyr::first(away_team),
+      final_home = last_non_na(total_home_score),
+      final_away = last_non_na(total_away_score),
+      .groups = "drop"
+    )
+
+gids <- meta$game_id
+
+for (i in seq_along(gids)) {
+  gid <- gids[[i]]
+  g <- enriched %>% dplyr::filter(game_id == gid)
+
   if (nrow(g) == 0) next
 
-  season <- dplyr::first(g$season)
-  week   <- dplyr::first(g$week)
-  date   <- as.character(dplyr::first(g$game_date))
-  home   <- dplyr::first(g$home_team)
-  away   <- dplyr::first(g$away_team)
-
-  final_home <- last_non_na(g$total_home_score)
-  final_away <- last_non_na(g$total_away_score)
+  # pull meta for this game
+  m <- meta %>% dplyr::filter(game_id == gid) %>% dplyr::slice(1)
+  season <- m$season
+  week   <- m$week
+  date   <- m$date
+  home   <- m$home
+  away   <- m$away
+  final_home <- m$final_home
+  final_away <- m$final_away
 
   # Ensure season directory exists
   season_dir <- file.path(pbp_out_dir, as.character(season))
@@ -125,14 +144,14 @@ for (i in seq_along(gids)) {
   # Output file path
   csv_gz_path <- file.path(season_dir, paste0(gid, ".csv.gz"))
 
-  # Write gzipped CSV (all plays for both teams)
+  # Write gzipped CSV (all plays for both teams, enriched with 4th-down model fields)
   message(sprintf("  • (%d/%d) %s", i, length(gids), gid))
   con <- gzfile(csv_gz_path, open = "wb")
-  write_csv(g, con)
+  readr::write_csv(g, con)
   close(con)
 
   # Collect index row
-  idx_list[[length(idx_list) + 1]] <- tibble(
+  idx_list[[length(idx_list) + 1]] <- tibble::tibble(
     season = season,
     game_id = gid,
     week = week,
