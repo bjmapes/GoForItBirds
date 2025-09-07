@@ -1,0 +1,22 @@
+name: generate-csv-eagles-current-game
+on: { workflow_dispatch: {} }
+permissions: { contents: write }
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    container: ghcr.io/bjmapes/goforitbirds/r:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run current game generator
+        run: Rscript scripts/generate_csv_eagles_current_game.R
+      - name: Commit CSV if changed
+        run: |
+          if [ -n "$(git status --porcelain assets/data/current_game.csv)" ]; then
+            git config user.email "actions@users.noreply.github.com"
+            git config user.name "github-actions"
+            git add assets/data/current_game.csv
+            git commit -m "chore: update current_game.csv"
+            git push
+          else
+            echo "No changes to commit."
+          fi
