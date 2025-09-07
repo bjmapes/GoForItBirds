@@ -3,6 +3,8 @@ baseurl: "/GoForItBirds"
 incremental: true
 exclude:
   - venv/
+  - venv/**
+  - .venv/**
   - node_modules/
   - Gemfile
   - Gemfile.lock

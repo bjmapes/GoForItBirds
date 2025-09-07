@@ -1,6 +1,10 @@
 incremental: true
+data_dir: _data_dev
 defaults:
   - scope:
       path: "games"
     values:
       published: false
+exclude:
+  - venv/**
+  - .venv/**
