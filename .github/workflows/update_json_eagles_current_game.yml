@@ -1,0 +1,28 @@
+name: update-json-eagles-current-game
+name: update-json-eagles-current-game
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache: true
+          packages: |
+            any::nflfastR
+            any::nflreadr
+            any::dplyr
+            any::readr
+
+      - name: Test nflfastR scraper
+        run: |
+          Rscript -e "library(nflfastR); pbp <- fast_scraper(2025, weeks = 1, teams = 'PHI'); print(head(pbp))"
