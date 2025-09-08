@@ -9,6 +9,7 @@ library(jsonlite)
 library(stringr)
 library(tibble)
 library(nfl4th)
+source("scripts/helper.R")
 
 # ---- Config ----
 # Seasons/args passthrough: do NOT interpret. Whatever is provided on CLI
@@ -79,45 +80,22 @@ message("Writing per-game CSV.gz ...")
 idx_list <- list()
 gids <- unique(eagles_pbp$game_id)
 
-# ---- Enrich once (outside the write loop) ----
-  # --- Preserve original season for output/index ---
-  eagles_pbp <- eagles_pbp %>%
-    dplyr::mutate(season_orig = season)
+# ---- Enrich once ----
+enriched <- enrich_with_nfl4th(eagles_pbp)
 
-  # --- Enrich once (use 2024 model for any 2025 games; no date logic) ---
-  enriched <- eagles_pbp %>%
-    dplyr::mutate(
-      season = dplyr::if_else(season_orig == 2025L, 2024L, season_orig),
-      actual_decision = dplyr::case_when(
-        play_type == "punt" ~ "Punt",
-        play_type == "field_goal" ~ "Field Goal",
-        play_type %in% c("run", "pass") ~ "Go for it",
-        TRUE ~ "Other"
-      )
-    ) %>%
-    nfl4th::add_4th_probs() %>%
-    dplyr::mutate(
-      season = season_orig,
-      model_recommendation = dplyr::case_when(
-        go_wp > fg_wp & go_wp > punt_wp ~ "Go for it",
-        fg_wp > punt_wp ~ "Field Goal",
-        TRUE ~ "Punt"
-      )
-    )
-
-  # --- Meta uses original season for paths/index ---
-  meta <- enriched %>%
-    dplyr::group_by(game_id) %>%
-    dplyr::summarise(
-      season = as.integer(substr(dplyr::first(game_id), 1, 4)),
-      week   = dplyr::first(week),
-      date   = as.character(dplyr::first(game_date)),
-      home   = dplyr::first(home_team),
-      away   = dplyr::first(away_team),
-      final_home = last_non_na(total_home_score),
-      final_away = last_non_na(total_away_score),
-      .groups = "drop"
-    )
+# --- Meta uses original season for paths/index ---
+meta <- enriched %>%
+  dplyr::group_by(game_id) %>%
+  dplyr::summarise(
+    season = as.integer(substr(dplyr::first(game_id), 1, 4)),
+    week   = dplyr::first(week),
+    date   = as.character(dplyr::first(game_date)),
+    home   = dplyr::first(home_team),
+    away   = dplyr::first(away_team),
+    final_home = last_non_na(total_home_score),
+    final_away = last_non_na(total_away_score),
+    .groups = "drop"
+  )
 
 gids <- meta$game_id
 

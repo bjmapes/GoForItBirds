@@ -11,35 +11,24 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    container: ghcr.io/bjmapes/goforitbirds/r:latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: '4.3.1'
-
-      - name: Install dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: |
-            nflfastR
-            dplyr
-            purrr
-            readr
-            jsonlite
-            stringr
-            tibble
-          cache: true
-
       - name: Run R script
         run: Rscript scripts/generate_csv_eagles_all_plays.R TRUE
 
-      - name: Commit and push CSV updates
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: "Automated CSV update"
-          add: "_data/*.csv assets/data/*.csv"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit updates if changed
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.email "actions@users.noreply.github.com"
+          git config user.name "github-actions"
+          git add _data/games_index.json assets/data/games_index.json assets/data/pbp/**
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git pull --ff-only
+            git commit -m "chore: update all plays"
+            git push
+          fi
