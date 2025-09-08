@@ -109,7 +109,7 @@ gids <- unique(eagles_pbp$game_id)
   meta <- enriched %>%
     dplyr::group_by(game_id) %>%
     dplyr::summarise(
-      season = dplyr::first(season_orig),
+      season = as.integer(substr(dplyr::first(game_id), 1, 4)),
       week   = dplyr::first(week),
       date   = as.character(dplyr::first(game_date)),
       home   = dplyr::first(home_team),
@@ -142,7 +142,11 @@ for (i in seq_along(gids)) {
   dir.create(season_dir, recursive = TRUE, showWarnings = FALSE)
 
   # Output file path
-  csv_gz_path <- file.path(season_dir, paste0(gid, ".csv.gz"))
+  cal_year <- format(as.Date(date), "%Y")
+  parts <- strsplit(gid, "_", fixed = TRUE)[[1]]
+  parts[1] <- cal_year
+  file_base <- paste(parts, collapse = "_")
+  csv_gz_path <- file.path(season_dir, paste0(file_base, ".csv.gz"))
 
   # Write gzipped CSV (all plays for both teams, enriched with 4th-down model fields)
   message(sprintf("  • (%d/%d) %s", i, length(gids), gid))
