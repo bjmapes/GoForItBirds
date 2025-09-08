@@ -25,6 +25,8 @@ pbp <- nflfastR::fast_scraper(game_id = game_id)
 if (nrow(pbp) == 0) stop("No plays returned for game_id: ", game_id)
 enriched <- enrich_with_nfl4th(pbp)
 
+schema <- get_master_schema()
+enriched <- enforce_schema_strict(enriched, schema$names, add_missing = TRUE, drop_extras = TRUE)
 # ---- Write CSV (no gzip, no commit) ----
 readr::write_csv(enriched, out_path)
 message("Wrote: ", normalizePath(out_path, winslash = "/"))

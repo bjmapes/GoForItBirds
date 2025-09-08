@@ -1,4 +1,4 @@
-# scripts/generate_csv_eagles_all_plays_historic.R
+# scripts/generate_csv_eagles_all_plays.R
 
 # ---- Packages ----
 library(nflfastR)
@@ -81,7 +81,8 @@ idx_list <- list()
 gids <- unique(eagles_pbp$game_id)
 
 # ---- Enrich once ----
-enriched <- enrich_with_nfl4th(eagles_pbp)
+enriched <- enrich_with_nfl4th(eagles_pbp) %>%
+  add_frontend_columns("PHI")
 
 # --- Meta uses original season for paths/index ---
 meta <- enriched %>%
