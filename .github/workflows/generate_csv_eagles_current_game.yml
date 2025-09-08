@@ -9,6 +9,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run current game generator
         run: Rscript scripts/generate_csv_eagles_current_game.R
+      - name: List assets dir
+        run: ls -l assets/data
       - name: Commit CSV if changed
         run: |
           if [ -n "$(git status --porcelain assets/data/current_game.csv)" ]; then
