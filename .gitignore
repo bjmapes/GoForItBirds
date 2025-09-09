@@ -9,3 +9,4 @@ vendor/
 .venv/
 .vscode/
 project-plan.txt
+node_modules
