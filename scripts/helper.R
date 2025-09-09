@@ -1,4 +1,3 @@
-# frozen_string_literal: false
 suppressPackageStartupMessages({
   library(nflfastR)
   library(nfl4th)
@@ -176,16 +175,18 @@ add_frontend_columns <- function(df, team = "PHI") {
     ifelse(is.na(x), NA_real_, round(x * 100))
   }
 
-  # decision_resolved
+  # decision calculation
   punt_flag <- as.integer(df$punt_attempt %||% 0)
   fg_flag   <- as.integer(df$field_goal_attempt %||% 0)
-  pass_flag <- as.integer(df$pass %||% 0)
-  rush_flag <- as.integer(df$rush %||% 0)
+  pass_flag <- as.integer((("pass" %in% names(df)) && !is.null(df[["pass"]])) * (df[["pass"]] %||% 0))
+  rush_flag <- as.integer((("rush" %in% names(df)) && !is.null(df[["rush"]])) * (df[["rush"]] %||% 0))
   desc_low  <- to_lower(df$desc)
 
-  actual_decision_calculated <- df$actual_decision
-  actual_decision_calculated[is.na(actual_decision_calculated)] <- ""
+  # start from base decision, defaulting NAs to "Other"
+  base_decision <- dplyr::coalesce(df$actual_decision, "Other")
+  actual_decision_calculated <- base_decision
 
+  # for rows that are still "Other", try to infer from flags/desc
   idx_other <- which(actual_decision_calculated == "Other")
   if (length(idx_other)) {
     is_punt <- punt_flag[idx_other] > 0 |
@@ -197,14 +198,23 @@ add_frontend_columns <- function(df, team = "PHI") {
       has_substr(desc_low[idx_other], "field goal")
     is_go <- pass_flag[idx_other] > 0 | rush_flag[idx_other] > 0
 
+    is_punt[is.na(is_punt)] <- FALSE
+    is_fg[is.na(is_fg)] <- FALSE
+    is_go[is.na(is_go)] <- FALSE
+
     actual_decision_calculated[idx_other] <- ifelse(is_punt, "Punt",
-                                    ifelse(is_fg, "Field Goal",
-                                    ifelse(is_go, "Go for it", "Other")))
-    has_pen <- has_substr(desc_low[idx_other], "penalty")
-    actual_decision_calculated[idx_other] <- ifelse(has_pen,
-                                           paste0(actual_decision_calculated[idx_other], " (Penalty)"),
-                                           actual_decision_calculated[idx_other])
+                                            ifelse(is_fg, "Field Goal",
+                                            ifelse(is_go, "Go for it", "Other")))
   }
+
+  # append penalty tag whenever it is a penalty/no_play by any indicator
+  has_pen_any <- (as.integer(df$penalty %||% 0) > 0) |
+                 has_substr(desc_low, "penalty") |
+                 (!is.null(df$play_type) & tolower(as.character(df$play_type)) == "no_play") |
+                 (!is.null(df$play_type_nfl) & toupper(as.character(df$play_type_nfl)) == "PENALTY")
+  actual_decision_calculated <- ifelse(has_pen_any,
+                                       paste0(actual_decision_calculated, " (Penalty)"),
+                                       actual_decision_calculated)
 
   # phi_coach
   phi_coach <- ifelse(df$home_team == team, df$home_coach, df$away_coach)

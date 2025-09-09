@@ -1,394 +1,107 @@
 ---
 layout: default
-title: Live View
+title: Live Analysis
 ---
 
-<div x-data="live4thDown" x-init="startPolling()">
-  <h1>Live Birds 4th Down Decision</h1>
+<h1>{{ page.title }}</h1>
 
-  <template x-if="!isBirdsPlaying && !fourthDownPlays && !nextGame">
-    <p>No Birds game found.</p>
-  </template>
+<div id="live-root" class="tile-list full"></div>
 
-  <template x-if="nextGame">
-    <div>
-      <p><strong>Next Birds Game:</strong> <span x-text="nextGame.name"></span></p>
-      <p><strong>Start Time:</strong> <span x-text="nextGame.date"></span></p>
-    </div>
-  </template>
+<script>
+(function(){
+  const URL = '{{ "/assets/data/current_game.csv" | relative_url }}';
+  const root = document.getElementById('live-root');
 
-  <template x-if="fourthDownPlays && !isBirdsPlaying">
-    <div>
-      <p><strong>Last Birds Game:</strong> <span x-text="fourthDownPlays.game"></span></p>
-      <p><strong>Final Score:</strong> <span x-text="fourthDownPlays.score"></span></p>
-    </div>
-  </template>
+  // Helper: robust CSV parser (handles quotes)
+  function parseCSVRobust(text){
+    const rows = [];
+    let i = 0, field = '', row = [], inQuotes = false;
+    const pushField = () => { row.push(field); field = ''; };
+    const pushRow = () => { rows.push(row); row = []; };
+    while (i < text.length){
+      const c = text[i++];
+      if (inQuotes){
+        if (c === '"'){
+          if (text[i] === '"'){ field += '"'; i++; }
+          else { inQuotes = false; }
+        } else { field += c; }
+      } else {
+        if (c === '"') { inQuotes = true; }
+        else if (c === ',') { pushField(); }
+        else if (c === '\n') { pushField(); pushRow(); }
+        else if (c === '\r') { /* ignore */ }
+        else { field += c; }
+      }
+    }
+    if (field.length || row.length) { pushField(); pushRow(); }
+    const header = rows.shift();
+    return { header, rows: rows.map(r => {
+      const o = {}; header.forEach((h,idx)=>o[h]=r[idx]??''); return o;
+    }) };
+  }
 
-  <template x-if="fourthDownPlays">
-    <ul class="tile-list full">
-      <template x-for="play in fourthDownPlays" :key="play.id">
-      <li>
+  (async function(){
+    root.textContent = 'Loading…';
+    const res = await fetch(URL, { cache: 'no-store' });
+    if(!res.ok){ root.textContent = 'Failed to load current_game.csv'; return; }
+    const { header: h, rows: plays } = parseCSVRobust(await res.text());
+    root.innerHTML = '';
+    if (!plays || plays.length === 0){
+      root.textContent = 'No rows in current_game.csv';
+      return;
+    }
+    // Show header using first row
+    const r = plays[0];
+    const header = document.querySelector('h1');
+    header.textContent = `Week ${r.week} — ${r.away_team} at ${r.home_team} - ` + header.textContent;
+
+    // Filter to PHI opponent defense and 4th down
+    const phi4th = plays.filter(p => p.defteam !== 'PHI' && Number(p.down) === 4);
+
+
+    for (const p of phi4th){
+      const li = document.createElement('li');
+
+      li.innerHTML = `
         <div class="tile-play">
-
           <div class="tile-play-status">
-            <div x-text="`Q${play.period?.number} ${play.clock?.displayValue} • ${
-              play.start.downDistanceText?.endsWith('at 50') 
-                ? play.start.downDistanceText.replace('at 50','at MID 50') 
-                : play.start.downDistanceText
-                }`">
-            </div>            
-            <div x-text="`Birds ${play.birds_score} - Opp ${play.opp_score}`"></div>
-            <div x-text="'Model: [model_recommendation]'"></div>
-            <div x-text="`Nick Sirianni: ${play.actual_decision}`"></div>
+            <div>Q${p.qtr||''} ${p.game_clock||''} • ${p.down||''}th &amp; ${p.ydstogo||''} at ${p.yrdln||''}</div>
+            <div>${p.away_team||''} ${p.away_score||''} - ${p.home_team||''} ${p.home_score||''}</div>
+            <div>Model: ${p.model_recommendation||''}</div>
+            <div>${p.phi_coach||''}: ${p.actual_decision_calculated||''}</div>
           </div>
-
-          <div class="tile-play-description">
-            <div x-text="play.text"></div>
-          </div>
-
-          <div class="tile-play-table ">
+          <div class="tile-play-description"><div>${p.desc||''}</div></div>
+          <div class="tile-play-table">
             <table>
               <thead>
-                <tr>
-                  <th></th>
-                  <th>Win%</th>
-                  <th>Success%</th>
-                  <th>Win% if Fail</th>
-                  <th>Win% if Succeed</th>
-                </tr>
+                <tr><th></th><th>Win%</th><th>Success%</th><th>Win% if Fail</th><th>Win% if Succeed</th></tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Go for it</td>
-                  <td>[go_wp]</td>
-                  <td>[first_down_prob]</td>
-                  <td>[wp_fail]</td>
-                  <td>[wp_succeed]</td>
+                  <td>${p.go_wp_pct||''}</td>
+                  <td>${p.first_down_prob_pct||''}</td>
+                  <td>${p.wp_fail_pct||''}</td>
+                  <td>${p.wp_succeed_pct||''}</td>
                 </tr>
                 <tr>
                   <td>Punt</td>
-                  <td>[punt_wp]</td>
-                  <td>[success_na]</td>
-                  <td>[fail_na]</td>
-                  <td>[succeed_na]</td>
+                  <td>${p.punt_wp_pct||''}</td>
+                  <td>NA</td><td>NA</td><td>NA</td>
                 </tr>
                 <tr>
                   <td>Field goal</td>
-                  <td>[fg_wp]</td>
-                  <td x-text="play.fg_prob ?? '[fg_prob]'"></td>
-                  <td>[miss_fg_wp]</td>
-                  <td>[make_fg_wp]</td>
+                  <td>${p.fg_wp_pct||''}</td>
+                  <td>${p.fg_prob_calculated_pct||''}</td>
+                  <td>${p.miss_fg_wp_pct||''}</td>
+                  <td>${p.make_fg_wp_pct||''}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          
-        </div>
-      </li>
-      </template>
-    </ul>
-  </template>
-</div>
-
-<script>
-  // Preloaded FG table and helpers (sync lookup)
-  window.fgTable = null;
-  window.fgMap = null;
-  window.fgMin = null;
-  window.fgMax = null;
-
-  async function loadFgTable() {
-    if (window.fgMap) return; // already loaded
-    const res = await fetch('{{ site.baseurl }}/assets/data/baseline_field_goal_metrics.json', { cache: 'no-store' });
-    if (!res.ok) { console.error('FG table fetch failed', res.status, res.url); return; }
-    const data = await res.json();
-    // Ensure ascending order and build a fast lookup map
-    data.sort((a, b) => a.yards_from_endzone - b.yards_from_endzone);
-    window.fgTable = data;
-    window.fgMap = Object.fromEntries(
-      data.map(r => [String(Math.round(r.yards_from_endzone)), Number(r.fg_prob)])
-    );
-    const ds = data.map(r => r.yards_from_endzone);
-    window.fgMin = Math.min(...ds);
-    window.fgMax = Math.max(...ds);
-  }
-
-  function lookupFgProb(yards) {
-    if (!Number.isFinite(yards) || !window.fgMap) return null;
-    const y = Math.round(yards);
-    const clamped = Math.min(window.fgMax, Math.max(window.fgMin, y));
-    return window.fgMap[String(clamped)] ?? null;
-  }
-</script>
-
-<script>
-function addBirdsContext(play, ctx) {
-  // ctx.birdsIsHome is a boolean derived from competition competitors (team 21 home/away)
-  const birdsIsHome = !!ctx?.birdsIsHome;
-
-  // ESPN attaches scores after the play. Adjust to pre-play when scoring occurs.
-  let homeScore = play.homeScore ?? null;
-  let awayScore = play.awayScore ?? null;
-
-  if (play.scoringPlay === true && Number.isFinite(play.scoreValue) && play.scoreValue > 0) {
-    const teamRef = play.team?.$ref || '';
-    const eaglesScored = teamRef.includes('/21'); // team 21 = Eagles
-
-    if (eaglesScored) {
-      // Subtract from the Eagles' side
-      if (birdsIsHome) {
-        homeScore = Math.max(0, (homeScore ?? 0) - play.scoreValue);
-      } else {
-        awayScore = Math.max(0, (awayScore ?? 0) - play.scoreValue);
-      }
-    } else {
-      // Opponent scored: subtract from the opponent's side
-      if (birdsIsHome) {
-        awayScore = Math.max(0, (awayScore ?? 0) - play.scoreValue);
-      } else {
-        homeScore = Math.max(0, (homeScore ?? 0) - play.scoreValue);
-      }
-    }
-  }
-
-  play.birdsIsHome = birdsIsHome;
-  play.birds_score = birdsIsHome ? homeScore : awayScore;
-  play.opp_score   = birdsIsHome ? awayScore : homeScore;
-
-  // Derive ACTUAL decision from ESPN fields (penalty-aware). Update play.actual_decision only.
-  (function deriveActualDecision() {
-    let decision = play.type?.text || '';
-    const abbr = play.type?.abbreviation || '';
-    const desc = (play.text || '').toLowerCase();
-
-    if (abbr === 'PEN') {
-      if (desc.includes('punt formation') || desc.includes(' punt')) {
-        decision = 'Punt (Penalty)';
-      } else if (desc.includes('field goal formation') || desc.includes(' fg') || desc.includes('field goal')) {
-        decision = 'Field Goal (Penalty)';
-      } else if (desc.includes('pass') || desc.includes('rush')) {
-        decision = 'Go for it (Penalty)';
-      } else {
-        decision = 'Other (Penalty)';
-      }
-    } else {
-      if (abbr === 'PUNT') {
-        decision = 'Punt';
-      } else if (abbr === 'FG') {
-        decision = 'Field Goal';
-      } else {
-        decision = 'Go for it';
-      }
-    }
-
-    play.actual_decision = decision;
-  })();
-
-  (function attachFgProb() {
-    const yardLine = Number(play.start?.yardLine);
-    let yardsToEndzone = null;
-
-    if (Number.isFinite(yardLine)) {
-      // ESPN yardLine: 0 at home GL → 100 at away GL
-      yardsToEndzone = play.birdsIsHome ? (100 - yardLine) : yardLine;
-    } else {
-      const rawYardsToEndzone = Number(play.start?.yardsToEndzone);
-      if (Number.isFinite(rawYardsToEndzone)) yardsToEndzone = rawYardsToEndzone;
-    }
-
-    if (Number.isFinite(yardsToEndzone)) {
-      const prob = lookupFgProb(yardsToEndzone);
-      play.fg_prob = prob;
-      play.fg_estimated_prob = prob;
-    } else {
-      play.fg_prob = null;
+        </div>`;
+      root.appendChild(li);
     }
   })();
-
-
-  return play;
-}
-
-function getBirdsContextForGame(gameId) {
-  // Use site API summary to get competitors with home/away and abbreviations
-  return fetch(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=${gameId}`)
-    .then(res => res.json())
-    .then(summary => {
-      const comps = summary?.boxscore?.teams || summary?.competitions?.[0]?.competitors || [];
-      // Normalize competitors into objects with homeAway and team info
-      let home = null, away = null;
-      if (Array.isArray(comps)) {
-        // boxscore.teams format
-        const bsTeams = comps.filter(t => t?.homeAway && t?.team);
-        if (bsTeams.length === 2) {
-          home = bsTeams.find(t => t.homeAway === 'home');
-          away = bsTeams.find(t => t.homeAway === 'away');
-        } else {
-          // competitions[0].competitors format
-          home = comps.find(t => t.homeAway === 'home');
-          away = comps.find(t => t.homeAway === 'away');
-        }
-      }
-      const homeId  = home?.team?.id || home?.team?.$ref?.split('/').pop();
-      const awayId  = away?.team?.id || away?.team?.$ref?.split('/').pop();
-
-      const birdsIsHome = homeId === '21';
-
-      return { birdsIsHome };
-    })
-    .catch(() => ({ birdsIsHome: false }));
-}
-
-const ignoreTypeIds = ['70','2','21','74','75','65','66','53','32'];
-// coin toss, end period, timeout, official TO, two-minute warning, end of half, end of game, kickoff, kickoff return TD
-function fetchFourthDownPlaysForGame(gameId) {
-  return getBirdsContextForGame(gameId).then(ctx => {
-    return fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${gameId}/competitions/${gameId}/plays?limit=1000`)
-      .then(res => res.json())
-      .then(playsData => {
-        const rawPlays = playsData.items || [];
-        console.log("Total plays fetched:", rawPlays.length);
-        const filteredPlays = rawPlays
-          .filter(p =>
-            p.start?.down === 4 &&
-            p.start?.team?.$ref?.includes('/21') &&
-            !ignoreTypeIds.includes((p.type?.id || '').toString())
-          )
-          .map(p => addBirdsContext(p, ctx));
-        console.log("All 4th down plays count:", filteredPlays.length);
-        return filteredPlays;
-      });
-  });
-}
-
-  const params = new URLSearchParams(window.location.search);
-  const gameId = params.get('espn_game_id');
-
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('live4thDown', () => ({
-      fourthDownPlays: null,
-      latestHeader: null,
-      isBirdsPlaying: false,
-      nextGame: null,
-      //intervalMs: 30000,
-      intervalMs: null,
-      async startPolling() {
-        await loadFgTable();
-        this.poll();
-        //setInterval(() => this.poll(), this.intervalMs);
-      },
-      poll() {
-        if (gameId) {
-          this.isBirdsPlaying = true;
-          this.nextGame = null;
-          fetchFourthDownPlaysForGame(gameId)
-            .then(filteredPlays => {
-              this.fourthDownPlays = filteredPlays;
-              if (filteredPlays.length > 0) {
-                const latest = filteredPlays[0];
-                this.latestHeader = {
-                  game: `Game ID: ${gameId}`,
-                  quarter: latest.period?.number || "N/A",
-                  clock: latest.clock?.displayValue || "N/A",
-                  downDistance: latest.start?.downDistanceText || `${latest.start.down} & ${latest.start.distance}`,
-                  recommendation: latest.summary || "",
-                  score: "Score unknown"
-                };
-              }
-            });
-          return;
-        }
-        console.log('Polling...');
-        fetch('https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard')
-          .then(res => res.json())
-          .then(data => {
-            const games = data.events || [];
-            console.log("Games:", games);
-            const birdsGame = games.find(game =>
-              game.competitions?.[0]?.competitors?.some(team => team.team.id === "21")
-            );
-            console.log("Birds Game:", birdsGame);
-
-            if (!birdsGame) {
-              this.fourthDownPlays = null;
-              this.latestHeader = null;
-              this.isBirdsPlaying = false;
-              this.nextGame = null;
-            } else {
-              const gameState = birdsGame.status?.type?.state;
-              const isActive = gameState === "in";
-
-              this.isBirdsPlaying = isActive;
-
-              const opponent = birdsGame.competitions[0].competitors.find(team => team.team.id !== "21")?.team?.displayName || "Opponent";
-
-              if (isActive) {
-                this.latestHeader = {
-                  game: `vs ${opponent}`,
-                  quarter: birdsGame.status?.period,
-                  clock: birdsGame.status?.displayClock,
-                  downDistance: "N/A",
-                  recommendation: birdsGame.status?.type?.description || "N/A",
-                  score: birdsGame.competitions[0].competitors.map(t => `${t.team.abbreviation}: ${t.score}`).join(" vs ")
-                };
-                const eventId = birdsGame.id;
-                fetchFourthDownPlaysForGame(eventId)
-                  .then(filteredPlays => {
-                    this.fourthDownPlays = filteredPlays;
-                    console.log("Fourth down plays:", this.fourthDownPlays);
-                    if (filteredPlays.length > 0) {
-                      const latest = filteredPlays[0];
-                      this.latestHeader = {
-                        game: `vs ${opponent}`,
-                        quarter: latest.period?.number || "N/A",
-                        clock: latest.clock?.displayValue || "N/A",
-                        downDistance: latest.start?.downDistanceText || `${latest.start.down} & ${latest.start.distance}`,
-                        recommendation: latest.summary || "",
-                        score: this.latestHeader.score
-                      };
-                    } else {
-                      this.fourthDownPlays = [];
-                    }
-                  });
-                this.nextGame = null;
-              } else {
-                const isFuture = birdsGame.status?.type?.state === "pre";
-                const isPast = birdsGame.status?.type?.completed;
-
-                if (isFuture) {
-                  this.fourthDownPlays = null;
-                  this.latestHeader = null;
-                  this.nextGame = {
-                    name: `vs ${opponent}`,
-                    date: new Date(birdsGame.date).toLocaleString('en-US', {
-                      hour: 'numeric',
-                      minute: '2-digit',
-                      hour12: true,
-                      month: 'long',
-                      day: 'numeric',
-                      year: 'numeric'
-                    })
-                  };
-                } else if (isPast) {
-                  this.fourthDownPlays = null;
-                  this.latestHeader = {
-                    game: `vs ${opponent}`,
-                    quarter: "Final",
-                    clock: "",
-                    downDistance: "",
-                    recommendation: "Game Complete",
-                    score: birdsGame.competitions[0].competitors.map(t => `${t.team.abbreviation}: ${t.score}`).join(" vs ")
-                  };
-                  this.nextGame = null;
-                } else {
-                  this.fourthDownPlays = null;
-                  this.latestHeader = null;
-                  this.nextGame = null;
-                }
-              }
-            }
-          });
-      }
-    }));
-  });
+})();
 </script>
