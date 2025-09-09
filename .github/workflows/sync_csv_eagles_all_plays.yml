@@ -6,7 +6,7 @@ permissions:
 on:
   schedule:
     # Run nightly to keep _data in sync with assets
-    - cron: '45 1 * * *'
+    - cron: '30 5 * * *' # At 01:30 AM Eastern Time
   workflow_dispatch:
 
 concurrency:
