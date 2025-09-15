@@ -151,42 +151,47 @@ enforce_schema_strict <- function(df, master_names, master_types = NULL, add_mis
 #' @param df enriched pbp dataframe (after enrich_with_nfl4th)
 #' @param team team code to treat as "Birds" (default "PHI")
 #' @return dataframe with added columns
-add_frontend_columns <- function(df, team = "PHI") {
-  # safe helpers
-  to_lower <- function(x) {
-    x <- if (is.null(x)) NA_character_ else x
-    tolower(ifelse(is.na(x), "", as.character(x)))
-  }
-  has_substr <- function(hay, needle) {
-    hay <- to_lower(hay)
-    needle <- tolower(needle)
-    ifelse(is.na(hay), FALSE, grepl(needle, hay, fixed = TRUE))
-  }
-  n_to_clock <- function(n) {
-    n <- suppressWarnings(as.integer(n))
-    mins <- ifelse(is.na(n), NA_integer_, n %/% 60)
-    secs <- ifelse(is.na(n), NA_integer_, n %% 60)
-    ifelse(is.na(mins),
-           NA_character_,
-           paste0(sprintf("%d", mins), ":", sprintf("%02d", secs)))
-  }
-  pct_round <- function(x) {
-    x <- suppressWarnings(as.numeric(x))
-    ifelse(is.na(x), NA_real_, round(x * 100))
-  }
 
-  # decision calculation
+# -- Enhancers: small, reusable steps ---------------------------------------
+
+# Ensure aliases and constants present (down=4 for 4th-down-only data; yrdln <- yardline)
+enhance_aliases <- function(df) {
+  if (!"down" %in% names(df)) df$down <- 4L
+  if ("yardline" %in% names(df)) {
+    if (!"yrdln" %in% names(df)) df$yrdln <- df$yardline
+    df$yardline <- NULL
+  }
+  df
+}
+
+# Derive action flags from type_text when nflfastR booleans are absent
+enhance_flags_from_type_text <- function(df) {
+  if (!"type_text" %in% names(df)) stop("type_text required to derive play flags")
+  tt <- tolower(as.character(df$type_text))
+  is_one_of <- function(x, vals) ifelse(is.na(x), FALSE, x %in% tolower(vals))
+
+  if (!"punt_attempt" %in% names(df))       df$punt_attempt       <- as.integer(is_one_of(tt, c("punt")))
+  if (!"field_goal_attempt" %in% names(df)) df$field_goal_attempt <- as.integer(is_one_of(tt, c("field goal missed","field goal good")))
+  if (!"pass" %in% names(df))               df$pass               <- as.integer(is_one_of(tt, c("pass reception","pass incompletion","passing touchdown")))
+  if (!"rush" %in% names(df))               df$rush               <- as.integer(is_one_of(tt, c("rush","rushing touchdown")))
+  if (!"penalty" %in% names(df))            df$penalty            <- as.integer(is_one_of(tt, c("penalty")))
+  df
+}
+
+# Compute human-facing decision string with penalty tagging (4th-only version)
+enhance_decision_string_4th <- function(df) {
+  to_lower <- function(x) { x <- if (is.null(x)) NA_character_ else x; tolower(ifelse(is.na(x), "", as.character(x))) }
+  has_substr <- function(hay, needle) { hay <- to_lower(hay); needle <- tolower(needle); ifelse(is.na(hay), FALSE, grepl(needle, hay, fixed = TRUE)) }
+
   punt_flag <- as.integer(df$punt_attempt %||% 0)
   fg_flag   <- as.integer(df$field_goal_attempt %||% 0)
   pass_flag <- as.integer((("pass" %in% names(df)) && !is.null(df[["pass"]])) * (df[["pass"]] %||% 0))
   rush_flag <- as.integer((("rush" %in% names(df)) && !is.null(df[["rush"]])) * (df[["rush"]] %||% 0))
   desc_low  <- to_lower(df$desc)
 
-  # start from base decision, defaulting NAs to "Other"
   base_decision <- dplyr::coalesce(df$actual_decision, "Other")
   actual_decision_calculated <- base_decision
 
-  # for rows that are still "Other", try to infer from flags/desc
   idx_other <- which(actual_decision_calculated == "Other")
   if (length(idx_other)) {
     is_punt <- punt_flag[idx_other] > 0 |
@@ -207,54 +212,146 @@ add_frontend_columns <- function(df, team = "PHI") {
                                             ifelse(is_go, "Go for it", "Other")))
   }
 
-  # append penalty tag whenever it is a penalty/no_play by any indicator
+  # Penalty tag without touching play_type or play_type_nfl
   has_pen_any <- (as.integer(df$penalty %||% 0) > 0) |
-                 has_substr(desc_low, "penalty") |
-                 (!is.null(df$play_type) & tolower(as.character(df$play_type)) == "no_play") |
-                 (!is.null(df$play_type_nfl) & toupper(as.character(df$play_type_nfl)) == "PENALTY")
-  actual_decision_calculated <- ifelse(has_pen_any,
+                 has_substr(desc_low, "penalty")
+
+  df$actual_decision_calculated <- ifelse(has_pen_any,
                                        paste0(actual_decision_calculated, " (Penalty)"),
                                        actual_decision_calculated)
+  df
+}
 
-  # phi_coach
-  phi_coach <- ifelse(df$home_team == team, df$home_coach, df$away_coach)
-  opp_coach <- ifelse(df$home_team != team, df$home_coach, df$away_coach)
+# Compute human-facing decision string with penalty tagging (pbp version)
+enhance_decision_string_pbp <- function(df) {
+  to_lower <- function(x) { x <- if (is.null(x)) NA_character_ else x; tolower(ifelse(is.na(x), "", as.character(x))) }
+  has_substr <- function(hay, needle) { hay <- to_lower(hay); needle <- tolower(needle); ifelse(is.na(hay), FALSE, grepl(needle, hay, fixed = TRUE)) }
 
-  # game_clock
-  game_clock <- n_to_clock(df$quarter_seconds_remaining)
+  punt_flag <- as.integer(df$punt_attempt %||% 0)
+  fg_flag   <- as.integer(df$field_goal_attempt %||% 0)
+  pass_flag <- as.integer((("pass" %in% names(df)) && !is.null(df[["pass"]])) * (df[["pass"]] %||% 0))
+  rush_flag <- as.integer((("rush" %in% names(df)) && !is.null(df[["rush"]])) * (df[["rush"]] %||% 0))
+  desc_low  <- to_lower(df$desc)
 
-  # fg_prob_calculated and fg_prob_calculated_pct
+  base_decision <- dplyr::coalesce(df$actual_decision, "Other")
+  actual_decision_calculated <- base_decision
+
+  idx_other <- which(actual_decision_calculated == "Other")
+  if (length(idx_other)) {
+    is_punt <- punt_flag[idx_other] > 0 |
+      has_substr(desc_low[idx_other], "punt formation") |
+      has_substr(desc_low[idx_other], " punt")
+    is_fg <- fg_flag[idx_other] > 0 |
+      has_substr(desc_low[idx_other], "field goal formation") |
+      has_substr(desc_low[idx_other], " fg") |
+      has_substr(desc_low[idx_other], "field goal")
+    is_go <- pass_flag[idx_other] > 0 | rush_flag[idx_other] > 0
+
+    is_punt[is.na(is_punt)] <- FALSE
+    is_fg[is.na(is_fg)] <- FALSE
+    is_go[is.na(is_go)] <- FALSE
+
+    actual_decision_calculated[idx_other] <- ifelse(is_punt, "Punt",
+                                            ifelse(is_fg, "Field Goal",
+                                            ifelse(is_go, "Go for it", "Other")))
+  }
+
+  # Penalty tag allows play_type/play_type_nfl heuristics for historical pbp
+  has_pen_any <- (as.integer(df$penalty %||% 0) > 0) |
+                 has_substr(desc_low, "penalty") |
+                 (!is.null(df$play_type)   & tolower(as.character(df$play_type))   == "no_play") |
+                 (!is.null(df$play_type_nfl) & toupper(as.character(df$play_type_nfl)) == "PENALTY")
+
+  df$actual_decision_calculated <- ifelse(has_pen_any,
+                                       paste0(actual_decision_calculated, " (Penalty)"),
+                                       actual_decision_calculated)
+  df
+}
+
+# Build "MM:SS" from quarter_seconds_remaining
+enhance_game_clock <- function(df) {
+  n_to_clock <- function(n) {
+    n <- suppressWarnings(as.integer(n))
+    mins <- ifelse(is.na(n), NA_integer_, n %/% 60)
+    secs <- ifelse(is.na(n), NA_integer_, n %% 60)
+    ifelse(is.na(mins), NA_character_, paste0(sprintf("%d", mins), ":", sprintf("%02d", secs)))
+  }
+  df$game_clock <- n_to_clock(df$quarter_seconds_remaining)
+  df
+}
+
+# Compute FG prob used for display; if fg_prob missing, fall back to fg_make_prob
+enhance_fg_prob <- function(df) {
   fga <- as.integer(df$field_goal_attempt %||% 0)
-  fg_prob_calculated <- ifelse(fga > 0, df$fg_prob, df$fg_make_prob)
-  fg_prob_calculated_pct <- pct_round(fg_prob_calculated)
+  fg_prob_calculated <- ifelse(fga > 0, df$fg_prob %||% df$fg_make_prob, df$fg_make_prob)
+  pct_round <- function(x) { x <- suppressWarnings(as.numeric(x)); ifelse(is.na(x), NA_real_, round(x * 100)) }
+  df$fg_prob_calculated <- fg_prob_calculated
+  df$fg_prob_calculated_pct <- pct_round(fg_prob_calculated)
+  df
+}
 
-  # percent columns
-  go_wp_pct           <- pct_round(df$go_wp)
-  first_down_prob_pct <- pct_round(df$first_down_prob)
-  wp_fail_pct         <- pct_round(df$wp_fail)
-  wp_succeed_pct      <- pct_round(df$wp_succeed)
-  punt_wp_pct         <- pct_round(df$punt_wp)
-  fg_wp_pct           <- pct_round(df$fg_wp)
-  make_fg_wp_pct      <- pct_round(df$make_fg_wp)
-  miss_fg_wp_pct      <- pct_round(df$miss_fg_wp)
-
-  dplyr::mutate(
-    df,
-    actual_decision_calculated = actual_decision_calculated,
-    phi_coach = phi_coach,
-    opp_coach = opp_coach,
-    game_clock = game_clock,
-    fg_prob_calculated = fg_prob_calculated,
-    fg_prob_calculated_pct = fg_prob_calculated_pct,
-    go_wp_pct = go_wp_pct,
-    first_down_prob_pct = first_down_prob_pct,
-    wp_fail_pct = wp_fail_pct,
-    wp_succeed_pct = wp_succeed_pct,
-    punt_wp_pct = punt_wp_pct,
-    fg_wp_pct = fg_wp_pct,
-    make_fg_wp_pct = make_fg_wp_pct,
-    miss_fg_wp_pct = miss_fg_wp_pct
+# Compute model recommendation from go/fg/punt WPs
+enhance_model_recommendation <- function(df) {
+  go_c   <- dplyr::coalesce(df$go_wp,   -Inf)
+  fg_c   <- dplyr::coalesce(df$fg_wp,   -Inf)
+  punt_c <- dplyr::coalesce(df$punt_wp, -Inf)
+  top    <- pmax(go_c, fg_c, punt_c)
+  top_ties <- as.integer(go_c == top) + as.integer(fg_c == top) + as.integer(punt_c == top)
+  df$model_recommendation <- dplyr::case_when(
+    top_ties >= 2          ~ "Toss Up",
+    go_c   == top          ~ "Go for it",
+    fg_c   == top          ~ "Field Goal",
+    TRUE                   ~ "Punt"
   )
+  df
+}
+
+# Percent helper columns for table display
+enhance_percent_helpers <- function(df) {
+  pct_round <- function(x) { x <- suppressWarnings(as.numeric(x)); ifelse(is.na(x), NA_real_, round(x * 100)) }
+  df$go_wp_pct           <- pct_round(df$go_wp)
+  df$first_down_prob_pct <- pct_round(df$first_down_prob)
+  df$wp_fail_pct         <- pct_round(df$wp_fail)
+  df$wp_succeed_pct      <- pct_round(df$wp_succeed)
+  df$punt_wp_pct         <- pct_round(df$punt_wp)
+  df$fg_wp_pct           <- pct_round(df$fg_wp)
+  df$make_fg_wp_pct      <- pct_round(df$make_fg_wp)
+  df$miss_fg_wp_pct      <- pct_round(df$miss_fg_wp)
+  df
+}
+
+# Compute PHI coach labels if available
+enhance_coaches <- function(df, team = "PHI") {
+  if (all(c("home_coach","away_coach","home_team") %in% names(df))) {
+    df$phi_coach <- ifelse(df$home_team == team, df$home_coach, df$away_coach)
+    df$opp_coach <- ifelse(df$home_team != team, df$home_coach, df$away_coach)
+  }
+  df
+}
+
+# Thin wrapper that composes all enhancers
+add_frontend_columns_4th <- function(df, team = "PHI") {
+  df %>%
+    enhance_aliases() %>%
+    enhance_flags_from_type_text() %>%
+    enhance_decision_string_4th() %>%
+    enhance_game_clock() %>%
+    enhance_fg_prob() %>%
+    enhance_model_recommendation() %>%
+    enhance_percent_helpers() %>%
+    enhance_coaches(team = team)
+}
+
+add_frontend_columns_pbp <- function(df, team = "PHI") {
+  df %>%
+    # No aliasing; pbp already has yrdln and booleans
+    # No type_text usage here
+    enhance_decision_string_pbp() %>%
+    enhance_game_clock() %>%
+    enhance_fg_prob() %>%
+    enhance_model_recommendation() %>%
+    enhance_percent_helpers() %>%
+    enhance_coaches(team = team)
 }
 
 # Provide infix %||% like rlang's for simple defaulting
