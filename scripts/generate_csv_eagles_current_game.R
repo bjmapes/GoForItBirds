@@ -1,5 +1,3 @@
-# scripts/generate_csv_eagles_current_game.R
-
 suppressPackageStartupMessages({
   library(nflfastR)
   library(nfl4th)
@@ -32,8 +30,7 @@ enriched <- pbp %>%
   nfl4th::add_4th_probs() %>%
   add_frontend_columns_4th(team = team)
 
-out_dir <- "assets/data/current"
-dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
-out_path <- file.path(out_dir, paste0(game_id, ".csv"))
+out_path <- "assets/data/current_game.csv"
+dir.create(dirname(out_path), recursive = TRUE, showWarnings = FALSE)
 readr::write_csv(enriched, out_path)
 message("Wrote current game CSV: ", normalizePath(out_path, winslash = "/"))
