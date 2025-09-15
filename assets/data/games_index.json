@@ -5603,6 +5603,18 @@
           "away": 20
         },
         "pbp_url": "/assets/data/pbp/2025/2025_01_DAL_PHI.csv.gz"
+      },
+      {
+        "game_id": "2025_02_PHI_KC",
+        "week": 2,
+        "date": "2025-09-14",
+        "home": "KC",
+        "away": "PHI",
+        "final": {
+          "home": 17,
+          "away": 20
+        },
+        "pbp_url": "/assets/data/pbp/2025/2025_02_PHI_KC.csv.gz"
       }
     ]
   }
