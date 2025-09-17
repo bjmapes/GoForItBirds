@@ -44,6 +44,19 @@ add_frontend_columns_pbp <- function(df, team = "PHI") {
                                        paste0(actual_decision_calculated, " (Penalty)"),
                                        actual_decision_calculated)
 
+  # Model recommendation from go_wp / fg_wp / punt_wp with tie handling
+  go_c   <- dplyr::coalesce(df$go_wp,   -Inf)
+  fg_c   <- dplyr::coalesce(df$fg_wp,   -Inf)
+  punt_c <- dplyr::coalesce(df$punt_wp, -Inf)
+  top    <- pmax(go_c, fg_c, punt_c)
+  top_ties <- as.integer(go_c == top) + as.integer(fg_c == top) + as.integer(punt_c == top)
+  model_recommendation <- dplyr::case_when(
+    top_ties >= 2          ~ "Toss Up",
+    go_c   == top          ~ "Go for it",
+    fg_c   == top          ~ "Field Goal",
+    TRUE                   ~ "Punt"
+  )
+
   dplyr::mutate(
     df,
     phi_coach = phi_coach,
@@ -52,6 +65,7 @@ add_frontend_columns_pbp <- function(df, team = "PHI") {
     fg_prob_calculated = fg_prob_calculated,
     fg_prob_calculated_pct = fg_prob_calculated_pct,
     actual_decision_calculated = actual_decision_calculated,
+    model_recommendation = model_recommendation,
     go_wp_pct = pct_round(df$go_wp),
     first_down_prob_pct = pct_round(df$first_down_prob),
     wp_fail_pct = pct_round(df$wp_fail),

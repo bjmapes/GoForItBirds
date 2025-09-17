@@ -1,5 +1,3 @@
-# scripts/generate_csv_eagles_all_plays.R
-
 library(nflfastR)
 library(dplyr)
 library(purrr)
@@ -53,9 +51,10 @@ idx_list <- list()
 gids <- unique(eagles_pbp$game_id)
 
 enriched <- eagles_pbp %>%
+  # keep original season, temporarily map 2025->2024 for model, and seed actual_decision
   dplyr::mutate(
     season_orig = season,
-    season = dplyr::if_else(season_orig == 2025L, 2024L, season_orig),
+    #season = dplyr::if_else(season_orig == 2025L, 2024L, season_orig),
     actual_decision = dplyr::case_when(
       play_type == "punt" ~ "Punt",
       play_type == "field_goal" ~ "Field Goal",
@@ -63,8 +62,23 @@ enriched <- eagles_pbp %>%
       TRUE ~ "Other"
     )
   ) %>%
+  # ensure home_opening_kickoff exists before running nfl4th
+  dplyr::group_by(game_id) %>%
+  dplyr::mutate(
+    home_opening_kickoff = dplyr::coalesce(
+      home_opening_kickoff,
+      {
+        first_k <- which(qtr == 1 & kickoff_attempt == 1)[1]
+        if (is.na(first_k)) NA_integer_ else as.integer(posteam[first_k] == home_team[first_k])
+      }
+    )
+  ) %>%
+  dplyr::ungroup() %>%
+  # run model FIRST to create go_wp / fg_wp / punt_wp / etc.
   nfl4th::add_4th_probs() %>%
-  dplyr::mutate(season = season_orig) %>%
+  # restore original season for output
+#  dplyr::mutate(season = season_orig) %>%
+  # then compute frontend columns (pct helpers + model_recommendation, etc.)
   add_frontend_columns_pbp(team = "PHI")
 
 meta <- enriched %>%
