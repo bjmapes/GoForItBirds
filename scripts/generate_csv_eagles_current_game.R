@@ -28,6 +28,20 @@ message("Using game_id: ", game_id)
 pbp <- nfl4th::get_4th_plays(game_id)
 enriched <- pbp %>%
   nfl4th::add_4th_probs() %>%
+  dplyr::mutate(
+    go_c   = dplyr::coalesce(go_wp,   -Inf),
+    fg_c   = dplyr::coalesce(fg_wp,   -Inf),
+    punt_c = dplyr::coalesce(punt_wp, -Inf),
+    top    = pmax(go_c, fg_c, punt_c),
+    top_ties = as.integer(go_c == top) + as.integer(fg_c == top) + as.integer(punt_c == top),
+    model_recommendation = dplyr::case_when(
+      top_ties >= 2          ~ "Toss Up",
+      go_c   == top          ~ "Go for it",
+      fg_c   == top          ~ "Field Goal",
+      TRUE                   ~ "Punt"
+    )
+  ) %>%
+  dplyr::select(-go_c, -fg_c, -punt_c, -top, -top_ties) %>%  
   add_frontend_columns_4th(team = team)
 
 out_path <- "assets/data/current_game.csv"

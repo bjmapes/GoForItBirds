@@ -27,7 +27,7 @@ last_non_na <- function(x) {
 
 if (length(cli_args) == 0) {
   message("Loading play-by-play with NO season arg (full passthrough)...")
-  pbp_all <- load_pbp()
+  pbp_all <- load_pbp() 
 } else {
   arg_expr <- if (length(cli_args) == 1) cli_args[[1]]
               else paste0("c(", paste(cli_args, collapse = ","), ")")
@@ -53,7 +53,18 @@ idx_list <- list()
 gids <- unique(eagles_pbp$game_id)
 
 enriched <- eagles_pbp %>%
+  dplyr::mutate(
+    season_orig = season,
+    season = dplyr::if_else(season_orig == 2025L, 2024L, season_orig),
+    actual_decision = dplyr::case_when(
+      play_type == "punt" ~ "Punt",
+      play_type == "field_goal" ~ "Field Goal",
+      play_type %in% c("run", "pass") ~ "Go for it",
+      TRUE ~ "Other"
+    )
+  ) %>%
   nfl4th::add_4th_probs() %>%
+  dplyr::mutate(season = season_orig) %>%
   add_frontend_columns_pbp(team = "PHI")
 
 meta <- enriched %>%

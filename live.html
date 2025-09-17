@@ -53,10 +53,17 @@ title: Live Analysis
     // Show header using first row
     const r = plays[0];
     const header = document.querySelector('h1');
-    header.textContent = `Week ${r.week} — ${r.away_team} at ${r.home_team} - ` + header.textContent;
+    //header.textContent = `Week ${r.week} — ${r.away_team} at ${r.home_team} - ` + header.textContent; //TODO add back in after getting from espn live
+    header.textContent = `Week X — ${r.away_team} at ${r.home_team} - ` + header.textContent;
 
     // Filter to PHI opponent defense and 4th down
-    const phi4th = plays.filter(p => p.defteam !== 'PHI' && Number(p.down) === 4);
+    const phi4th = plays
+      .filter(p => p.posteam === 'PHI')
+      .map(p => ({ 
+        ...p, 
+        down: "4",
+        phi_coach: "[phi coach]"
+      }));
 
 
     for (const p of phi4th){

@@ -74,9 +74,8 @@ add_frontend_columns_4th <- function(df, team = "PHI") {
   game_clock <- n_to_clock(df$quarter_seconds_remaining)
 
   # FG prob
-  fga <- as.integer(df$field_goal_attempt %||% 0)
-  fg_prob_calculated <- ifelse(fga > 0, df$fg_prob, df$fg_make_prob)
-  fg_prob_calculated_pct <- pct_round(fg_prob_calculated)
+  fg_prob_calculated <- df$fg_make_prob
+  fg_prob_calculated_pct <- pct_round(df$fg_make_prob)
 
   # Decision string from play_type/type_text
   base_decision <- dplyr::case_when(
