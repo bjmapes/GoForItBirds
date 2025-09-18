@@ -89,7 +89,7 @@ add_frontend_columns_4th <- function(df, team = "PHI") {
 
   # FG prob
   fg_prob_calculated <- df$fg_make_prob
-  fg_prob_calculated_pct <- pct_round(df$fg_make_prob)
+  fg_prob_calculated_pct <- pct_round(fg_prob_calculated)
 
   # Decision string from play_type/type_text
   base_decision <- dplyr::case_when(
