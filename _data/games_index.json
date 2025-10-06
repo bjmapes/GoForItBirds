@@ -5639,6 +5639,18 @@
           "away": 31
         },
         "pbp_url": "/assets/data/pbp/2025/2025_04_PHI_TB.csv.gz"
+      },
+      {
+        "game_id": "2025_05_DEN_PHI",
+        "week": 5,
+        "date": "2025-10-05",
+        "home": "PHI",
+        "away": "DEN",
+        "final": {
+          "home": 17,
+          "away": 21
+        },
+        "pbp_url": "/assets/data/pbp/2025/2025_05_DEN_PHI.csv.gz"
       }
     ]
   }
