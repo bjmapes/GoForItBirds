@@ -5651,6 +5651,18 @@
           "away": 21
         },
         "pbp_url": "/assets/data/pbp/2025/2025_05_DEN_PHI.csv.gz"
+      },
+      {
+        "game_id": "2025_06_PHI_NYG",
+        "week": 6,
+        "date": "2025-10-09",
+        "home": "NYG",
+        "away": "PHI",
+        "final": {
+          "home": 34,
+          "away": 17
+        },
+        "pbp_url": "/assets/data/pbp/2025/2025_06_PHI_NYG.csv.gz"
       }
     ]
   }
