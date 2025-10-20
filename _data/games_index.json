@@ -5663,6 +5663,18 @@
           "away": 17
         },
         "pbp_url": "/assets/data/pbp/2025/2025_06_PHI_NYG.csv.gz"
+      },
+      {
+        "game_id": "2025_07_PHI_MIN",
+        "week": 7,
+        "date": "2025-10-19",
+        "home": "MIN",
+        "away": "PHI",
+        "final": {
+          "home": 22,
+          "away": 28
+        },
+        "pbp_url": "/assets/data/pbp/2025/2025_07_PHI_MIN.csv.gz"
       }
     ]
   }
