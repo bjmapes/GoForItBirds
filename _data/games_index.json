@@ -5699,6 +5699,18 @@
           "away": 10
         },
         "pbp_url": "/assets/data/pbp/2025/2025_10_PHI_GB.csv.gz"
+      },
+      {
+        "game_id": "2025_11_DET_PHI",
+        "week": 11,
+        "date": "2025-11-16",
+        "home": "PHI",
+        "away": "DET",
+        "final": {
+          "home": 16,
+          "away": 9
+        },
+        "pbp_url": "/assets/data/pbp/2025/2025_11_DET_PHI.csv.gz"
       }
     ]
   }
