@@ -5747,6 +5747,18 @@
           "away": 19
         },
         "pbp_url": "/assets/data/pbp/2025/2025_14_PHI_LAC.csv.gz"
+      },
+      {
+        "game_id": "2025_15_LV_PHI",
+        "week": 15,
+        "date": "2025-12-14",
+        "home": "PHI",
+        "away": "LV",
+        "final": {
+          "home": 31,
+          "away": 0
+        },
+        "pbp_url": "/assets/data/pbp/2025/2025_15_LV_PHI.csv.gz"
       }
     ]
   }
