@@ -5783,6 +5783,18 @@
           "away": 13
         },
         "pbp_url": "/assets/data/pbp/2025/2025_17_PHI_BUF.csv.gz"
+      },
+      {
+        "game_id": "2025_18_WAS_PHI",
+        "week": 18,
+        "date": "2026-01-04",
+        "home": "PHI",
+        "away": "WAS",
+        "final": {
+          "home": 17,
+          "away": 24
+        },
+        "pbp_url": "/assets/data/pbp/2025/2026_18_WAS_PHI.csv.gz"
       }
     ]
   }
