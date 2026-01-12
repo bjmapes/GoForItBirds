@@ -5795,6 +5795,18 @@
           "away": 24
         },
         "pbp_url": "/assets/data/pbp/2025/2026_18_WAS_PHI.csv.gz"
+      },
+      {
+        "game_id": "2025_19_SF_PHI",
+        "week": 19,
+        "date": "2026-01-11",
+        "home": "PHI",
+        "away": "SF",
+        "final": {
+          "home": 19,
+          "away": 23
+        },
+        "pbp_url": "/assets/data/pbp/2025/2026_19_SF_PHI.csv.gz"
       }
     ]
   }
